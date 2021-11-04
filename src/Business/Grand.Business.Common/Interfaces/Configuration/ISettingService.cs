@@ -27,12 +27,6 @@ namespace Grand.Business.Common.Interfaces.Configuration
         Task UpdateSetting(Setting setting, bool clearCache = true);
 
         /// <summary>
-        /// Deletes a setting
-        /// </summary>
-        /// <param name="setting">Setting</param>
-        Task DeleteSetting(Setting setting);
-
-        /// <summary>
         /// Gets a setting by ident
         /// </summary>
         /// <param name="settingId">Setting ident</param>
@@ -89,10 +83,18 @@ namespace Grand.Business.Common.Interfaces.Configuration
         Task SaveSetting<T>(T settings, string storeId = "") where T : ISettings, new();
 
         /// <summary>
+        /// Deletes a setting
+        /// </summary>
+        /// <param name="setting">Setting</param>
+        Task DeleteSetting(Setting setting);
+
+        /// <summary>
         /// Delete all settings
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
         Task DeleteSetting<T>() where T : ISettings, new();
+
+
 
         /// <summary>
         /// Clear cache
