@@ -232,7 +232,7 @@ namespace Grand.Api.Controllers.OData
 
                 if (ModelState.IsValid)
                 {
-                    var result = await _mediator.Send(new DeleteProductCategoryCommand() { Product = product.FirstOrDefault(), CategoryId = categoryId.ToString() });
+                    await _mediator.Send(new DeleteProductCategoryCommand() { Product = product.FirstOrDefault(), CategoryId = categoryId.ToString() });
                     return Ok(true);
                 }
                 return BadRequest(ModelState);

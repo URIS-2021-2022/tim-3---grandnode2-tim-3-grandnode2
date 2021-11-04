@@ -35,7 +35,7 @@ namespace Grand.Api.Filters
         /// <summary>
         /// Represents a filter that confirms access to the admin panel
         /// </summary>
-        private class AuthorizeApiAdminFilter : IAsyncAuthorizationFilter
+        sealed private class AuthorizeApiAdminFilter : IAsyncAuthorizationFilter
         {
             #region Fields
 

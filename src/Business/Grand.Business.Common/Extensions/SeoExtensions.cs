@@ -184,7 +184,7 @@ namespace Grand.Business.Common.Extensions
             }
 
             var sb = new StringBuilder();
-            foreach (var c in name.ToCharArray())
+            foreach (var c in name)
             {
                 var c2 = c.ToString();
                 if (convertNonWesternChars && _seoCharacterTable != null)
