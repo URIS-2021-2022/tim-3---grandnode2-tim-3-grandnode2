@@ -136,7 +136,6 @@ namespace Grand.Api.Infrastructure
             createSpecification.Parameter<string>(nameof(ProductSpecificationAttributeDto.Id));
             createSpecification.Parameter<int>(nameof(ProductSpecificationAttributeDto.DisplayOrder));
             createSpecification.Parameter<string>(nameof(ProductSpecificationAttributeDto.CustomValue));
-            //createSpecification.Parameter<SpecificationAttributeType>(nameof(ProductSpecificationAttributeDto.AttributeType)).Required();
             createSpecification.Parameter<bool>(nameof(ProductSpecificationAttributeDto.AllowFiltering));
             createSpecification.Parameter<string>(nameof(ProductSpecificationAttributeDto.SpecificationAttributeId));
             createSpecification.Parameter<bool>(nameof(ProductSpecificationAttributeDto.ShowOnProductPage));
