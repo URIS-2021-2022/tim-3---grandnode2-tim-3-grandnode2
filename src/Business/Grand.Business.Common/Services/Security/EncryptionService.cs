@@ -70,7 +70,7 @@ namespace Grand.Business.Common.Services.Security
             if (string.IsNullOrEmpty(privateKey) || privateKey.Length != 24)
                 throw new Exception("Wrong private key");
 
-            var tDES = TripleDES.Create();
+            var tDES = new AesCryptoServiceProvider();
 
             tDES.Key = new ASCIIEncoding().GetBytes(privateKey);
             tDES.IV = new ASCIIEncoding().GetBytes(privateKey[^8..]);
