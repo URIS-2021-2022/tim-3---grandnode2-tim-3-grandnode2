@@ -264,11 +264,11 @@ namespace Grand.Business.Catalog.Services.Products
 
             var p = await _productRepository.GetByIdAsync(productId);
             if (p == null)
-                throw new ArgumentNullException(nameof(p));
+                throw new ArgumentNullException(nameof(p), "p is null!");
 
             var pam = p.ProductAttributeMappings.FirstOrDefault(x => x.Id == productAttributeMappingId);
             if (pam == null)
-                throw new ArgumentNullException(nameof(pam));
+                throw new ArgumentNullException(nameof(pam), "pam is null!");
 
             pam.ProductAttributeValues.Add(productAttributeValue);
             await _productRepository.UpdateToSet(productId, x => x.ProductAttributeMappings, z => z.Id, productAttributeMappingId, pam);

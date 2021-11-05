@@ -471,7 +471,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                 foreach (string warning in warnings)
                 {
                     warningsSb.Append(warning);
-                    warningsSb.Append(";");
+                    warningsSb.Append(';');
                 }
                 throw new GrandException(warningsSb.ToString());
             }
@@ -487,7 +487,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                     foreach (string warning in sciWarnings)
                     {
                         warningsSb.Append(warning);
-                        warningsSb.Append(";");
+                        warningsSb.Append(';');
                     }
                     throw new GrandException(warningsSb.ToString());
                 }

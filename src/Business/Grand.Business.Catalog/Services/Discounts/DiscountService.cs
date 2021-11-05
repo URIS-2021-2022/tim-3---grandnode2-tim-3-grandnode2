@@ -185,7 +185,7 @@ namespace Grand.Business.Catalog.Services.Discounts
 
             var usagehistory = await GetAllDiscountUsageHistory(discount.Id);
             if (usagehistory.Count > 0)
-                throw new ArgumentNullException("discount was used and have a history");
+                throw new ArgumentNullException(null, "discount was used and have a history");
 
             await _discountRepository.DeleteAsync(discount);
 
@@ -206,10 +206,10 @@ namespace Grand.Business.Catalog.Services.Discounts
 
             var discount = await _discountRepository.GetByIdAsync(discountRequirement.DiscountId);
             if (discount == null)
-                throw new ArgumentNullException(nameof(discount));
+                throw new ArgumentNullException(nameof(discount), "Discount does not exist.");
             var req = discount.DiscountRules.FirstOrDefault(x => x.Id == discountRequirement.Id);
             if (req == null)
-                throw new ArgumentNullException(nameof(req));
+                throw new ArgumentNullException(nameof(req), "Discount rule does not exist.");
 
             discount.DiscountRules.Remove(req);
             await UpdateDiscount(discount);
@@ -430,7 +430,7 @@ namespace Grand.Business.Catalog.Services.Discounts
                 return await ValidateDiscount(discount, customer, currency, new string[] { couponCodeToValidate });
             }
             else
-                return await ValidateDiscount(discount, customer, currency, new string[0]);
+                return await ValidateDiscount(discount, customer, currency, Array.Empty<string>());
 
         }
 

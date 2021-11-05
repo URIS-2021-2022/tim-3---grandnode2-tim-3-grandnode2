@@ -85,7 +85,7 @@ namespace Grand.Business.Authentication.Services
             return model;
         }
 
-        private string PrepareRandomCode()
+        private static string PrepareRandomCode()
         {
             Random generator = new Random();
             return generator.Next(0, 999999).ToString("D6");

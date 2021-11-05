@@ -62,7 +62,7 @@ namespace Grand.Api.Infrastructure
             return builder.GetEdmModel();
         }
 
-        private void RegisterDependencies(ODataConventionModelBuilder builder, ApiConfig apiConfig)
+        private static void RegisterDependencies(ODataConventionModelBuilder builder, ApiConfig apiConfig)
         {
             var typeFinder = new AppTypeSearcher();
 

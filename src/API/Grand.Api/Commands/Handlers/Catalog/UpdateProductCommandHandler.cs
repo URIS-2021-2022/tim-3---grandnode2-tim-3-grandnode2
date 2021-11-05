@@ -85,10 +85,10 @@ namespace Grand.Api.Commands.Models.Catalog
 
             //raise event 
             if (!prevPublished && product.Published)
-                await _mediator.Publish(new ProductPublishEvent(product));
+                await _mediator.Publish(new ProductPublishEvent(product), cancellationToken);
 
             if (prevPublished && !product.Published)
-                await _mediator.Publish(new ProductUnPublishEvent(product));
+                await _mediator.Publish(new ProductUnPublishEvent(product), cancellationToken);
 
             return product.ToModel();
         }
