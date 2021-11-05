@@ -2,7 +2,7 @@
 
 namespace Grand.Business.Marketing.Events
 {
-    public class EmailUnsubscribedEvent : INotification
+    public sealed class EmailUnsubscribedEvent : INotification
     {
         private readonly string _email;
 

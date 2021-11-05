@@ -5,7 +5,7 @@ namespace Grand.Api.Jwt
 {
     public sealed class JwtToken
     {
-        private JwtSecurityToken token;
+        private readonly JwtSecurityToken token;
 
         internal JwtToken(JwtSecurityToken token)
         {

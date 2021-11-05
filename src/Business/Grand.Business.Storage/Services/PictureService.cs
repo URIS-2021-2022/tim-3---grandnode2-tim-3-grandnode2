@@ -292,9 +292,11 @@ namespace Grand.Business.Storage.Services
             }
             if (targetSize == 0)
             {
-                return !string.IsNullOrEmpty(storeLocation)
-                        ? storeLocation
-                        : string.IsNullOrEmpty(_mediaSettings.StoreLocation) ?
+                if(!string.IsNullOrEmpty(storeLocation))
+                {
+                    return storeLocation;
+                }
+                 return string.IsNullOrEmpty(_mediaSettings.StoreLocation) ?
                         _workContext.CurrentStore.SslEnabled ? _workContext.CurrentStore.SecureUrl : _workContext.CurrentStore.Url :
                         _mediaFileStore.Combine(_mediaSettings.StoreLocation, _imagePath, _mediaSettings.DefaultImageName);
             }
