@@ -243,7 +243,7 @@ namespace Grand.Web.Admin.Controllers
                     ModelState.AddModelError("", "Owner email is not exists");
             }
 
-            if (!string.IsNullOrWhiteSpace(model.Username) & _customerSettings.UsernamesEnabled)
+            if (!string.IsNullOrWhiteSpace(model.Username) && _customerSettings.UsernamesEnabled)
             {
                 var cust2 = await _customerService.GetCustomerByUsername(model.Username);
                 if (cust2 != null)
