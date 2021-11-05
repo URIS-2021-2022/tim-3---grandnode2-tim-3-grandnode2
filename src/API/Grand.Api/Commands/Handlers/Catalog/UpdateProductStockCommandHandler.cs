@@ -122,12 +122,9 @@ namespace Grand.Api.Commands.Models.Catalog
                         }
                     }
                 }
-                if (product.ProductWarehouseInventory.Sum(x => x.StockQuantity - x.ReservedQuantity) > 0)
+                if ((product.ProductWarehouseInventory.Sum(x => x.StockQuantity - x.ReservedQuantity) > 0) && (prevMultiWarehouseStock.Sum(x => x.StockQuantity - x.ReservedQuantity) <= 0))
                 {
-                    if (prevMultiWarehouseStock.Sum(x => x.StockQuantity - x.ReservedQuantity) <= 0)
-                    {
                         await _outOfStockSubscriptionService.SendNotificationsToSubscribers(product, "");
-                    }
                 }
             }
         }

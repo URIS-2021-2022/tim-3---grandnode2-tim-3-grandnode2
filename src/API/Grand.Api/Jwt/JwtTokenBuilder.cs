@@ -14,7 +14,7 @@ namespace Grand.Api.Jwt
         private string issuer = "";
         private bool useaudience;
         private string audience = "";
-        private Dictionary<string, string> claims = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> claims = new Dictionary<string, string>();
         private int expiryInMinutes = 5;
 
         private void EnsureArguments()

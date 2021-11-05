@@ -108,7 +108,7 @@ namespace Grand.Api.Controllers
             try
             {
                 principal = _refreshTokenService.GetPrincipalFromToken(tokenDto.AccessToken);
-                email = principal.Claims.ToList().FirstOrDefault(x => x.Type == "Email")?.Value;
+                email = principal.Claims.FirstOrDefault(x => x.Type == "Email")?.Value;
             }
             catch (Exception)
             {

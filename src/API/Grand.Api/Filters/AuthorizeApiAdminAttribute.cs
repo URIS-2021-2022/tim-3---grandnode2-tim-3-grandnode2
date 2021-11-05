@@ -47,13 +47,6 @@ namespace Grand.Api.Filters
 
             #region Ctor
 
-            public AuthorizeApiAdminFilter(bool ignoreFilter, IPermissionService permissionService, SecuritySettings securitySettings)
-            {
-                _ignoreFilter = ignoreFilter;
-                _permissionService = permissionService;
-                _securitySettings = securitySettings;
-            }
-
             #endregion
 
             #region Methods
