@@ -1600,7 +1600,7 @@ function init_CustomNotification() {
 
     var cnt = 10;
 
-    TabbedNotification = function (options) {
+    var TabbedNotification = function (options) {
         var message = "<div id='ntf" + cnt + "' class='text alert-" + options.type + "' style='display:none'><h2><i class='fa fa-bell'></i> " + options.title +
             "</h2><div class='close'><a href='javascript:;' class='notification_close'><i class='fa fa-close'></i></a></div><p>" + options.text + "</p></div>";
 
@@ -1614,7 +1614,7 @@ function init_CustomNotification() {
         }
     };
 
-    CustomTabs = function (options) {
+    var CustomTabs = function (options) {
         $('.tabbed_notifications > div').hide();
         $('.tabbed_notifications > div:first-of-type').show();
         $('#custom_notifications').removeClass('dsp_none');
@@ -1633,7 +1633,7 @@ function init_CustomNotification() {
 
     CustomTabs();
 
-    var tabid = idname = '';
+    var tabid = var idname = '';
 
     $(document).on('click', '.notification_close', function (e) {
         idname = $(this).parent().parent().attr("id");
@@ -1743,7 +1743,7 @@ function init_calendar() {
             $('#fc_create').click();
 
             started = start;
-            ended = end;
+            var ended = end;
 
             $(".antosubmit").on("click", function () {
                 var title = $("#title").val();
@@ -1858,7 +1858,7 @@ function init_DataTables() {
         }
     };
 
-    TableManageButtons = function () {
+    var TableManageButtons = function () {
         "use strict";
         return {
             init: function () {

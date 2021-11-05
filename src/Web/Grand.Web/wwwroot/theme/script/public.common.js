@@ -92,9 +92,9 @@ function displayPopupNewsletterCategory(html) {
 
 function displayBarNotification(message, messagetype, timeout) {
     if (messagetype == 'error') {
-        toastHTML = '<b-toast id="grandToast" auto-hide-delay=' + timeout +' variant="danger" title=' + messagetype +'>'+ message +'</b-toast>'
+        var toastHTML = '<b-toast id="grandToast" auto-hide-delay=' + timeout +' variant="danger" title=' + messagetype +'>'+ message +'</b-toast>'
     } else {
-        toastHTML = '<b-toast id="grandToast" auto-hide-delay=' + timeout +' variant="info" title=' + messagetype+'>' + message + '</b-toast>'
+        var toastHTML = '<b-toast id="grandToast" auto-hide-delay=' + timeout +' variant="info" title=' + messagetype+'>' + message + '</b-toast>'
     }
     document.querySelector('.modal-place').innerHTML = toastHTML;
     new Vue({
@@ -772,7 +772,7 @@ var Reservation = {
     },
 
     daysToMark: function daysToMark(date) {
-        for (i = 0; i < Reservation.availableDates.length; i++) {
+        for (var i = 0; i < Reservation.availableDates.length; i++) {
             var splitResults = Reservation.availableDates[i].Date.split("-");
             var year = splitResults[0];
             var month = splitResults[1];

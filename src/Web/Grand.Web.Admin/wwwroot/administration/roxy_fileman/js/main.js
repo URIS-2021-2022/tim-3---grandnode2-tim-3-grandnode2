@@ -118,7 +118,7 @@ function showUploadList(files){
   var filesPane = $('#uploadFilesList');
   filesPane.html('');
   clearFileField();
-  for(i = 0; i < files.length; i++){
+  for(var i = 0; i < files.length; i++){
     filesPane.append('<div class="fileUpload"><div class="fileName">'+files[i].name+' ('+RoxyUtils.FormatFileSize(files[i].size)+')<span class="progressPercent"></span><div class="uploadProgress"><div class="stripes"></div></div></div><a class="removeUpload" onclick="removeUpload(' + i + ')"></a></div>');
   }
   if(files.length > 0)
@@ -429,7 +429,7 @@ function tooltipContent(){
   }
   else if(f.IsImage()){
     if(RoxyFilemanConf.GENERATETHUMB){
-      imgUrl = RoxyUtils.AddParam(RoxyFilemanConf.GENERATETHUMB, 'f', f.fullPath);
+      var imgUrl = RoxyUtils.AddParam(RoxyFilemanConf.GENERATETHUMB, 'f', f.fullPath);
       imgUrl = RoxyUtils.AddParam(imgUrl, 'width', RoxyFilemanConf.PREVIEW_THUMB_WIDTH);
       imgUrl = RoxyUtils.AddParam(imgUrl, 'height', RoxyFilemanConf.PREVIEW_THUMB_HEIGHT);
     }
@@ -722,7 +722,7 @@ function initSelection(filePath){
   }
   if(filePath){
     var p = (fileSelected? RoxyUtils.GetPath(filePath): filePath);
-    var d = tmp = Directory.Parse(p);
+    var d = var tmp = Directory.Parse(p);
     do{
       if(tmp){
         tmp.Expand(true);
