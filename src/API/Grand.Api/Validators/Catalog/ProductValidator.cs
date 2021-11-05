@@ -21,15 +21,7 @@ namespace Grand.Api.Validators.Catalog
             : base(validators)
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage(translationService.GetResource("Api.Catalog.Product.Fields.Name.Required"));
-            //RuleFor(x => x.ProductType).IsInEnum().WithMessage(translationService.GetResource("Api.Catalog.Product.Fields.ProductType.Required"));
-            //RuleFor(x => x.BackorderMode).IsInEnum().WithMessage(translationService.GetResource("Api.Catalog.Product.Fields.BackorderMode.Required"));
-            //RuleFor(x => x.DownloadActivationType).IsInEnum().WithMessage(translationService.GetResource("Api.Catalog.Product.Fields.DownloadActivationType.Required"));
-            //RuleFor(x => x.IntervalUnitType).IsInEnum().WithMessage(translationService.GetResource("Api.Catalog.Product.Fields.IntervalUnitType.Required"));
-            //RuleFor(x => x.GiftCardType).IsInEnum().WithMessage(translationService.GetResource("Api.Catalog.Product.Fields.GiftCardType.Required"));
-            //RuleFor(x => x.LowStockActivity).IsInEnum().WithMessage(translationService.GetResource("Api.Catalog.Product.Fields.LowStockActivity.Required"));
-            //RuleFor(x => x.ManageInventoryMethod).IsInEnum().WithMessage(translationService.GetResource("Api.Catalog.Product.Fields.ManageInventoryMethod.Required"));
-            //RuleFor(x => x.RecurringCyclePeriod).IsInEnum().WithMessage(translationService.GetResource("Api.Catalog.Product.Fields.RecurringCyclePeriod.Required"));
-
+            
             if (!commonSettings.AllowEditProductEndedAuction)
                 RuleFor(x => x.AuctionEnded && x.ProductTypeId == ProductType.Auction).Equal(false).WithMessage(translationService.GetResource("Api.Catalog.Products.Cannoteditauction"));
 
