@@ -163,7 +163,7 @@ namespace Grand.Business.Common.Services.Logging
             var activityTypes = GetAllActivityTypesCachedSync();
             var activityType = activityTypes.FirstOrDefault(at => at.SystemKeyword == systemKeyword);
             if (activityType == null || !activityType.Enabled)
-                return null;
+                return Task.FromResult<object>(null);
 
             comment = CommonHelper.EnsureNotNull(comment);
             comment = string.Format(comment, commentParams);
