@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Grand.Business.Authentication.Interfaces
 {
-    public interface ISmsVerificationService
+    public interface ISMSVerificationService
     {
         Task<bool> Authenticate(string secretKey, string token, Customer customer);
         Task<TwoFactorCodeSetup> GenerateCode(string secretKey, Customer customer, Language language);

@@ -1,6 +1,6 @@
 ﻿namespace Grand.Domain.Customers
 {
-    public enum CustomerActionType
+    public enum CustomerActionTypeEnum
     {
         AddToCart = 1,
         AddOrder = 2,
@@ -9,13 +9,13 @@
         Registration = 5,
         PaidOrder = 6
     }
-    public enum CustomerActionCondition
+    public enum CustomerActionConditionEnum
     {
         OneOfThem = 0,
         AllOfThem = 1,
     }
 
-    public enum CustomerActionConditionType
+    public enum CustomerActionConditionTypeEnum
     {
         Product = 1,
         Category = 2,
@@ -32,7 +32,7 @@
         Store = 13
     }
 
-    public enum CustomerReactionType
+    public enum CustomerReactionTypeEnum
     {
         Banner = 1,
         Email = 2,
