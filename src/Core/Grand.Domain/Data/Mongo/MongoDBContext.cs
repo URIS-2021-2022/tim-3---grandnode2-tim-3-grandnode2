@@ -146,7 +146,10 @@ namespace Grand.Domain.Data.Mongo
                 await ((MongoRepository<T>)repository).Collection.Indexes.CreateOneAsync(new CreateIndexModel<T>(Builders<T>.IndexKeys.Combine(keys),
                     new CreateIndexOptions() { Name = indexName, Unique = unique }));
             }
-            catch { }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
         }
 
         public async Task DeleteIndex<T>(IRepository<T> repository, string indexName) where T : BaseEntity
@@ -157,7 +160,10 @@ namespace Grand.Domain.Data.Mongo
             {
                 await ((MongoRepository<T>)repository).Collection.Indexes.DropOneAsync(indexName);
             }
-            catch { }
+            catch(Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
         }
     }
 }
