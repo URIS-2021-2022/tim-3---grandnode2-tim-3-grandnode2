@@ -274,8 +274,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
             else
             {
                 //payment is not required
-                if (processPaymentResult == null)
-                    processPaymentResult = new ProcessPaymentResult();
+                processPaymentResult = new ProcessPaymentResult();
                 processPaymentResult.NewPaymentTransactionStatus = TransactionStatus.Paid;
             }
 

@@ -8,7 +8,6 @@ namespace Grand.Business.Checkout.Utilities
     /// </summary>
     public partial class VoidPaymentResult
     {
-        private TransactionStatus _newTransactionStatus = TransactionStatus.Pending;
 
         /// <summary>
         /// Ctor
