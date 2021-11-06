@@ -27,6 +27,12 @@ namespace Grand.Business.System.Tests.Services.Migrations
             _loggerMock = new Mock<ILogger>();
             _service = new MigrationProcess(_dbContext.Object, _serviceProvider, _loggerMock.Object, _repository.Object);
         }
+
+        [TestMethod]
+        public void FirstTest() {
+            Assert.IsNotNull(_loggerMock);
+        }
+
         //TODO
         /*
         [TestMethod]
