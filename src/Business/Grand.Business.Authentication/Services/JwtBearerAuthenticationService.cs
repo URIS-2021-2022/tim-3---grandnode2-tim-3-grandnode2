@@ -12,8 +12,7 @@ namespace Grand.Business.Authentication.Services
         private readonly IUserApiService _userApiService;
 
         private string _errorMessage;
-        private string _email;
-
+       
         public JwtBearerAuthenticationService(
             ICustomerService customerService, IUserApiService userApiService)
         {
@@ -27,7 +26,7 @@ namespace Grand.Business.Authentication.Services
         /// <param name="customer">Customer</param>
         public virtual async Task<bool> Valid(TokenValidatedContext context)
         {
-            _email = context.Principal.Claims.ToList().FirstOrDefault(x => x.Type == "Email")?.Value;
+            var _email = context.Principal.Claims.ToList().FirstOrDefault(x => x.Type == "Email")?.Value;
             var token = context.Principal.Claims.ToList().FirstOrDefault(x => x.Type == "Token")?.Value;
             if (string.IsNullOrEmpty(token))
             {
