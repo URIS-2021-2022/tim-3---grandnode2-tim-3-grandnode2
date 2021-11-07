@@ -264,14 +264,10 @@ namespace Grand.Business.Authentication.Services
         /// <returns>Result of an authentication</returns>
         public virtual async Task<IActionResult> Authenticate(ExternalAuthParam parameters, string returnUrl = null)
         {
-            if (parameters == null)
-                throw new ArgumentNullException(nameof(parameters));
+            CheckParameters(parameters);
 
-            if (!AuthenticationProviderIsAvailable(parameters.ProviderSystemName))
-                return Error(new[] { "External authentication method cannot be loaded" });
-
-            //get current logged-in user
-            var currentLoggedInUser = await _groupService.IsRegistered(_workContext.CurrentCustomer) ? _workContext.CurrentCustomer : null;
+             //get current logged-in user
+             var currentLoggedInUser = await _groupService.IsRegistered(_workContext.CurrentCustomer) ? _workContext.CurrentCustomer : null;
 
             //authenticate associated user if already exists
             var associatedUser = await GetCustomer(parameters);
@@ -281,6 +277,16 @@ namespace Grand.Business.Authentication.Services
             //or associate and authenticate new user
             return await AuthenticateNewUser(currentLoggedInUser, parameters, returnUrl);
         }
+        public void CheckParameters (ExternalAuthParam parameters)
+        {
+            if (parameters == null)
+                throw new ArgumentNullException(nameof(parameters));
+
+            if (!AuthenticationProviderIsAvailable(parameters.ProviderSystemName))
+                throw new Exception("External authentication method cannot be loaded");
+   
+        }
+
 
         #endregion
 

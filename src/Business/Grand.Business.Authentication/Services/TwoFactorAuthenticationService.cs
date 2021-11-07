@@ -17,7 +17,7 @@ namespace Grand.Business.Authentication.Services
         private readonly IWorkContext _workContext;
         private readonly IUserFieldService _userFieldService;
         private readonly IServiceProvider _serviceProvider;
-        private TwoFactorAuthenticator _twoFactorAuthentication;
+        private readonly TwoFactorAuthenticator _twoFactorAuthentication;
 
         public TwoFactorAuthenticationService(
             IWorkContext workContext,
