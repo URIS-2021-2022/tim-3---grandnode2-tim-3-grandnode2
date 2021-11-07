@@ -2655,7 +2655,6 @@ h4.graph_title {
     -moz-border-radius: 5px;
     -moz-background-clip: padding;
     border-radius: 5px;
-    background-clip: padding-box;
     background: #FFF;
 }
 
@@ -4715,7 +4714,7 @@ a.hiddenanchor {
 
 .login_content h1:after {
     background: #7e7e7e;
-    background: linear-gradient(left, #7e7e7e 0%, #fff 100%);
+    background: linear-gradient(to left, #7e7e7e 0%, #fff 100%);
     right: 0
 }
 
