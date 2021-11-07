@@ -42,6 +42,13 @@ namespace Grand.Business.Checkout.Utilities
         /// <summary>
         /// Gets or sets a payment transaction status after processing
         /// </summary>
-        public TransactionStatus NewTransactionStatus { get; set; }
+        public TransactionStatus NewTransactionStatus {
+            get {
+                return _newTransactionStatus;
+            }
+            set {
+                _newTransactionStatus = value;
+            }
+        }
     }
 }

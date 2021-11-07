@@ -47,7 +47,7 @@ namespace Grand.Business.Authentication.Services
 
                     return true;
                 case TwoFactorAuthenticationType.SMSVerification:
-                    var smsVerificationService = _serviceProvider.GetRequiredService<ISMSVerificationService>();
+                    var smsVerificationService = _serviceProvider.GetRequiredService<ISmsVerificationService>();
                     return await smsVerificationService.Authenticate(secretKey, token.Trim(), customer);
                 default:
                     return false;
@@ -74,7 +74,7 @@ namespace Grand.Business.Authentication.Services
                     break;
 
                 case TwoFactorAuthenticationType.SMSVerification:
-                    var smsVerificationService = _serviceProvider.GetRequiredService<ISMSVerificationService>();
+                    var smsVerificationService = _serviceProvider.GetRequiredService<ISmsVerificationService>();
                     model = await smsVerificationService.GenerateCode(secretKey, customer, language);
                     break;
 

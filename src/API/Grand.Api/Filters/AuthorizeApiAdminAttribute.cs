@@ -37,15 +37,23 @@ namespace Grand.Api.Filters
         /// </summary>
         sealed private class AuthorizeApiAdminFilter : IAsyncAuthorizationFilter
         {
-            #region Fields
+
+            #region Ctor
 
             private readonly bool _ignoreFilter;
             private readonly IPermissionService _permissionService;
             private readonly SecuritySettings _securitySettings;
 
-            #endregion
+            public AuthorizeApiAdminFilter(bool ignoreFilter, IPermissionService permissionService, SecuritySettings securitySettings)
+            {
+                _ignoreFilter = ignoreFilter;
+                _permissionService = permissionService;
+                _securitySettings = securitySettings;
+            }
 
-            #region Ctor
+                _permissionService = permissionService;
+                _securitySettings = securitySettings;
+            }
 
             #endregion
 

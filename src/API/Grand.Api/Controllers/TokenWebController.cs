@@ -137,7 +137,7 @@ namespace Grand.Api.Controllers
             {
                 return BadRequest("Token expired");
             }
-            var token = await GetToken(claims, customer); ;
+            var token = await GetToken(claims, customer); 
             return Ok(token);
         }
 
