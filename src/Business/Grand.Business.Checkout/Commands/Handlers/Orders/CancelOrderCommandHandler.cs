@@ -54,7 +54,10 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
         public async Task<bool> Handle(CancelOrderCommand request, CancellationToken cancellationToken)
         {
             if (request.Order == null)
-                throw new ArgumentNullException(nameof(request.Order));
+            {
+                string orderInstanceName = nameof(request.Order);
+                throw new ArgumentNullException(orderInstanceName);
+            }
 
             if (request.Order.OrderStatusId == (int)OrderStatusSystem.Cancelled)
                 throw new Exception("Cannot do cancel for order.");
@@ -70,7 +73,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                 Os = OrderStatusSystem.Cancelled,
                 NotifyCustomer = request.NotifyCustomer,
                 NotifyStoreOwner = request.NotifyStoreOwner
-            });
+            }, cancellationToken);
 
             //add a note
             await _orderService.InsertOrderNote(new OrderNote
@@ -83,7 +86,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
             });
 
             //return (add) back redeemded loyalty points
-            await _mediator.Send(new ReturnBackRedeemedLoyaltyPointsCommand() { Order = request.Order });
+            await _mediator.Send(new ReturnBackRedeemedLoyaltyPointsCommand() { Order = request.Order }, cancellationToken);
 
             //Adjust inventory
             foreach (var orderItem in request.Order.OrderItems)
@@ -114,7 +117,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                 await _paymentService.CancelPayment(payment);
 
             //event notification
-            await _mediator.Publish(new OrderCancelledEvent(request.Order));
+            await _mediator.Publish(new OrderCancelledEvent(request.Order), cancellationToken);
 
             return true;
         }

@@ -53,7 +53,7 @@ namespace Grand.Api.Infrastructure
         public bool BeforeConfigure => false;
 
 
-        private IEdmModel GetEdmModel(ApiConfig apiConfig)
+        private static IEdmModel GetEdmModel(ApiConfig apiConfig)
         {
             var builder = new ODataConventionModelBuilder {
                 Namespace = Configurations.ODataModelBuilderNamespace
@@ -62,7 +62,7 @@ namespace Grand.Api.Infrastructure
             return builder.GetEdmModel();
         }
 
-        private void RegisterDependencies(ODataConventionModelBuilder builder, ApiConfig apiConfig)
+        private static void RegisterDependencies(ODataConventionModelBuilder builder, ApiConfig apiConfig)
         {
             var typeFinder = new AppTypeSearcher();
 

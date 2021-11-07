@@ -37,7 +37,7 @@ namespace Grand.Business.Catalog.Startup
         public int Priority => 100;
         public bool BeforeConfigure => false;
 
-        private void RegisterCatalogService(IServiceCollection serviceCollection)
+        private static void RegisterCatalogService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IOutOfStockSubscriptionService, OutOfStockSubscriptionService>();
             serviceCollection.AddScoped<ICategoryService, CategoryService>();
@@ -68,12 +68,12 @@ namespace Grand.Business.Catalog.Startup
             serviceCollection.AddScoped<IPricingService, PricingService>();
         }
 
-        private void RegisterDiscountsService(IServiceCollection serviceCollection)
+        private static void RegisterDiscountsService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IDiscountService, DiscountService>();
         }
 
-        private void RegisterTaxService(IServiceCollection serviceCollection)
+        private static void RegisterTaxService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<ITaxService, TaxService>();
             serviceCollection.AddScoped<IVatService, VatService>();

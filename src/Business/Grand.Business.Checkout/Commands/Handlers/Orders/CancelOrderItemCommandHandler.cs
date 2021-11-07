@@ -38,10 +38,16 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
         public async Task<(bool error, string message)> Handle(CancelOrderItemCommand request, CancellationToken cancellationToken)
         {
             if (request.Order == null)
-                throw new ArgumentNullException(nameof(request.Order));
+            {
+                string orderInstanceName = nameof(request.Order);
+                throw new ArgumentNullException(orderInstanceName);
+            }
 
             if (request.OrderItem == null)
-                throw new ArgumentNullException(nameof(request.OrderItem));
+            {
+                string orderInstanceName = nameof(request.Order);
+                throw new ArgumentNullException(orderInstanceName);
+            }
 
             var product = await _productService.GetProductById(request.OrderItem.ProductId);
             if (product == null)
@@ -88,7 +94,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
             await _orderService.UpdateOrder(request.Order);
 
             //check order status
-            await _mediator.Send(new CheckOrderStatusCommand() { Order = request.Order });
+            await _mediator.Send(new CheckOrderStatusCommand() { Order = request.Order }, cancellationToken);
 
             return (false, "");
         }
