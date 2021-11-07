@@ -51,10 +51,6 @@ namespace Grand.Api.Filters
                 _securitySettings = securitySettings;
             }
 
-                _permissionService = permissionService;
-                _securitySettings = securitySettings;
-            }
-
             #endregion
 
             #region Methods
@@ -62,15 +58,15 @@ namespace Grand.Api.Filters
             /// <summary>
             /// Called early in the filter pipeline to confirm request is authorized
             /// </summary>
-            /// <param name="context">Authorization filter context</param>
-            public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
+            /// <param name="filterContext">Authorization filter context</param>
+            public async Task OnAuthorizationAsync(AuthorizationFilterContext filterContext)
             {
 
-                if (context == null)
-                    throw new ArgumentNullException(nameof(context));
+                if (filterContext == null)
+                    throw new ArgumentNullException(nameof(filterContext));
 
                 //check whether this filter has been overridden for the action
-                var actionFilter = context.ActionDescriptor.FilterDescriptors
+                var actionFilter = filterContext.ActionDescriptor.FilterDescriptors
                     .Where(f => f.Scope == FilterScope.Action)
                     .Select(f => f.Filter).OfType<AuthorizeApiAdminAttribute>().FirstOrDefault();
 
@@ -82,11 +78,11 @@ namespace Grand.Api.Filters
                     return;
 
                 //there is AdminAuthorizeFilter, so check access
-                if (context.Filters.Any(filter => filter is AuthorizeApiAdminFilter))
+                if (filterContext.Filters.Any(filter => filter is AuthorizeApiAdminFilter))
                 {
                     //authorize permission of access to the admin area
                     if (!await _permissionService.Authorize(StandardPermission.AccessAdminPanel))
-                        context.Result = new ForbidResult(JwtBearerDefaults.AuthenticationScheme);
+                        filterContext.Result = new ForbidResult(JwtBearerDefaults.AuthenticationScheme);
 
                     //get allowed IP addresses
                     var ipAddresses = _securitySettings.AdminAreaAllowedIpAddresses;
@@ -96,9 +92,9 @@ namespace Grand.Api.Filters
                         return;
 
                     //whether current IP is allowed
-                    var currentIp = context.HttpContext?.Connection?.RemoteIpAddress?.ToString();
+                    var currentIp = filterContext.HttpContext?.Connection?.RemoteIpAddress?.ToString();
                     if (!ipAddresses.Any(ip => ip.Equals(currentIp, StringComparison.OrdinalIgnoreCase)))
-                        context.Result = new ForbidResult(JwtBearerDefaults.AuthenticationScheme);
+                        filterContext.Result = new ForbidResult(JwtBearerDefaults.AuthenticationScheme);
 
                 }
             }

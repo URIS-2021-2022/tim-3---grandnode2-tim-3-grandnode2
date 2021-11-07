@@ -8,6 +8,7 @@ namespace Grand.Business.Checkout.Utilities
     /// </summary>
     public partial class VoidPaymentResult
     {
+        private TransactionStatus _newTransactionStatus = TransactionStatus.Pending;
 
         /// <summary>
         /// Ctor
@@ -20,8 +21,7 @@ namespace Grand.Business.Checkout.Utilities
         /// <summary>
         /// Gets a value indicating whether request has been completed successfully
         /// </summary>
-        public bool Success
-        {
+        public bool Success {
             get { return (Errors.Count == 0); }
         }
 
