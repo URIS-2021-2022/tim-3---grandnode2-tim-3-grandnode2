@@ -30,7 +30,11 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
         public async Task<bool> Handle(ActivatedValueForPurchasedGiftVouchersCommand request, CancellationToken cancellationToken)
         {
             if (request.Order == null)
-                throw new ArgumentNullException(nameof(request.Order));
+            {
+                string orderInstanceName = nameof(request.Order);
+                throw new ArgumentNullException(orderInstanceName);
+            }
+                
 
             foreach (var orderItem in request.Order.OrderItems)
             {
