@@ -300,7 +300,7 @@ namespace Grand.Web.Controllers
                         ModelState.AddModelError("", "Empty content type");
                     else
                         if (!contentType.StartsWith("image"))
-                        ModelState.AddModelError("", "Only image content type is allowed");
+                            ModelState.AddModelError("", "Only image content type is allowed");
 
                     vendorPictureBinary = uploadedFile.GetPictureBits();
                 }
