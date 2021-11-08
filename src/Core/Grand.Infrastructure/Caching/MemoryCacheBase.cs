@@ -21,7 +21,7 @@ namespace Grand.Infrastructure.Caching
         private readonly IMediator _mediator;
 
         private bool _disposed;
-        private CancellationTokenSource _resetCacheToken = new CancellationTokenSource();
+        private static CancellationTokenSource _resetCacheToken = new CancellationTokenSource();
 
         #endregion
 
