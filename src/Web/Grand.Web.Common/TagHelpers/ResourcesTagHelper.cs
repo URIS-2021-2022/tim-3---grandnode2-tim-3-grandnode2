@@ -17,7 +17,7 @@ namespace Grand.Web.Common.TagHelpers
             _resourceManager = resourceManager;
         }
 
-        public override void Process(TagHelperContext tagHelperContext, TagHelperOutput output)
+        public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             switch (Type)
             {
