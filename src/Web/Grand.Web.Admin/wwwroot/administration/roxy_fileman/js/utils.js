@@ -60,7 +60,7 @@ RoxyUtils.GetUrlParam = function(varName, url){
   if(url.indexOf('?') > -1){
      url = url.substr(url.indexOf('?') + 1);
      url = url.split('&');
-     for(i = 0; i < url.length; i++){
+     for(var i = 0; i < url.length; i++){
        var tmp = url[i].split('=');
        if(tmp[0] && tmp[1] && tmp[0] == varName){
          ret = tmp[1];
@@ -81,7 +81,7 @@ RoxyUtils.GetFilename = function(path){
   return ret;
 };
 RoxyUtils.MakePath = function(){
-  ret = '';
+  var ret = '';
   if(arguments && arguments.length > 0){
     for(var i = 0; i < arguments.length; i++){
       ret += ($.isArray(arguments[i])?arguments[i].join('/'):arguments[i]);
@@ -116,7 +116,7 @@ RoxyUtils.FileExists = function(path) {
   return ret;
 };
 RoxyUtils.GetFileIcon = function(path){
-  ret = 'images/filetypes/unknown.png';//'images/filetypes/file_extension_' + RoxyUtils.GetFileExt(path).toLowerCase() + '.png';
+  var ret = 'images/filetypes/unknown.png';//'images/filetypes/file_extension_' + RoxyUtils.GetFileExt(path).toLowerCase() + '.png';
   if(fileTypeIcons[RoxyUtils.GetFileExt(path).toLowerCase()]){
     ret = 'images/filetypes/' + fileTypeIcons[RoxyUtils.GetFileExt(path).toLowerCase()];
   }

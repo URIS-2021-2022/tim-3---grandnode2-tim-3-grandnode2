@@ -294,7 +294,7 @@ namespace Grand.Business.Catalog.Services.Products
             await _productService.UpdateProduct(productCopy);
             await _slugService.SaveSlug(productCopy, seName, "");
 
-            var languages = await _languageService.GetAllLanguages(true);
+            await _languageService.GetAllLanguages(true);
 
             //product pictures
             //variable to store original and new picture identifiers

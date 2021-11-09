@@ -1660,12 +1660,15 @@
     pos = clipPos(doc, pos);
     var line = getLine(doc, pos.line), context = getContextBefore(cm, pos.line, precise);
     var stream = new StringStream(line.text, cm.options.tabSize, context), tokens;
-    if (asArray) { tokens = []; }
-    while ((asArray || stream.pos < pos.ch) && !stream.eol()) {
-      stream.start = stream.pos;
-      style = readToken(mode, stream, context.state);
-      if (asArray) { tokens.push(new Token(stream, style, copyState(doc.mode, context.state))); }
-    }
+      if (asArray) {
+          tokens = [];
+          while ((stream.pos < pos.ch) && !stream.eol()) {
+              stream.start = stream.pos;
+              style = readToken(mode, stream, context.state);
+              if (asArray) { tokens.push(new Token(stream, style, copyState(doc.mode, context.state))); }
+          }
+      }
+    
     return asArray ? tokens : new Token(stream, style, context.state)
   }
 

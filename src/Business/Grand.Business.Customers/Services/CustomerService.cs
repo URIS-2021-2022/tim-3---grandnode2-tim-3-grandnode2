@@ -519,7 +519,7 @@ namespace Grand.Business.Customers.Services
             bool clearLoyaltyPoints = true, bool clearShipping = true, bool clearPayment = true)
         {
             if (customer == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(customer), "Error");
 
             //clear entered coupon codes
             if (clearCouponCodes)

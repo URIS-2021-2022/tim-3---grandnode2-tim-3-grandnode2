@@ -53,7 +53,7 @@ namespace Grand.Api.Infrastructure
         public bool BeforeConfigure => false;
 
 
-        private IEdmModel GetEdmModel(ApiConfig apiConfig)
+        private static IEdmModel GetEdmModel(ApiConfig apiConfig)
         {
             var builder = new ODataConventionModelBuilder {
                 Namespace = Configurations.ODataModelBuilderNamespace

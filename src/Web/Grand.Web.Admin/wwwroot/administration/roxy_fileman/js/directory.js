@@ -143,7 +143,7 @@ function Directory(fullPath, numDirs, numFiles){
     return ret;
   };
   this.RestoreExpanded = function(expandedDirs){
-    for(i = 0; i < expandedDirs.length; i++){
+    for(var i = 0; i < expandedDirs.length; i++){
       var d = Directory.Parse(expandedDirs[i]);
       if(d)
         d.Expand(true);
@@ -196,7 +196,7 @@ function Directory(fullPath, numDirs, numFiles){
         cache: false,
         success: function(dirs){
             $('#pnlDirList').children('li').remove();
-            for(i = 0; i < dirs.length; i++){
+            for(var i = 0; i < dirs.length; i++){
               var d = new Directory(dirs[i].p, dirs[i].d, dirs[i].f);
               d.Show();
             }

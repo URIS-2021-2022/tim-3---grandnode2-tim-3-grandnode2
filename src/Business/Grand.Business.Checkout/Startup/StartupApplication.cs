@@ -26,7 +26,7 @@ namespace Grand.Business.Checkout.Startup
         }
         public void Configure(IApplicationBuilder application, IWebHostEnvironment webHostEnvironment)
         {
-
+            //This is empty method
         }
         public int Priority => 100;
         public bool BeforeConfigure => false;

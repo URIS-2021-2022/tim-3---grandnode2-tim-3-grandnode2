@@ -229,17 +229,20 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
 
             #region Process errors
 
-            string error = "";
+            StringBuilder errorStringBuilder = new StringBuilder();
             for (int i = 0; i < result.Errors.Count; i++)
             {
-                error += string.Format("Error {0}: {1}", i + 1, result.Errors[i]);
+                errorStringBuilder.Append("Error ");
+                errorStringBuilder.Append(i);
+                errorStringBuilder.Append(":");
+                errorStringBuilder.Append(result.Errors[i]);
                 if (i != result.Errors.Count - 1)
-                    error += ". ";
+                    errorStringBuilder.Append(". ");
             }
-            if (!string.IsNullOrEmpty(error))
+            if (!string.IsNullOrEmpty(errorStringBuilder.ToString()))
             {
                 //log it
-                string logError = string.Format("Error while placing order. {0}", error);
+                string logError = string.Format("Error while placing order. {0}", errorStringBuilder.ToString());
                 _ = _logger.Error(logError);
             }
 
@@ -274,8 +277,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
             else
             {
                 //payment is not required
-                if (processPaymentResult == null)
-                    processPaymentResult = new ProcessPaymentResult();
+                processPaymentResult = new ProcessPaymentResult();
                 processPaymentResult.NewPaymentTransactionStatus = TransactionStatus.Paid;
             }
 
@@ -581,7 +583,6 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
             //shipping total
 
             var shoppingCartShippingTotal = await _orderTotalCalculationService.GetShoppingCartShippingTotal(details.Cart, true);
-            double tax = shoppingCartShippingTotal.taxRate;
             List<ApplyDiscount> shippingTotalDiscounts = shoppingCartShippingTotal.appliedDiscounts;
             var orderShippingTotalInclTax = shoppingCartShippingTotal.shoppingCartShippingTotal;
             var orderShippingTotalExclTax = (await _orderTotalCalculationService.GetShoppingCartShippingTotal(details.Cart, false)).shoppingCartShippingTotal;
@@ -1117,7 +1118,6 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
             var languageSettings = scope.ServiceProvider.GetRequiredService<LanguageSettings>();
             var pdfService = scope.ServiceProvider.GetRequiredService<IPdfService>();
             var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
-            var logger = scope.ServiceProvider.GetRequiredService<ILogger>();
             try
             {
                 //notes, messages

@@ -184,7 +184,7 @@ RoxyUtils.GetUrlParam = function(varName, url){
   if(url.indexOf('?') > -1){
      url = url.substr(url.indexOf('?') + 1);
      url = url.split('&');
-     for(i = 0; i < url.length; i++){
+     for(var i = 0; i < url.length; i++){
        var tmp = url[i].split('=');
        if(tmp[0] && tmp[1] && tmp[0] == varName){
          ret = tmp[1];
@@ -205,7 +205,7 @@ RoxyUtils.GetFilename = function(path){
   return ret;
 };
 RoxyUtils.MakePath = function(){
-  ret = '';
+  var ret = '';
   if(arguments && arguments.length > 0){
     for(var i = 0; i < arguments.length; i++){
       ret += ($.isArray(arguments[i])?arguments[i].join('/'):arguments[i]);
@@ -467,7 +467,7 @@ function File(filePath, fileSize, modTime, w, h){
   this.width = (w? w: 0);
   this.height = (h? h: 0);
   this.Show = function(){
-    html = '<li data-path="'+this.fullPath+'" data-time="'+this.time+'" data-icon="'+this.icon+'" data-w="'+this.width+'" data-h="'+this.height+'" data-size="'+this.size+'" data-icon-big="'+(this.IsImage()?this.fullPath:this.bigIcon)+'" title="'+this.name+'">';
+    var html = '<li data-path="'+this.fullPath+'" data-time="'+this.time+'" data-icon="'+this.icon+'" data-w="'+this.width+'" data-h="'+this.height+'" data-size="'+this.size+'" data-icon-big="'+(this.IsImage()?this.fullPath:this.bigIcon)+'" title="'+this.name+'">';
     html += '<img src="'+this.icon+'" class="icon">';
     html += '<span class="time">'+RoxyUtils.FormatDate(new Date(this.time * 1000))+'</span>';
     html += '<span class="name">'+this.name+'</span>';
@@ -619,7 +619,7 @@ function File(filePath, fileSize, modTime, w, h){
       alert(t('E_ActionDisabled'));
       return;
     }
-    newFullPath = RoxyUtils.MakePath(newPath, this.name);
+    var newFullPath = RoxyUtils.MakePath(newPath, this.name);
     var url = RoxyUtils.AddParam(RoxyFilemanConf.MOVEFILE, 'f', this.fullPath);
     url = RoxyUtils.AddParam(url, 'n', newFullPath);
     var item = this;
@@ -1634,7 +1634,7 @@ function tooltipContent(){
   }
   else if(f.IsImage()){
     if(RoxyFilemanConf.GENERATETHUMB){
-      imgUrl = RoxyUtils.AddParam(RoxyFilemanConf.GENERATETHUMB, 'f', f.fullPath);
+      var imgUrl = RoxyUtils.AddParam(RoxyFilemanConf.GENERATETHUMB, 'f', f.fullPath);
       imgUrl = RoxyUtils.AddParam(imgUrl, 'width', RoxyFilemanConf.PREVIEW_THUMB_WIDTH);
       imgUrl = RoxyUtils.AddParam(imgUrl, 'height', RoxyFilemanConf.PREVIEW_THUMB_HEIGHT);
     }
@@ -1927,7 +1927,7 @@ function initSelection(filePath){
   }
   if(filePath){
     var p = (fileSelected? RoxyUtils.GetPath(filePath): filePath);
-    var d = tmp = Directory.Parse(p);
+    var d = var tmp = Directory.Parse(p);
     do{
       if(tmp){
         tmp.Expand(true);

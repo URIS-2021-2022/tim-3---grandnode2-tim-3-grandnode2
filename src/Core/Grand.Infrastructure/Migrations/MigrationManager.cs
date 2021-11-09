@@ -40,7 +40,7 @@ namespace Grand.Infrastructure.Migrations
             return GetAllMigrations()
                 .Where(x => currentDbVersion.CompareTo(x.Version) >= 0)
                 .OrderBy(mg => mg.Version.ToString())
-                .OrderBy(mg => mg.Priority)
+                .ThenBy(mg => mg.Priority)
                 .ToList();
         }
     }

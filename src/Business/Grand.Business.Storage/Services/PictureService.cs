@@ -128,7 +128,7 @@ namespace Grand.Business.Storage.Services
             string fileName = string.Format("{0}_0.{1}", pictureId, lastPart);
             var filePath = await GetPicturePhysicalPath(fileName);
             if (string.IsNullOrEmpty(filePath))
-                return new byte[0];
+                return Array.Empty<byte>();
 
             return File.ReadAllBytes(filePath);
         }
@@ -292,9 +292,11 @@ namespace Grand.Business.Storage.Services
             }
             if (targetSize == 0)
             {
-                return !string.IsNullOrEmpty(storeLocation)
-                        ? storeLocation
-                        : string.IsNullOrEmpty(_mediaSettings.StoreLocation) ?
+                if(!string.IsNullOrEmpty(storeLocation))
+                {
+                    return storeLocation;
+                }
+                 return string.IsNullOrEmpty(_mediaSettings.StoreLocation) ?
                         _workContext.CurrentStore.SslEnabled ? _workContext.CurrentStore.SecureUrl : _workContext.CurrentStore.Url :
                         _mediaFileStore.Combine(_mediaSettings.StoreLocation, _imagePath, _mediaSettings.DefaultImageName);
             }

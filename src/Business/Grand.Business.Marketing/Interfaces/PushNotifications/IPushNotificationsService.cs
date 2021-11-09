@@ -66,7 +66,7 @@ namespace Grand.Business.Marketing.Interfaces.PushNotifications
         /// <summary>
         /// Gets all push receivers
         /// </summary>
-        Task<IPagedList<PushRegistration>> GetPushReceivers(int pageIndex = 0, int pageSize = int.MaxValue);
+        Task<IPagedList<PushRegistration>> GetPushReceivers(int pageIndex, int pageSize);
 
         /// <summary>
         /// Sends push notification to all receivers

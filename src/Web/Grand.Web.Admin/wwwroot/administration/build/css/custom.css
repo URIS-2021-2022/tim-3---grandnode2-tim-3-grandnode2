@@ -1670,7 +1670,6 @@ h2 {
     background: #fff;
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
-    column-break-inside: avoid;
     opacity: 1;
 }
 
@@ -2655,7 +2654,7 @@ h4.graph_title {
     -moz-background-clip: padding;
     border-radius: 5px;
     background-clip: padding-box;
-    background: #FFF;
+    
 }
 
 .tile-stats:hover .icon i {
@@ -4714,7 +4713,7 @@ a.hiddenanchor {
 
 .login_content h1:after {
     background: #7e7e7e;
-    background: linear-gradient(left, #7e7e7e 0%, #fff 100%);
+    background: linear-gradient(to left, #7e7e7e 0%, #fff 100%);
     right: 0
 }
 
