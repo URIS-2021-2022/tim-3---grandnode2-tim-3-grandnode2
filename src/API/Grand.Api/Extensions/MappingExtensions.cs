@@ -12,12 +12,71 @@ namespace Grand.Api.Extensions
     public static class MappingExtensions
     {
 
-        #region Product
+        #region ToModel()
 
         public static ProductDto ToModel(this Product entity)
         {
             return entity.MapTo<Product, ProductDto>();
         }
+
+        public static CategoryDto ToModel(this Category entity)
+        {
+            return entity.MapTo<Category, CategoryDto>();
+        }
+
+        public static BrandDto ToModel(this Brand entity)
+        {
+            return entity.MapTo<Brand, BrandDto>();
+        }
+
+        public static CollectionDto ToModel(this Collection entity)
+        {
+            return entity.MapTo<Collection, CollectionDto>();
+        }
+
+        public static ProductAttributeDto ToModel(this ProductAttribute entity)
+        {
+            return entity.MapTo<ProductAttribute, ProductAttributeDto>();
+        }
+
+        public static ProductAttributeMappingDto ToModel(this ProductAttributeMapping entity)
+        {
+            return entity.MapTo<ProductAttributeMapping, ProductAttributeMappingDto>();
+        }
+
+        public static SpecificationAttributeDto ToModel(this SpecificationAttribute entity)
+        {
+            return entity.MapTo<SpecificationAttribute, SpecificationAttributeDto>();
+        }
+
+        public static ProductTierPriceDto ToModel(this TierPrice entity)
+        {
+            return entity.MapTo<TierPrice, ProductTierPriceDto>();
+        }
+
+        public static CustomerGroupDto ToModel(this CustomerGroup entity)
+        {
+            return entity.MapTo<CustomerGroup, CustomerGroupDto>();
+        }
+
+        public static CustomerDto ToModel(this Customer entity)
+        {
+            return entity.MapTo<Customer, CustomerDto>();
+        }
+
+        public static AddressDto ToModel(this Address entity)
+        {
+            return entity.MapTo<Address, AddressDto>();
+        }
+
+        public static PictureDto ToModel(this Picture entity)
+        {
+            return entity.MapTo<Picture, PictureDto>();
+        }
+
+        #endregion
+
+        #region Product
 
         public static Product ToEntity(this ProductDto model)
         {
@@ -29,14 +88,10 @@ namespace Grand.Api.Extensions
             return model.MapTo(destination);
         }
 
+
         #endregion
 
         #region Category
-
-        public static CategoryDto ToModel(this Category entity)
-        {
-            return entity.MapTo<Category, CategoryDto>();
-        }
 
         public static Category ToEntity(this CategoryDto model)
         {
@@ -52,11 +107,6 @@ namespace Grand.Api.Extensions
 
         #region Brand
 
-        public static BrandDto ToModel(this Brand entity)
-        {
-            return entity.MapTo<Brand, BrandDto>();
-        }
-
         public static Brand ToEntity(this BrandDto model)
         {
             return model.MapTo<BrandDto, Brand>();
@@ -70,10 +120,7 @@ namespace Grand.Api.Extensions
         #endregion
 
         #region Collection
-        public static CollectionDto ToModel(this Collection entity)
-        {
-            return entity.MapTo<Collection, CollectionDto>();
-        }
+
 
         public static Collection ToEntity(this CollectionDto model)
         {
@@ -88,10 +135,6 @@ namespace Grand.Api.Extensions
         #endregion
 
         #region Product attribute
-        public static ProductAttributeDto ToModel(this ProductAttribute entity)
-        {
-            return entity.MapTo<ProductAttribute, ProductAttributeDto>();
-        }
 
         public static ProductAttribute ToEntity(this ProductAttributeDto model)
         {
@@ -107,11 +150,6 @@ namespace Grand.Api.Extensions
 
         #region Product attribute mapping
 
-        public static ProductAttributeMappingDto ToModel(this ProductAttributeMapping entity)
-        {
-            return entity.MapTo<ProductAttributeMapping, ProductAttributeMappingDto>();
-        }
-
         public static ProductAttributeMapping ToEntity(this ProductAttributeMappingDto model)
         {
             return model.MapTo<ProductAttributeMappingDto, ProductAttributeMapping>();
@@ -125,10 +163,6 @@ namespace Grand.Api.Extensions
         #endregion
 
         #region Specification attribute
-        public static SpecificationAttributeDto ToModel(this SpecificationAttribute entity)
-        {
-            return entity.MapTo<SpecificationAttribute, SpecificationAttributeDto>();
-        }
 
         public static SpecificationAttribute ToEntity(this SpecificationAttributeDto model)
         {
@@ -144,11 +178,6 @@ namespace Grand.Api.Extensions
 
         #region Tier prices
 
-        public static ProductTierPriceDto ToModel(this TierPrice entity)
-        {
-            return entity.MapTo<TierPrice, ProductTierPriceDto>();
-        }
-
         public static TierPrice ToEntity(this ProductTierPriceDto model)
         {
             return model.MapTo<ProductTierPriceDto, TierPrice>();
@@ -162,10 +191,6 @@ namespace Grand.Api.Extensions
         #endregion
 
         #region Customer group
-        public static CustomerGroupDto ToModel(this CustomerGroup entity)
-        {
-            return entity.MapTo<CustomerGroup, CustomerGroupDto>();
-        }
 
         public static CustomerGroup ToEntity(this CustomerGroupDto model)
         {
@@ -181,11 +206,6 @@ namespace Grand.Api.Extensions
 
         #region Customer
 
-        public static CustomerDto ToModel(this Customer entity)
-        {
-            return entity.MapTo<Customer, CustomerDto>();
-        }
-
         public static Customer ToEntity(this CustomerDto model)
         {
             return model.MapTo<CustomerDto, Customer>();
@@ -199,10 +219,6 @@ namespace Grand.Api.Extensions
         #endregion
 
         #region Customer address
-        public static AddressDto ToModel(this Address entity)
-        {
-            return entity.MapTo<Address, AddressDto>();
-        }
 
         public static Address ToEntity(this AddressDto model)
         {
@@ -214,15 +230,6 @@ namespace Grand.Api.Extensions
         }
 
 
-        #endregion
-
-        #region Picture
-
-        public static PictureDto ToModel(this Picture entity)
-        {
-            return entity.MapTo<Picture, PictureDto>();
-        }
-        
         #endregion
     }
 }

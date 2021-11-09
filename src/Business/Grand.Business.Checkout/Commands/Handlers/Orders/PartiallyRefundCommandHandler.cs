@@ -12,6 +12,7 @@ using Grand.SharedKernel;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -108,17 +109,20 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
             }
 
             //process errors
-            string error = "";
+            StringBuilder errorStringBuilder = new StringBuilder();
             for (int i = 0; i < result.Errors.Count; i++)
             {
-                error += string.Format("Error {0}: {1}", i, result.Errors[i]);
+                errorStringBuilder.Append("Error ");
+                errorStringBuilder.Append(i);
+                errorStringBuilder.Append(":");
+                errorStringBuilder.Append(result.Errors[i]);
                 if (i != result.Errors.Count - 1)
-                    error += ". ";
+                    errorStringBuilder.Append(". ");
             }
-            if (!String.IsNullOrEmpty(error))
+            if (!String.IsNullOrEmpty(errorStringBuilder.ToString()))
             {
 
-                string logError = string.Format("Error refunding order #{0}. Error: {1}", paymentTransaction.OrderCode, error);
+                string logError = string.Format("Error refunding order #{0}. Error: {1}", paymentTransaction.OrderCode, errorStringBuilder.ToString());
                 await _logger.InsertLog(LogLevel.Error, logError, logError);
             }
             return result.Errors;

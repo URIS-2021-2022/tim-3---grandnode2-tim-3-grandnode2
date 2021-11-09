@@ -323,7 +323,7 @@ namespace Grand.Api.Controllers.OData
 
                 if (ModelState.IsValid)
                 {
-                    var result = await _mediator.Send(new DeleteProductCollectionCommand() { Product = product.FirstOrDefault(), CollectionId = collectionId.ToString() });
+                    await _mediator.Send(new DeleteProductCollectionCommand() { Product = product.FirstOrDefault(), CollectionId = collectionId.ToString() });
                     return Ok(true);
                 }
                 return BadRequest(ModelState);

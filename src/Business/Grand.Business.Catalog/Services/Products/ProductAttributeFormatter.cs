@@ -264,7 +264,6 @@ namespace Grand.Business.Catalog.Services.Products
                                     double attributeValuePriceAdjustment = await _pricingService.GetProductAttributeValuePriceAdjustment(attributeValue);
                                     var prices = await _taxService.GetProductPrice(product, attributeValuePriceAdjustment, _workContext.CurrentCustomer);
                                     double priceAdjustmentBase = prices.productprice;
-                                    double taxRate = prices.taxRate;
                                     if (priceAdjustmentBase > 0)
                                     {
                                         string priceAdjustmentStr = _priceFormatter.FormatPrice(priceAdjustmentBase, false);
