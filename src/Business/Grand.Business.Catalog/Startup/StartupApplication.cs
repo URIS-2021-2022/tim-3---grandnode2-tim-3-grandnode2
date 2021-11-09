@@ -32,7 +32,7 @@ namespace Grand.Business.Catalog.Startup
 
         public void Configure(IApplicationBuilder application, IWebHostEnvironment webHostEnvironment)
         {
-
+            // Do nothing because implementation is still in progress.
         }
         public int Priority => 100;
         public bool BeforeConfigure => false;

@@ -70,12 +70,12 @@ namespace Grand.Business.Common.Services.Security
             if (string.IsNullOrEmpty(privateKey) || privateKey.Length != 24)
                 throw new Exception("Wrong private key");
 
-            var tDES = TripleDES.Create();
+            Aes aes = Aes.Create();
 
-            tDES.Key = new ASCIIEncoding().GetBytes(privateKey);
-            tDES.IV = new ASCIIEncoding().GetBytes(privateKey[^8..]);
+            aes.Key = new ASCIIEncoding().GetBytes(privateKey);
+            aes.IV = new ASCIIEncoding().GetBytes(privateKey[^8..]);
 
-            byte[] encryptedBinary = EncryptTextToMemory(plainText, tDES.Key, tDES.IV);
+            byte[] encryptedBinary = EncryptTextToMemory(plainText, aes.Key, aes.IV);
             return Convert.ToBase64String(encryptedBinary);
         }
 

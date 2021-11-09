@@ -15,7 +15,6 @@ namespace Grand.Business.Messages.DotLiquidDrops
     public partial class LiquidOrder : Drop
     {
         private readonly Order _order;
-        private readonly Language _language;
         private readonly Customer _customer;
         private readonly Currency _currency;
         private readonly Store _store;
@@ -27,12 +26,11 @@ namespace Grand.Business.Messages.DotLiquidDrops
 
         private string url;
 
-        public LiquidOrder(Order order, Customer customer, Language language, Currency currency, Store store, DomainHost host, OrderNote orderNote = null, Vendor vendor = null)
+        public LiquidOrder(Order order, Customer customer, Currency currency, Store store, DomainHost host, OrderNote orderNote = null, Vendor vendor = null)
         {
 
             _order = order;
             _customer = customer;
-            _language = language;
             _orderNote = orderNote;
             _currency = currency;
             _store = store;
