@@ -329,7 +329,7 @@ namespace Grand.Business.Marketing.Services.Customers
                         var pr = await _productService.GetProductById(product);
                         if (pr != null)
                         {
-                            if (pr.ProductCategories.Where(x => x.CategoryId == item).Count() > 0)
+                            if (pr.ProductCategories.Count(x => x.CategoryId == item) > 0)
                                 return true;
                         }
                     }
