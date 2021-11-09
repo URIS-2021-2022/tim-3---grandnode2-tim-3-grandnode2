@@ -127,7 +127,7 @@ namespace Grand.Api.Commands.Models.Catalog
             {
                 foreach (var prevstock in prevMultiWarehouseStock)
                 {
-                    await OutOfStockSubscriptionId(product, prevstock)
+                    await OutOfStockSubscriptionId(product, prevstock);
                 }
                 if ((product.ProductWarehouseInventory.Sum(x => x.StockQuantity - x.ReservedQuantity) > 0) && (prevMultiWarehouseStock.Sum(x => x.StockQuantity - x.ReservedQuantity) <= 0))
                 {
