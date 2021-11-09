@@ -128,7 +128,7 @@ namespace Grand.Business.Storage.Services
             string fileName = string.Format("{0}_0.{1}", pictureId, lastPart);
             var filePath = await GetPicturePhysicalPath(fileName);
             if (string.IsNullOrEmpty(filePath))
-                return new byte[0];
+                return Array.Empty<byte>();
 
             return File.ReadAllBytes(filePath);
         }

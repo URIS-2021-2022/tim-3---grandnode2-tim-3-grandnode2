@@ -106,7 +106,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                     request.Order.ShippingStatusId = ShippingStatus.Delivered;
                 }
             }
-            //TODO 
+            
             //request.Order.OrderTaxes
 
             await _orderService.UpdateOrder(request.Order);

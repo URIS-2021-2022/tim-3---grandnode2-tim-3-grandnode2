@@ -409,7 +409,7 @@ namespace Grand.Business.System.Services.ExportImport
             if (subscriptions == null)
                 throw new ArgumentNullException(nameof(subscriptions));
 
-            const string separator = ",";
+            const char separator = ',';
             var sb = new StringBuilder();
             foreach (var subscription in subscriptions)
             {

@@ -165,7 +165,7 @@ namespace Grand.Business.Common.Services.Configuration
         public virtual async Task SetSetting<T>(string key, T value, string storeId = "", bool clearCache = true)
         {
             if (key == null)
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key), "Error");
 
             key = key.Trim().ToLowerInvariant();
 
