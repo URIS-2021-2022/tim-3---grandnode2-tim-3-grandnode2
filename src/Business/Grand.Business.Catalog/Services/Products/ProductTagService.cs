@@ -52,8 +52,7 @@ namespace Grand.Business.Catalog.Services.Products
 
         private sealed class ProductTagWithCount
         {
-            public int ProductTagId { get; set; }
-            public int ProductCount { get; set; }
+           
         }
 
         #endregion

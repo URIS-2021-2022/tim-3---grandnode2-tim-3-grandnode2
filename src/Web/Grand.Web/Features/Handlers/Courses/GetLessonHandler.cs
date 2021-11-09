@@ -36,8 +36,6 @@ namespace Grand.Web.Features.Handlers.Courses
             model.CourseName = modelCourse.Name;
             model.CourseSeName = modelCourse.SeName;
             model.MetaDescription = modelCourse.MetaDescription;
-            model.MetaKeywords = model.MetaKeywords;
-            model.MetaTitle = model.MetaTitle;
             model.Name = request.Lesson.Name;
             model.ShortDescription = request.Lesson.ShortDescription;
             model.Description = request.Lesson.Description;

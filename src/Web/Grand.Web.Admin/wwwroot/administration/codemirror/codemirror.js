@@ -927,7 +927,7 @@
   function getBidiPartAt(order, ch, sticky) {
     var found;
     bidiOther = null;
-    for (var i = 0; i < order.length; ++i) {
+    for (i = 0; i < order.length; ++i) {
       var cur = order[i];
       if (cur.from < ch && cur.to > ch) { return i }
       if (cur.to == ch) {

@@ -139,11 +139,15 @@ namespace Grand.Business.Catalog.Services.Discounts
         /// Inserts a discount
         /// </summary>
         /// <param name="discount">Discount</param>
-        public virtual async Task InsertDiscount(Discount discount)
+        public virtual Task InsertDiscount(Discount discount)
         {
             if (discount == null)
                 throw new ArgumentNullException(nameof(discount));
+            return InsertDiscountAsync(discount);
+        }
 
+        public virtual async Task InsertDiscountAsync(Discount discount)
+        { 
             await _discountRepository.InsertAsync(discount);
 
             await _cacheBase.RemoveByPrefix(CacheKey.DISCOUNTS_PATTERN_KEY);
@@ -185,7 +189,7 @@ namespace Grand.Business.Catalog.Services.Discounts
 
             var usagehistory = await GetAllDiscountUsageHistory(discount.Id);
             if (usagehistory.Count > 0)
-                throw new ArgumentNullException(null, "discount was used and have a history");
+                throw new ArgumentNullException(nameof(usagehistory), "discount was used and have a history");
 
             await _discountRepository.DeleteAsync(discount);
 

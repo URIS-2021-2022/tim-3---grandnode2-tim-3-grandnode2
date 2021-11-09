@@ -315,7 +315,7 @@ namespace Grand.Business.Common.Services.Directory
 
             //Dimension
             IList<Dimension> dimensions = new List<Dimension>();
-            //dimensions.Add(new Dimension() { Name = "ga:browser" });
+
             dimensions.Add(new Dimension() { Name = "ga:mobileDeviceInfo" });
 
             //OrderBy

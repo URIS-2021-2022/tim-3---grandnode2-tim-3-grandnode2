@@ -26,8 +26,8 @@ namespace Grand.Business.Authentication.Services
         /// <param name="customer">Customer</param>
         public virtual async Task<bool> Valid(TokenValidatedContext context)
         {
-            var _email = context.Principal.Claims.ToList().FirstOrDefault(x => x.Type == "Email")?.Value;
-            var token = context.Principal.Claims.ToList().FirstOrDefault(x => x.Type == "Token")?.Value;
+            var _email = context.Principal.Claims.AsEnumerable().FirstOrDefault(x => x.Type == "Email")?.Value;
+            var token = context.Principal.Claims.AsEnumerable().FirstOrDefault(x => x.Type == "Token")?.Value;
             if (string.IsNullOrEmpty(token))
             {
                 _errorMessage = "Wrong token, change password on the customer and create token again";
