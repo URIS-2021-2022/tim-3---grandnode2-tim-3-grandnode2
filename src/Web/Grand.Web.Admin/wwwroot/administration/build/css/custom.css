@@ -1671,7 +1671,6 @@ h2 {
     background: #fff;
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
-    column-break-inside: avoid;
     opacity: 1;
 }
 
