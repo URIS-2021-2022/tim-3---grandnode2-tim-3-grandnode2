@@ -120,7 +120,7 @@ namespace Grand.Business.Marketing.Services.Customers
             return await Task.FromResult(_customerActionTypeRepository.Table.ToList());
         }
 
-        public virtual async Task<IPagedList<CustomerActionHistory>> GetAllCustomerActionHistory(string customerActionId, int pageIndex = 0, int pageSize = 2147483647)
+        public virtual async Task<IPagedList<CustomerActionHistory>> GetAllCustomerActionHistory(string customerActionId = "id123", int pageIndex = 0, int pageSize = 2147483647)
         {
             var query = from h in _customerActionHistoryRepository.Table
                         where h.CustomerActionId == customerActionId

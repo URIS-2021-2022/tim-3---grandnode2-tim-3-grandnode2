@@ -159,16 +159,16 @@ namespace Grand.Business.Catalog.Services.Products
         /// </summary>
         /// <param name="specificationAttributeOptionId">The specification attribute option identifier</param>
         /// <returns>Specification attribute option</returns>
-        public virtual async Task<SpecificationAttribute> GetSpecificationAttributeByOptionId(string specificationAttributeOptionId)
+        public virtual async Task<SpecificationAttribute> GetSpecificationAttributeByOptionId(string specificationAttributeOption)
         {
-            if (string.IsNullOrEmpty(specificationAttributeOptionId))
+            if (string.IsNullOrEmpty(specificationAttributeOption))
                 return await Task.FromResult<SpecificationAttribute>(null);
 
-            string key = string.Format(CacheKey.SPECIFICATION_BY_OPTIONID_KEY, specificationAttributeOptionId);
+            string key = string.Format(CacheKey.SPECIFICATION_BY_OPTIONID_KEY, specificationAttributeOption);
             return await _cacheBase.GetAsync(key, async () =>
             {
                 var query = from p in _specificationAttributeRepository.Table
-                            where p.SpecificationAttributeOptions.Any(x => x.Id == specificationAttributeOptionId)
+                            where p.SpecificationAttributeOptions.Any(x => x.Id == specificationAttributeOption)
                             select p;
                 return await Task.FromResult(query.FirstOrDefault());
             });
