@@ -11,6 +11,7 @@ using Grand.SharedKernel;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -88,19 +89,21 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                 result.AddError(string.Format("Error: {0}. Full exception: {1}", exc.Message, exc));
             }
 
-
             //process errors
-            string error = "";
+            StringBuilder errorStringBuilder = new StringBuilder();
             for (int i = 0; i < result.Errors.Count; i++)
             {
-                error += string.Format("Error {0}: {1}", i, result.Errors[i]);
+                errorStringBuilder.Append("Error ");
+                errorStringBuilder.Append(i);
+                errorStringBuilder.Append(":");
+                errorStringBuilder.Append(result.Errors[i]);
                 if (i != result.Errors.Count - 1)
-                    error += ". ";
+                    errorStringBuilder.Append(". ");
             }
-            if (!String.IsNullOrEmpty(error))
+            if (!String.IsNullOrEmpty(errorStringBuilder.ToString()))
             {
                 //log it
-                await _logger.InsertLog(LogLevel.Error, $"Error capturing order code # {paymentTransaction.OrderCode}. Error: {error}", $"Error capturing order code # {paymentTransaction.OrderCode}. Error: {error}");
+                await _logger.InsertLog(LogLevel.Error, $"Error capturing order code # {paymentTransaction.OrderCode}. Error: {errorStringBuilder.ToString()}", $"Error capturing order code # {paymentTransaction.OrderCode}. Error: {errorStringBuilder.ToString()}");
             }
             return result.Errors;
         }

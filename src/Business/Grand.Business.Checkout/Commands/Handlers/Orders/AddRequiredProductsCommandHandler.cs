@@ -38,8 +38,6 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                 .LimitPerStore(_shoppingCartSettings.SharedCartBetweenStores, storeId)
                 .ToList();
 
-            var warnings = new List<string>();
-
             if (product.RequireOtherProducts)
             {
                 var requiredProducts = new List<Product>();
