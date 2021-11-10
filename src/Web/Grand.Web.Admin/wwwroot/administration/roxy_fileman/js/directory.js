@@ -399,7 +399,7 @@ function Directory(fullPath, numDirs, numFiles){
   this.FilesLoaded = function(filesList, selectedFile){
     filesList = this.SortFiles(filesList);
     $('#pnlFileList').html('');
-    for(i = 0; i < filesList.length; i++){
+    for(let i = 0; i < filesList.length; i++){
       var f = filesList[i];
       f.Show();
     }

@@ -167,7 +167,7 @@ namespace Grand.Business.Checkout.Services.Orders
         public virtual async Task<IPagedList<Order>> SearchOrders(string storeId = "",
             string vendorId = "", string customerId = "",
             string productId = "", string affiliateId = "", string warehouseId = "",
-            string billingCountryId = "", string ownerId = "", string salesemployeeId = "", string paymentMethodSystemName = null,
+            string billingCountryId = "", string ownerId = "", string salesEmployeeId = "", string paymentMethodSystemName = null,
             DateTime? createdFromUtc = null, DateTime? createdToUtc = null,
             int? os = null, PaymentStatus? ps = null, ShippingStatus? ss = null,
             string billingEmail = null, string billingLastName = "", string orderGuid = null,
@@ -196,7 +196,7 @@ namespace Grand.Business.Checkout.Services.Orders
                 WarehouseId = warehouseId,
                 OrderTagId = orderTagId,
                 OwnerId = ownerId,
-                SalesEmployeeId = salesemployeeId
+                SalesEmployeeId = salesEmployeeId
             };
             var query = await _mediator.Send(querymodel);
             return await PagedList<Order>.Create(query, pageIndex, pageSize);

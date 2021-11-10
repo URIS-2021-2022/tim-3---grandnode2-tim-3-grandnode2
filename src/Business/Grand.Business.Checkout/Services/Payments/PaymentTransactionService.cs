@@ -162,9 +162,9 @@ namespace Grand.Business.Checkout.Services.Payments
         /// <summary>
         /// Set payment error for transaction
         /// </summary>
-        public virtual async Task SetError(string paymenttransactionId, List<string> errors)
+        public virtual async Task SetError(string paymentTransactionId, List<string> errors)
         {
-            await _repositoryPaymentTransaction.UpdateField(paymenttransactionId, x => x.Errors, errors);
+            await _repositoryPaymentTransaction.UpdateField(paymentTransactionId, x => x.Errors, errors);
         }
     }
 }

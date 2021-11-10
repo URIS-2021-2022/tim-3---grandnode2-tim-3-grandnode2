@@ -144,8 +144,11 @@
     for (var prop in defaultOptions) out[prop] = defaultOptions[prop];
     if (editor) for (var prop in editor)
       if (editor[prop] !== undefined) out[prop] = editor[prop];
-    if (options) for (var prop in options)
-      if (options[prop] !== undefined) out[prop] = options[prop];
+      if (options)
+          for (var prop in options) {
+              if (options[prop] !== undefined)
+                  out[prop] = options[prop];
+          }
     if (out.hint.resolve) out.hint = out.hint.resolve(cm, pos)
     return out;
   }

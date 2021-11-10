@@ -29,7 +29,6 @@ namespace Grand.Business.Catalog.Services.Products
         private readonly IWorkContext _workContext;
         private readonly IProductAttributeService _productAttributeService;
         private readonly IProductAttributeParser _productAttributeParser;
-        private readonly ICurrencyService _currencyService;
         private readonly ITranslationService _translationService;
         private readonly ITaxService _taxService;
         private readonly IPriceFormatter _priceFormatter;
@@ -40,7 +39,6 @@ namespace Grand.Business.Catalog.Services.Products
         public ProductAttributeFormatter(IWorkContext workContext,
             IProductAttributeService productAttributeService,
             IProductAttributeParser productAttributeParser,
-            ICurrencyService currencyService,
             ITranslationService translationService,
             ITaxService taxService,
             IPriceFormatter priceFormatter,
@@ -51,7 +49,6 @@ namespace Grand.Business.Catalog.Services.Products
             _workContext = workContext;
             _productAttributeService = productAttributeService;
             _productAttributeParser = productAttributeParser;
-            _currencyService = currencyService;
             _translationService = translationService;
             _taxService = taxService;
             _priceFormatter = priceFormatter;

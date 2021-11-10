@@ -35,7 +35,7 @@ namespace Grand.Web.Common.TagHelpers.Admin
             _translationService = translationService;
         }
 
-        public override async Task ProcessAsync(TagHelperContext tagHelperContext, TagHelperOutput output)
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             if (string.IsNullOrEmpty(Action))
                 Action = "Delete";

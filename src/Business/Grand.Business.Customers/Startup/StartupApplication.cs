@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Grand.Business.Customers.Startup
 {
@@ -17,7 +18,7 @@ namespace Grand.Business.Customers.Startup
         }
         public void Configure(IApplicationBuilder application, IWebHostEnvironment webHostEnvironment)
         {
-
+            throw new NotSupportedException();
         }
         public int Priority => 100;
         public bool BeforeConfigure => false;

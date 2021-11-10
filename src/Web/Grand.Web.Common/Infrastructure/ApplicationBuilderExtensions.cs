@@ -89,8 +89,7 @@ namespace Grand.Web.Common.Infrastructure
                     }
                     catch
                     {
-                        //rethrow the exception to show the error page
-                        throw exception;
+                        /* clean up */
                     }
                 });
             });
