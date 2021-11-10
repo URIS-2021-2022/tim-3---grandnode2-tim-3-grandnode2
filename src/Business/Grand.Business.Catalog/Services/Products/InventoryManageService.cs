@@ -54,7 +54,7 @@ namespace Grand.Business.Catalog.Services.Products
 
         #region Utilities methods
 
-        private async Task ManageStockInventory(Product product, ShipmentItem shipmentItem)
+        private async Task ManageStockInventory(Product product, Shipment shipment, ShipmentItem shipmentItem)
         {
             if (product.UseMultipleWarehouses)
             {
@@ -675,7 +675,7 @@ namespace Grand.Business.Catalog.Services.Products
             //standard manage stock 
             if (product.ManageInventoryMethodId == ManageInventoryMethod.ManageStock)
             {
-                await ManageStockInventory(product, shipmentItem);
+                await ManageStockInventory(product, shipment, shipmentItem);
             }
             //manage stock by attributes
             if (shipmentItem.Attributes != null && product.ManageInventoryMethodId == ManageInventoryMethod.ManageStockByAttributes)

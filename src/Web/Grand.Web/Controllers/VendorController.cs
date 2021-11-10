@@ -162,17 +162,10 @@ namespace Grand.Web.Controllers
                 {
                     contentType = uploadedFile.ContentType;
                     if (string.IsNullOrEmpty(contentType))
-                    {
                         ModelState.AddModelError("", "Empty content type");
-                    }
-
                     else
-                    {
                         if (!contentType.StartsWith("image"))
-                        {
-                            ModelState.AddModelError("", "Only image content type is allowed");
-                        }
-                    }
+                        ModelState.AddModelError("", "Only image content type is allowed");
 
                     vendorPictureBinary = uploadedFile.GetPictureBits();
                 }
@@ -300,7 +293,7 @@ namespace Grand.Web.Controllers
                         ModelState.AddModelError("", "Empty content type");
                     else
                         if (!contentType.StartsWith("image"))
-                            ModelState.AddModelError("", "Only image content type is allowed");
+                        ModelState.AddModelError("", "Only image content type is allowed");
 
                     vendorPictureBinary = uploadedFile.GetPictureBits();
                 }

@@ -674,9 +674,9 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 }
 
 ul.elfinder-help-integrations ul {
-    margin: 0 1em 1em;
     margin-bottom: 1em;
     padding: 0;
+    margin: 0 1em 1em;
 }
 
 ul.elfinder-help-integrations a {

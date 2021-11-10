@@ -31,7 +31,7 @@ namespace Grand.Business.Catalog.Commands.Handlers
         public async Task<bool> Handle(UpdateProductReviewTotalsCommand request, CancellationToken cancellationToken)
         {
             if (request.Product == null)
-                throw new ArgumentNullException(nameof(request.Product), "Product does not exist.");
+                throw new ArgumentNullException(nameof(request.Product));
 
             int approvedRatingSum = 0;
             int notApprovedRatingSum = 0;

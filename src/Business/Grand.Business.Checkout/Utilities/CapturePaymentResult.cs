@@ -8,6 +8,7 @@ namespace Grand.Business.Checkout.Utilities
     /// </summary>
     public partial class CapturePaymentResult
     {
+        private TransactionStatus _newTransactionStatus = TransactionStatus.Pending;
 
         /// <summary>
         /// Ctor
@@ -52,6 +53,16 @@ namespace Grand.Business.Checkout.Utilities
         /// <summary>
         /// Gets or sets a payment transaction status after processing
         /// </summary>
-        public TransactionStatus NewPaymentStatus { get; set; } = TransactionStatus.Pending;
+        public TransactionStatus NewPaymentStatus
+        {
+            get
+            {
+                return _newTransactionStatus;
+            }
+            set
+            {
+                _newTransactionStatus = value;
+            }
+        }
     }
 }

@@ -82,7 +82,7 @@ namespace Grand.Business.Customers.Queries.Handlers
             {
                 query = request.Sct.HasValue ?
                     query.Where(c => c.ShoppingCartItems.Any(x => x.ShoppingCartTypeId == request.Sct.Value)) :
-                    query.Where(c => c.ShoppingCartItems.Count > 0);
+                    query.Where(c => c.ShoppingCartItems.Count() > 0);
             }
 
             if (request.OrderBySelector == null)

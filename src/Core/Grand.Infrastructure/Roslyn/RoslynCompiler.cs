@@ -25,12 +25,12 @@ namespace Grand.Infrastructure.Roslyn
 
         #region Fields
 
+        private static DirectoryInfo _shadowCopyScriptPath;
 
         #endregion
 
         public static void Load(ApplicationPartManager applicationPartManager, AppConfig config)
         {
-            DirectoryInfo _shadowCopyScriptPath;
             if (applicationPartManager == null)
                 throw new ArgumentNullException(nameof(applicationPartManager));
 

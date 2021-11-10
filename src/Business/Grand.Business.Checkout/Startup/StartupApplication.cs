@@ -26,13 +26,13 @@ namespace Grand.Business.Checkout.Startup
         }
         public void Configure(IApplicationBuilder application, IWebHostEnvironment webHostEnvironment)
         {
-            //This is empty method
+
         }
         public int Priority => 100;
         public bool BeforeConfigure => false;
 
 
-        private static void RegisterOrdersService(IServiceCollection serviceCollection)
+        private void RegisterOrdersService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<ILoyaltyPointsService, LoyaltyPointsService>();
             serviceCollection.AddScoped<IGiftVoucherService, GiftVoucherService>();
@@ -49,12 +49,12 @@ namespace Grand.Business.Checkout.Startup
             serviceCollection.AddScoped<IOrderTagService, OrderTagService>();
 
         }
-        private static void RegisterPaymentsService(IServiceCollection serviceCollection)
+        private void RegisterPaymentsService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IPaymentService, PaymentService>();
             serviceCollection.AddScoped<IPaymentTransactionService, PaymentTransactionService>();
         }
-        private static void RegisterShippingService(IServiceCollection serviceCollection)
+        private void RegisterShippingService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IShipmentService, ShipmentService>();
             serviceCollection.AddScoped<IShippingService, ShippingService>();

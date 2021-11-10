@@ -128,7 +128,7 @@ namespace Grand.Business.Storage.Services
             string fileName = string.Format("{0}_0.{1}", pictureId, lastPart);
             var filePath = await GetPicturePhysicalPath(fileName);
             if (string.IsNullOrEmpty(filePath))
-                return Array.Empty<byte>();
+                return new byte[0];
 
             return File.ReadAllBytes(filePath);
         }
@@ -292,11 +292,9 @@ namespace Grand.Business.Storage.Services
             }
             if (targetSize == 0)
             {
-                if(!string.IsNullOrEmpty(storeLocation))
-                {
-                    return storeLocation;
-                }
-                 return string.IsNullOrEmpty(_mediaSettings.StoreLocation) ?
+                return !string.IsNullOrEmpty(storeLocation)
+                        ? storeLocation
+                        : string.IsNullOrEmpty(_mediaSettings.StoreLocation) ?
                         _workContext.CurrentStore.SslEnabled ? _workContext.CurrentStore.SecureUrl : _workContext.CurrentStore.Url :
                         _mediaFileStore.Combine(_mediaSettings.StoreLocation, _imagePath, _mediaSettings.DefaultImageName);
             }
@@ -426,9 +424,7 @@ namespace Grand.Business.Storage.Services
                             using var image = SKBitmap.Decode(pictureBinary);
                             pictureBinary = ApplyResize(image, EncodedImageFormat(picture.MimeType), targetSize);
                         }
-                        catch { 
-                            //Exception is not used
-                        }
+                        catch { }
                     }
                     await SaveThumb(thumbFileName, pictureBinary);
 

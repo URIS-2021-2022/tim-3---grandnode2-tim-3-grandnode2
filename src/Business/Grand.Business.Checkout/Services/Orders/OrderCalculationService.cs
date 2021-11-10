@@ -520,6 +520,9 @@ namespace Grand.Business.Checkout.Services.Orders
             {
                 //check whether we have subtotal enough to have free shipping
                 var (discountAmount, appliedDiscounts, subTotalWithoutDiscount, subTotalWithDiscount, taxRates) = await GetShoppingCartSubTotal(cart, _shippingSettings.FreeShippingOverXIncludingTax);
+                var subTotalDiscountAmount = discountAmount;
+                var subTotalAppliedDiscounts = appliedDiscounts;
+                var subTotalWithoutDiscountBase = subTotalWithoutDiscount;
                 var subTotalWithDiscountBase = subTotalWithDiscount;
 
                 if (subTotalWithDiscountBase > _shippingSettings.FreeShippingOverXValue)

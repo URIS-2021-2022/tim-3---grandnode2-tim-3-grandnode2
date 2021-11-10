@@ -49,6 +49,9 @@ namespace Grand.Business.Catalog.Queries.Handlers
             var query = from p in _productRepository.Table
                         select p;
 
+            var querySpecification = from p in _productRepository.Table
+                                     select p;
+
             //category filtering
             if (request.CategoryIds != null && request.CategoryIds.Any())
             {
@@ -202,7 +205,7 @@ namespace Grand.Business.Catalog.Queries.Handlers
                 query = query.Where(x => x.ProductTags.Any(y => y == request.ProductTag));
             }
 
-            var querySpecification = query;
+            querySpecification = query;
 
             //search by specs
             if (request.FilteredSpecs != null && request.FilteredSpecs.Any())

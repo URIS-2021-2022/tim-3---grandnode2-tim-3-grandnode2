@@ -2,7 +2,7 @@
 {
     public static class FacebookPixelDefaults
     {
-        public static readonly string ConsentCookieSystemName = "FacebookPixel";
+        public static string ConsentCookieSystemName = "FacebookPixel";
         public const string ProviderSystemName = "Widgets.FacebookPixel";
         public const string FriendlyName = "Widgets.FacebookPixel.FriendlyName";
         public const string ConfigurationUrl = "../WidgetsFacebookPixel/Configure";

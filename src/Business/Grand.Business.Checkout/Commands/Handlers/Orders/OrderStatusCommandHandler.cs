@@ -127,7 +127,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
 
             //gift vouchers activation
             if (_orderSettings.GiftVouchers_Activated_OrderStatusId > 0 &&
-               _orderSettings.GiftVouchers_Activated_OrderStatusId == request.Order.OrderStatusId)
+               _orderSettings.GiftVouchers_Activated_OrderStatusId == (int)request.Order.OrderStatusId)
             {
                 await _mediator.Send(new ActivatedValueForPurchasedGiftVouchersCommand() { Order = request.Order, Activate = true });
             }

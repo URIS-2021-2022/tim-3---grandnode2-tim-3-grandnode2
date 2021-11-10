@@ -115,9 +115,8 @@ namespace Grand.Business.Marketing.Services.PushNotifications
         /// <summary>
         /// Gets all push messages
         /// </summary>
-        public virtual async Task<IPagedList<PushMessage>> GetPushMessages(int pageIndex, int pageSize = int.MaxValue)
+        public virtual async Task<IPagedList<PushMessage>> GetPushMessages(int pageIndex = 0, int pageSize = int.MaxValue)
         {
-           
             var allMessages = await Task.FromResult(_pushMessagesRepository.Table.OrderByDescending(x => x.SentOn).ToList());
             return new PagedList<PushMessage>(allMessages.Skip(pageIndex * pageSize).Take(pageSize).ToList(), pageIndex, pageSize, allMessages.Count);
         }

@@ -89,7 +89,7 @@ namespace Grand.Business.Authentication.Services
                 _httpContextAccessor.HttpContext.Response.ContentType = "text/plain";
                 await _httpContextAccessor.HttpContext.Response.WriteAsync(authResult.Failure.Message);
                 return await _customerService.GetCustomerBySystemName(SystemCustomerNames.Anonymous);
-            }
+            };
 
             var email = authResult.Principal.Claims.ToList().FirstOrDefault(x => x.Type == "Email")?.Value;
             if (email is null)

@@ -178,6 +178,7 @@ namespace Grand.Business.Catalog.Services.Tax
                         address = customer.ShippingAddress;
                     }
                     break;
+                case TaxBasedOn.DefaultAddress:
                 default:
                     {
                         address = _taxSettings.DefaultTaxAddress;

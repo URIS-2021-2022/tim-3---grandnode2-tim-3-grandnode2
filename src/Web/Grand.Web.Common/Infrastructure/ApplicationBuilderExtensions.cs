@@ -87,7 +87,7 @@ namespace Grand.Web.Common.Infrastructure
                             _ = logger.Error(exception.Message, exception, workContext.CurrentCustomer);
                         }
                     }
-                    catch
+                    finally
                     {
                         //rethrow the exception to show the error page
                         throw exception;

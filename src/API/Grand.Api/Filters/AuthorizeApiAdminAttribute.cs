@@ -35,14 +35,17 @@ namespace Grand.Api.Filters
         /// <summary>
         /// Represents a filter that confirms access to the admin panel
         /// </summary>
-        sealed private class AuthorizeApiAdminFilter : IAsyncAuthorizationFilter
+        private class AuthorizeApiAdminFilter : IAsyncAuthorizationFilter
         {
-
-            #region Ctor
+            #region Fields
 
             private readonly bool _ignoreFilter;
             private readonly IPermissionService _permissionService;
             private readonly SecuritySettings _securitySettings;
+
+            #endregion
+
+            #region Ctor
 
             public AuthorizeApiAdminFilter(bool ignoreFilter, IPermissionService permissionService, SecuritySettings securitySettings)
             {

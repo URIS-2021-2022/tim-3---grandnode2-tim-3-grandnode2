@@ -300,7 +300,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
                     {
                         var attrsv = attr.ProductAttributeValues.Where(x => x.Id == attrV).FirstOrDefault();
                         if (attrsv != null)
-                            if (condition.ProductAttribute.Where(x => x.ProductAttributeId == attr.ProductAttributeId && x.Name == attrsv.Name).Any())
+                            if (condition.ProductAttribute.Where(x => x.ProductAttributeId == attr.ProductAttributeId && x.Name == attrsv.Name).Count() > 0)
                             {
                                 cond = true;
                             }
@@ -313,7 +313,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
                 foreach (var itemPA in condition.ProductAttribute)
                 {
                     var attributes = productAttributeParser.ParseProductAttributeMappings(product, customAttributes);
-                    if (attributes.Where(x => x.ProductAttributeId == itemPA.ProductAttributeId).Any())
+                    if (attributes.Where(x => x.ProductAttributeId == itemPA.ProductAttributeId).Count() > 0)
                     {
                         cond = false;
                         foreach (var attr in attributes.Where(x => x.ProductAttributeId == itemPA.ProductAttributeId))
@@ -364,7 +364,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
             {
                 foreach (var spec in productspecificationattribute)
                 {
-                    if (condition.ProductSpecifications.Where(x => x.ProductSpecyficationId == spec.SpecificationAttributeId && x.ProductSpecyficationValueId == spec.SpecificationAttributeOptionId).Any())
+                    if (condition.ProductSpecifications.Where(x => x.ProductSpecyficationId == spec.SpecificationAttributeId && x.ProductSpecyficationValueId == spec.SpecificationAttributeOptionId).Count() > 0)
                         cond = true;
                 }
             }
@@ -428,7 +428,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
                 {
                     foreach (var item in condition.CustomerRegistration)
                     {
-                        if (_userFields.Where(x => x.Key == item.RegisterField && x.Value.ToLower() == item.RegisterValue.ToLower()).Any())
+                        if (_userFields.Where(x => x.Key == item.RegisterField && x.Value.ToLower() == item.RegisterValue.ToLower()).Count() > 0)
                             cond = true;
                     }
                 }
@@ -451,7 +451,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
                         foreach (var item in condition.CustomCustomerAttributes)
                         {
                             var _fields = item.RegisterField.Split(':');
-                            if (_fields.Length > 1)
+                            if (_fields.Count() > 1)
                             {
                                 if (selectedValues.Where(x => x.CustomerAttributeId == _fields.FirstOrDefault() && x.Id == _fields.LastOrDefault()).Count() == 0)
                                     cond = false;
@@ -471,7 +471,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
                             var _fields = item.RegisterField.Split(':');
                             if (_fields.Count() > 1)
                             {
-                                if (selectedValues.Where(x => x.CustomerAttributeId == _fields.FirstOrDefault() && x.Id == _fields.LastOrDefault()).Any())
+                                if (selectedValues.Where(x => x.CustomerAttributeId == _fields.FirstOrDefault() && x.Id == _fields.LastOrDefault()).Count() > 0)
                                     cond = true;
                             }
                         }

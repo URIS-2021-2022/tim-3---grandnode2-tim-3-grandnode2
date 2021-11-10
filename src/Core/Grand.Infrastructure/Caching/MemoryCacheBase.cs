@@ -93,7 +93,7 @@ namespace Grand.Infrastructure.Caching
             //dispose
             _resetCacheToken.Dispose();
 
-            MemoryCacheBase._resetCacheToken = new CancellationTokenSource();
+            _resetCacheToken = new CancellationTokenSource();
 
             return Task.CompletedTask;
         }

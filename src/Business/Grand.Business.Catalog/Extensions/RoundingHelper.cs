@@ -70,9 +70,8 @@ namespace Grand.Business.Catalog.Extensions
                 //rounding with 0.50 intervals
                 case RoundingType.Rounding05:
                     fractionPart *= 10;
-                    if (fractionPart < 25)
-                        fractionPart = fractionPart * -1;
-                    fractionPart=fractionPart < 50 || fractionPart < 75 ? 50 - fractionPart : 100 - fractionPart;
+                    fractionPart = fractionPart < 25 ? fractionPart * -1 : fractionPart < 50 || fractionPart < 75 ? 50 - fractionPart : 100 - fractionPart;
+
                     rez += fractionPart / 100;
                     break;
                 //rounding with 1.00 intervals

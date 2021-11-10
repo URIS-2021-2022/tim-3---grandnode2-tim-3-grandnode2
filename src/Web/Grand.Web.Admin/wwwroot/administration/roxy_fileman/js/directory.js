@@ -196,7 +196,7 @@ function Directory(fullPath, numDirs, numFiles){
         cache: false,
         success: function(dirs){
             $('#pnlDirList').children('li').remove();
-            for(var i = 0; i < dirs.length; i++){
+            for(i = 0; i < dirs.length; i++){
               var d = new Directory(dirs[i].p, dirs[i].d, dirs[i].f);
               d.Show();
             }

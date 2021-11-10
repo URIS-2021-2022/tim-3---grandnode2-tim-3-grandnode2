@@ -2,7 +2,7 @@
 
 namespace Grand.Business.Marketing.Events
 {
-    public sealed class EmailUnsubscribedEvent : INotification
+    public class EmailUnsubscribedEvent : INotification
     {
         private readonly string _email;
 
@@ -30,7 +30,7 @@ namespace Grand.Business.Marketing.Events
                 return false;
             if (ReferenceEquals(this, obj))
                 return true;
-            if (obj.GetType() is EmailUnsubscribedEvent)
+            if (obj.GetType() != typeof(EmailUnsubscribedEvent))
                 return false;
             return Equals((EmailUnsubscribedEvent)obj);
         }

@@ -108,7 +108,7 @@ namespace Grand.Api.Controllers
             try
             {
                 principal = _refreshTokenService.GetPrincipalFromToken(tokenDto.AccessToken);
-                email = principal.Claims.FirstOrDefault(x => x.Type == "Email")?.Value;
+                email = principal.Claims.ToList().FirstOrDefault(x => x.Type == "Email")?.Value;
             }
             catch (Exception)
             {
@@ -137,7 +137,7 @@ namespace Grand.Api.Controllers
             {
                 return BadRequest("Token expired");
             }
-            var token = await GetToken(claims, customer); 
+            var token = await GetToken(claims, customer); ;
             return Ok(token);
         }
 

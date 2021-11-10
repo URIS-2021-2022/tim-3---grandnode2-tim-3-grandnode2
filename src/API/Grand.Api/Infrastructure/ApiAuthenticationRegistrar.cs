@@ -54,7 +54,7 @@ namespace Grand.Api.Infrastructure
                             {
                                 var jwtAuthentication = context.HttpContext.RequestServices.GetRequiredService<IJwtBearerAuthenticationService>();
                                 if (!await jwtAuthentication.Valid(context))
-                                    throw new SecurityTokenValidationException(await jwtAuthentication.ErrorMessage());
+                                    throw new Exception(await jwtAuthentication.ErrorMessage());
                             }
                             else
                                 throw new Exception("API is disable");

@@ -15,7 +15,7 @@ namespace Grand.Business.Messages.DotLiquidDrops
         private readonly DomainHost _host;
         private readonly Language _language;
         
-        private readonly string url;
+        private string url;
 
         public LiquidBlogComment(BlogComment blogComment, BlogPost blogPost, Store store, DomainHost host, Language language)
         {

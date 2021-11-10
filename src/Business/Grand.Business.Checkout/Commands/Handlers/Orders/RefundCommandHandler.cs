@@ -10,7 +10,6 @@ using Grand.Domain.Logging;
 using MediatR;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -101,14 +100,14 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
             }
 
             //process errors
-            StringBuilder error = new StringBuilder();
+            string error = "";
             for (int i = 0; i < result.Errors.Count; i++)
             {
-                error.Append(string.Format("Error {0}: {1}", i, result.Errors[i]));
+                error += string.Format("Error {0}: {1}", i, result.Errors[i]);
                 if (i != result.Errors.Count - 1)
-                    error.Append(". ");
+                    error += ". ";
             }
-            if (!String.IsNullOrEmpty(error.ToString()))
+            if (!String.IsNullOrEmpty(error))
             {
 
                 //log it

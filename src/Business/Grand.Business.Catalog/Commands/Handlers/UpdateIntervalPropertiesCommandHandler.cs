@@ -27,7 +27,7 @@ namespace Grand.Business.Catalog.Commands.Handlers
         public async Task<bool> Handle(UpdateIntervalPropertiesCommand request, CancellationToken cancellationToken)
         {
             if (request.Product == null)
-                throw new ArgumentNullException(nameof(request.Product), "Product does not exist.");
+                throw new ArgumentNullException(nameof(request.Product));
 
             var update = UpdateBuilder<Product>.Create()
                     .Set(x => x.Interval, request.Interval)

@@ -202,7 +202,14 @@ namespace Grand.Business.Checkout.Services.Orders
 
             }
 
-            
+            //foreach (var attribute in attributes1)
+            //{
+            //    if (string.IsNullOrEmpty(attribute.ProductId))
+            //    {
+            //        warnings.Add("Attribute error");
+            //        return warnings;
+            //    }
+            //}
 
             //validate required product attributes (whether they're chosen/selected/entered)
             var attributes2 = product.ProductAttributeMappings.ToList();

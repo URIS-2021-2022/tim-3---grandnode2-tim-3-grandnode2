@@ -18,7 +18,7 @@ namespace Grand.Api.Commands.Models.Catalog
         public async Task<bool> Handle(DeleteProductTierPriceCommand request, CancellationToken cancellationToken)
         {
             var product = await _productService.GetProductById(request.Product.Id, true);
-            var tierPrice = product.TierPrices.FirstOrDefault(x => x.Id == request.Id);
+            var tierPrice = product.TierPrices.Where(x => x.Id == request.Id).FirstOrDefault();
 
             await _productService.DeleteTierPrice(tierPrice, product.Id);
 

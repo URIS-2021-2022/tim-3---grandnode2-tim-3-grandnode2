@@ -14,6 +14,7 @@ namespace Grand.Infrastructure.Models
         public BaseModel()
         {
             UserFields = new List<UserField>();
+            PostInitialize();
         }
 
         #endregion
@@ -22,6 +23,10 @@ namespace Grand.Infrastructure.Models
 
         public virtual void BindModel(ModelBindingContext bindingContext)
         {
+        }
+
+        protected virtual void PostInitialize()
+        {            
         }
 
         #endregion

@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Grand.Business.Authentication.Startup
 {
@@ -24,7 +23,7 @@ namespace Grand.Business.Authentication.Startup
         }
         public void Configure(IApplicationBuilder application, IWebHostEnvironment webHostEnvironment)
         {
-            throw new NotSupportedException();
+
         }
         public int Priority => 100;
         public bool BeforeConfigure => false;

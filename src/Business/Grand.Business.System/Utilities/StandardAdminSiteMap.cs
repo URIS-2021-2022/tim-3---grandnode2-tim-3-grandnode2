@@ -6,7 +6,7 @@ namespace Grand.Business.System.Utilities
 {
     public static class StandardAdminSiteMap
     {
-        public static List<AdminSiteMap> SiteMap =
+        public static readonly List<AdminSiteMap> SiteMap =
             new List<AdminSiteMap>() {
                 new AdminSiteMap {
                     SystemName = "Dashboard",

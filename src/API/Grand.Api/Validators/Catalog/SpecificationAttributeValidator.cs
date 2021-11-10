@@ -4,7 +4,6 @@ using Grand.Business.Catalog.Interfaces.Products;
 using Grand.Business.Common.Interfaces.Localization;
 using Grand.Infrastructure.Validators;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Grand.Api.Validators.Catalog
 {
@@ -28,8 +27,9 @@ namespace Grand.Api.Validators.Catalog
             }).WithMessage(translationService.GetResource("Api.Catalog.SpecificationAttribute.Fields.Id.NotExists"));
             RuleFor(x => x).Must((x, context) =>
             {
-                foreach (var item in x.SpecificationAttributeOptions.Where(item => string.IsNullOrEmpty(item.Name)))
+                foreach (var item in x.SpecificationAttributeOptions)
                 {
+                    if (string.IsNullOrEmpty(item.Name))
                         return false;
                 }
                 return true;

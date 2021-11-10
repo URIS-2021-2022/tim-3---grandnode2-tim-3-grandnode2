@@ -119,9 +119,10 @@ namespace Grand.Business.Marketing.Services.Customers
                                     && datetimeUtcNow >= a.StartDateTimeUtc && datetimeUtcNow <= a.EndDateTimeUtc
                             select a;
 
-                foreach (var item in query.ToList().Where(x => !UsedAction(x.Id, order.CustomerId)))
+                foreach (var item in query.ToList())
                 {
-                   
+                    if (!UsedAction(item.Id, order.CustomerId))
+                    {
                         foreach (var orderItem in order.OrderItems)
                         {
                             if (await _mediator.Send(new CustomerActionEventConditionCommand()
@@ -143,6 +144,7 @@ namespace Grand.Business.Marketing.Services.Customers
                                 break;
                             }
                         }
+                    }
                 }
 
             }

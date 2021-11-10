@@ -69,7 +69,7 @@ namespace Grand.Business.Catalog.Services.Products
                 {
                     if (!string.IsNullOrEmpty(valueStr))
                     {
-                        if (attribute.ProductAttributeValues.Where(x => x.Id == valueStr).Any())
+                        if (attribute.ProductAttributeValues.Where(x => x.Id == valueStr).Count() > 0)
                         {
                             var value = attribute.ProductAttributeValues.Where(x => x.Id == valueStr).FirstOrDefault();
                             if (value != null)
@@ -190,7 +190,7 @@ namespace Grand.Business.Catalog.Services.Products
                     }
                 }
 
-                if (!hasAttribute)
+                if (hasAttribute == false)
                 {
                     attributesEqual = false;
                     break;

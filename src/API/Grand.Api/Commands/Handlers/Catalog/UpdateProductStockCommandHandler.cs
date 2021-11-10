@@ -93,7 +93,8 @@ namespace Grand.Api.Commands.Models.Catalog
             return true;
         }
 
-        private async Task OutOfStockSubscriptionEmpty(Product product, int prevStockQuantity) {
+        protected async Task OutOfStockNotifications(Product product, int prevStockQuantity, List<ProductWarehouseInventory> prevMultiWarehouseStock)
+        {
             if (product.ManageInventoryMethodId == ManageInventoryMethod.ManageStock &&
                 product.BackorderModeId == BackorderMode.NoBackorders &&
                 product.AllowOutOfStockSubscriptions &&
@@ -103,22 +104,6 @@ namespace Grand.Api.Commands.Models.Catalog
             {
                 await _outOfStockSubscriptionService.SendNotificationsToSubscribers(product, "");
             }
-        }
-
-        private async Task OutOfStockSubscriptionId(Product product, ProductWarehouseInventory prevstock) {
-            if (prevstock.StockQuantity - prevstock.ReservedQuantity <= 0)
-            {
-                var actualStock = product.ProductWarehouseInventory.FirstOrDefault(x => x.WarehouseId == prevstock.WarehouseId);
-                if (actualStock != null)
-                {
-                    if (actualStock.StockQuantity - actualStock.ReservedQuantity > 0)
-                        await _outOfStockSubscriptionService.SendNotificationsToSubscribers(product, prevstock.WarehouseId);
-                }
-            }
-        }
-        protected async Task OutOfStockNotifications(Product product, int prevStockQuantity, List<ProductWarehouseInventory> prevMultiWarehouseStock)
-        {
-            await OutOfStockSubscriptionEmpty(product, prevStockQuantity);
             if (product.ManageInventoryMethodId == ManageInventoryMethod.ManageStock &&
                 product.BackorderModeId == BackorderMode.NoBackorders &&
                 product.AllowOutOfStockSubscriptions &&
@@ -135,11 +120,13 @@ namespace Grand.Api.Commands.Models.Catalog
                                 await _outOfStockSubscriptionService.SendNotificationsToSubscribers(product, prevstock.WarehouseId);
                         }
                     }
-                    await OutOfStockSubscriptionId(product, prevstock);
                 }
-                if ((product.ProductWarehouseInventory.Sum(x => x.StockQuantity - x.ReservedQuantity) > 0) && (prevMultiWarehouseStock.Sum(x => x.StockQuantity - x.ReservedQuantity) <= 0))
+                if (product.ProductWarehouseInventory.Sum(x => x.StockQuantity - x.ReservedQuantity) > 0)
                 {
+                    if (prevMultiWarehouseStock.Sum(x => x.StockQuantity - x.ReservedQuantity) <= 0)
+                    {
                         await _outOfStockSubscriptionService.SendNotificationsToSubscribers(product, "");
+                    }
                 }
             }
         }

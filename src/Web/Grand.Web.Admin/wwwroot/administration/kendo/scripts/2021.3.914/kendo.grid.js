@@ -2500,7 +2500,7 @@ var __meta__ = {
 
                 notString = notString.join(",");
 
-                if (notString != "") {
+                if (notString !== "") {
                     notString = ":not(" + notString + ")";
                 }
 

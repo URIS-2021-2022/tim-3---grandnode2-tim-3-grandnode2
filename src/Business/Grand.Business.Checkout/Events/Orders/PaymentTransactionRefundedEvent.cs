@@ -10,7 +10,7 @@ namespace Grand.Business.Checkout.Events.Orders
     {
         public PaymentTransactionRefundedEvent(PaymentTransaction paymentTransaction, double amount)
         {
-            PaymentTransaction = paymentTransaction;
+            PaymentTransaction = PaymentTransaction;
             Amount = amount;
         }
 

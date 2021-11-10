@@ -1,9 +1,8 @@
 ﻿using MediatR;
-using System;
 
 namespace Grand.Business.Marketing.Events
 {
-    public class EmailSubscribedEvent : INotification, IEquatable<EmailSubscribedEvent>
+    public class EmailSubscribedEvent : INotification
     {
         private readonly string _email;
 

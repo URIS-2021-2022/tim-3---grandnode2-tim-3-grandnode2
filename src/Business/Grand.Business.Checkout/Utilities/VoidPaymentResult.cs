@@ -21,7 +21,8 @@ namespace Grand.Business.Checkout.Utilities
         /// <summary>
         /// Gets a value indicating whether request has been completed successfully
         /// </summary>
-        public bool Success {
+        public bool Success
+        {
             get { return (Errors.Count == 0); }
         }
 
@@ -42,11 +43,14 @@ namespace Grand.Business.Checkout.Utilities
         /// <summary>
         /// Gets or sets a payment transaction status after processing
         /// </summary>
-        public TransactionStatus NewTransactionStatus {
-            get {
+        public TransactionStatus NewTransactionStatus
+        {
+            get
+            {
                 return _newTransactionStatus;
             }
-            set {
+            set
+            {
                 _newTransactionStatus = value;
             }
         }

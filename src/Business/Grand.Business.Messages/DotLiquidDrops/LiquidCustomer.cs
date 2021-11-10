@@ -113,7 +113,7 @@ namespace Grand.Business.Messages.DotLiquidDrops
 
         public string AccountActivationURL
         {
-            get { return string.Format("{0}/account/activation?token={1}&email={2}", url, _customer.GetUserFieldFromEntity<string>(SystemCustomerFieldNames.AccountActivationToken), WebUtility.UrlEncode(_customer.Email)); }
+            get { return string.Format("{0}/account/activation?token={1}&email={2}", url, _customer.GetUserFieldFromEntity<string>(SystemCustomerFieldNames.AccountActivationToken), WebUtility.UrlEncode(_customer.Email)); ; }
         }
 
         public string WishlistURLForCustomer

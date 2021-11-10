@@ -139,11 +139,13 @@ namespace Grand.Api.Controllers.OData
 
             var warehouseId = parameters.FirstOrDefault(x => x.Key == "WarehouseId").Value;
             var stock = parameters.FirstOrDefault(x => x.Key == "Stock").Value;
-            if (stock != null && int.TryParse(stock.ToString(), out int stockqty))
+            if (stock != null)
             {
-                await _mediator.Send(new UpdateProductStockCommand() { Product = product.FirstOrDefault(), WarehouseId = warehouseId?.ToString(), Stock = stockqty });
-                return Ok(true);
-                
+                if (int.TryParse(stock.ToString(), out int stockqty))
+                {
+                    await _mediator.Send(new UpdateProductStockCommand() { Product = product.FirstOrDefault(), WarehouseId = warehouseId?.ToString(), Stock = stockqty });
+                    return Ok(true);
+                }
             }
             return Ok(false);
         }
@@ -230,7 +232,7 @@ namespace Grand.Api.Controllers.OData
 
                 if (ModelState.IsValid)
                 {
-                    await _mediator.Send(new DeleteProductCategoryCommand() { Product = product.FirstOrDefault(), CategoryId = categoryId.ToString() });
+                    var result = await _mediator.Send(new DeleteProductCategoryCommand() { Product = product.FirstOrDefault(), CategoryId = categoryId.ToString() });
                     return Ok(true);
                 }
                 return BadRequest(ModelState);

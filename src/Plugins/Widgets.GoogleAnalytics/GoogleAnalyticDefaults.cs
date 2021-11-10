@@ -2,7 +2,7 @@
 {
     public static class GoogleAnalyticDefaults
     {
-        public static readonly string ConsentCookieSystemName = "GoogleAnalytics";
+        public static string ConsentCookieSystemName = "GoogleAnalytics";
         public const string ProviderSystemName = "Widgets.GoogleAnalytics";
         public const string FriendlyName = "Widgets.GoogleAnalytics.FriendlyName";
         public const string ConfigurationUrl = "../WidgetsGoogleAnalytics/Configure";

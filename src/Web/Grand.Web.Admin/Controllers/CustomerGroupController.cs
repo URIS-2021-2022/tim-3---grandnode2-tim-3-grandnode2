@@ -303,7 +303,7 @@ namespace Grand.Web.Admin.Controllers
                 }
                 else
                     if (permissionRecord.CustomerGroups.Contains(customerGroupId))
-                        permissionRecord.CustomerGroups.Remove(customerGroupId);
+                    permissionRecord.CustomerGroups.Remove(customerGroupId);
 
                 await _permissionService.UpdatePermission(permissionRecord);
 

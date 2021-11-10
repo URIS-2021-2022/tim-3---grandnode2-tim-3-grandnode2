@@ -37,6 +37,7 @@ namespace Grand.Business.Authentication.Services
         private readonly IRepository<ExternalAuthentication> _externalAuthenticationRecordRepository;
         private readonly IWorkContext _workContext;
         private readonly IEnumerable<IExternalAuthenticationProvider> _externalAuthenticationProviders;
+        private readonly LanguageSettings _languageSettings;
         private readonly CustomerSettings _customerSettings;
         private readonly ExternalAuthenticationSettings _externalAuthenticationSettings;
 
@@ -53,6 +54,7 @@ namespace Grand.Business.Authentication.Services
             IRepository<ExternalAuthentication> externalAuthenticationRecordRepository,
             IWorkContext workContext,
             IEnumerable<IExternalAuthenticationProvider> externalAuthenticationProviders,
+            LanguageSettings languageSettings,
             CustomerSettings customerSettings,
             ExternalAuthenticationSettings externalAuthenticationSettings)
         {
@@ -66,6 +68,7 @@ namespace Grand.Business.Authentication.Services
             _externalAuthenticationRecordRepository = externalAuthenticationRecordRepository;
             _workContext = workContext;
             _externalAuthenticationProviders = externalAuthenticationProviders;
+            _languageSettings = languageSettings;
         }
 
         #endregion
@@ -264,10 +267,14 @@ namespace Grand.Business.Authentication.Services
         /// <returns>Result of an authentication</returns>
         public virtual async Task<IActionResult> Authenticate(ExternalAuthParam parameters, string returnUrl = null)
         {
-            CheckParameters(parameters);
+            if (parameters == null)
+                throw new ArgumentNullException(nameof(parameters));
 
-             //get current logged-in user
-             var currentLoggedInUser = await _groupService.IsRegistered(_workContext.CurrentCustomer) ? _workContext.CurrentCustomer : null;
+            if (!AuthenticationProviderIsAvailable(parameters.ProviderSystemName))
+                return Error(new[] { "External authentication method cannot be loaded" });
+
+            //get current logged-in user
+            var currentLoggedInUser = await _groupService.IsRegistered(_workContext.CurrentCustomer) ? _workContext.CurrentCustomer : null;
 
             //authenticate associated user if already exists
             var associatedUser = await GetCustomer(parameters);
@@ -277,16 +284,6 @@ namespace Grand.Business.Authentication.Services
             //or associate and authenticate new user
             return await AuthenticateNewUser(currentLoggedInUser, parameters, returnUrl);
         }
-        public void CheckParameters (ExternalAuthParam parameters)
-        {
-            if (parameters == null)
-                throw new ArgumentNullException(nameof(parameters));
-
-            if (!AuthenticationProviderIsAvailable(parameters.ProviderSystemName))
-                throw new Exception("External authentication method cannot be loaded");
-   
-        }
-
 
         #endregion
 

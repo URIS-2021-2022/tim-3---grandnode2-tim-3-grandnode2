@@ -409,7 +409,7 @@ namespace Grand.Business.System.Services.ExportImport
             if (subscriptions == null)
                 throw new ArgumentNullException(nameof(subscriptions));
 
-            const char separator = ',';
+            const string separator = ",";
             var sb = new StringBuilder();
             foreach (var subscription in subscriptions)
             {
@@ -694,7 +694,7 @@ namespace Grand.Business.System.Services.ExportImport
                         if (i != categoryNames.Count - 1)
                         {
                             sb.Append(separator);
-                            sb.Append(' ');
+                            sb.Append(" ");
                         }
                     }
                 }

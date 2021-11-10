@@ -29,7 +29,7 @@ using System.Xml;
 
 namespace Grand.Business.System.Commands.Handlers.Common
 {
-    public class GetSitemapXmlCommandHandler : IRequestHandler<GetSitemapXmlCommand, string>
+    public class GetSitemapXMLCommandHandler : IRequestHandler<GetSitemapXmlCommand, string>
     {
         private const string DateFormat = @"yyyy-MM-dd";
 
@@ -49,7 +49,7 @@ namespace Grand.Business.System.Commands.Handlers.Common
 
         private GetSitemapXmlCommand _request;
 
-        public GetSitemapXmlCommandHandler(
+        public GetSitemapXMLCommandHandler(
             ICategoryService categoryService,
             IProductService productService,
             IBrandService brandService,

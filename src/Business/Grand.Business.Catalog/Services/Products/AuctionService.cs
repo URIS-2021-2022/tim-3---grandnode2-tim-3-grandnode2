@@ -98,10 +98,10 @@ namespace Grand.Business.Catalog.Services.Products
                 await UpdateHighestBid(productToUpdate, highestBid != null ? highestBid.Amount : 0, highestBid != null ? highestBid.CustomerId : "");
             }
         }
-        public virtual async Task UpdateHighestBid(Product product, double bid, string bidder)
+        public virtual async Task UpdateHighestBid(Product product, double bid, string highestBidder)
         {
             product.HighestBid = bid;
-            product.HighestBidder = bidder;
+            product.HighestBidder = highestBidder;
             product.UpdatedOnUtc = DateTime.UtcNow;
 
             await _productRepository.UpdateAsync(product);

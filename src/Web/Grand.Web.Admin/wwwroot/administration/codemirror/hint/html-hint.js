@@ -337,10 +337,8 @@
   }
 
   populate(s);
-    for (var tag in data) {
-        if (data.hasOwnProperty(tag) && data[tag] != s)
-            populate(data[tag]);
-    }
+  for (var tag in data) if (data.hasOwnProperty(tag) && data[tag] != s)
+    populate(data[tag]);
 
   CodeMirror.htmlSchema = data;
   function htmlHint(cm, options) {
