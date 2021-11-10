@@ -23,7 +23,9 @@ var FileTypes = new Array();
 FileTypes['image'] = new Array('jpg', 'jpeg', 'png', 'gif');
 FileTypes['media'] = new Array('avi', 'flv', 'swf', 'wmv', 'mp3', 'wma', 'mpg','mpeg');
 FileTypes['document'] = new Array('doc', 'docx', 'txt', 'rtf', 'pdf', 'xls', 'mdb','html','htm','db');
-function RoxyUtils(){}
+function RoxyUtils() {
+    // This is intentional
+}
 RoxyUtils.FixPath = function(path){
   if(!path)
     return '';

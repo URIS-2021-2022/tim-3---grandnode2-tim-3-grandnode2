@@ -9782,7 +9782,8 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		this.helper[ 0 ].style.top = this.position.top + "px";
 
 		if ( $.ui.ddmanager ) {
-			$.ui.ddmanager.drag( this, event );
+			$.ui.ddmanager.drag(this, event);
+			return true;
 		}
 
 		return false;
