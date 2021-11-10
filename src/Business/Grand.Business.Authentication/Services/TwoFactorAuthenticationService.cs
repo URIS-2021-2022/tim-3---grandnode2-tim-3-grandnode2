@@ -17,7 +17,7 @@ namespace Grand.Business.Authentication.Services
         private readonly IWorkContext _workContext;
         private readonly IUserFieldService _userFieldService;
         private readonly IServiceProvider _serviceProvider;
-        private TwoFactorAuthenticator _twoFactorAuthentication;
+        private readonly TwoFactorAuthenticator _twoFactorAuthentication;
 
         public TwoFactorAuthenticationService(
             IWorkContext workContext,
@@ -47,7 +47,7 @@ namespace Grand.Business.Authentication.Services
 
                     return true;
                 case TwoFactorAuthenticationType.SMSVerification:
-                    var smsVerificationService = _serviceProvider.GetRequiredService<ISMSVerificationService>();
+                    var smsVerificationService = _serviceProvider.GetRequiredService<ISmsVerificationService>();
                     return await smsVerificationService.Authenticate(secretKey, token.Trim(), customer);
                 default:
                     return false;
@@ -74,7 +74,7 @@ namespace Grand.Business.Authentication.Services
                     break;
 
                 case TwoFactorAuthenticationType.SMSVerification:
-                    var smsVerificationService = _serviceProvider.GetRequiredService<ISMSVerificationService>();
+                    var smsVerificationService = _serviceProvider.GetRequiredService<ISmsVerificationService>();
                     model = await smsVerificationService.GenerateCode(secretKey, customer, language);
                     break;
 
@@ -85,7 +85,7 @@ namespace Grand.Business.Authentication.Services
             return model;
         }
 
-        private string PrepareRandomCode()
+        private static string PrepareRandomCode()
         {
             Random generator = new Random();
             return generator.Next(0, 999999).ToString("D6");

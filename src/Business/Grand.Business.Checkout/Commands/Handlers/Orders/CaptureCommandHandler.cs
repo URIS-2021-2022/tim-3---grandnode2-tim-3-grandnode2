@@ -43,9 +43,9 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
         {
             var paymentTransaction = command.PaymentTransaction;
             if (paymentTransaction == null)
-                throw new ArgumentNullException(nameof(command.PaymentTransaction));
+                throw new ArgumentException(nameof(command.PaymentTransaction));
 
-            var canCapture = await _mediator.Send(new CanCaptureQuery() { PaymentTransaction = paymentTransaction });
+            var canCapture = await _mediator.Send(new CanCaptureQuery() { PaymentTransaction = paymentTransaction }, cancellationToken);
             if (!canCapture)
                 throw new GrandException("Cannot do capture for order.");
 
@@ -74,10 +74,10 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                         order.PaymentStatusId = PaymentStatus.Paid;
                         order.PaidDateUtc = DateTime.UtcNow;
                         await _orderService.UpdateOrder(order);
-                        await _mediator.Send(new CheckOrderStatusCommand() { Order = order });
+                        await _mediator.Send(new CheckOrderStatusCommand() { Order = order }, cancellationToken);
                         if (order.PaymentStatusId == PaymentStatus.Paid)
                         {
-                            await _mediator.Send(new ProcessOrderPaidCommand() { Order = order });
+                            await _mediator.Send(new ProcessOrderPaidCommand() { Order = order }, cancellationToken);
                         }
                     }
                 }

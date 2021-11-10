@@ -329,7 +329,7 @@ namespace Grand.Business.Marketing.Services.Customers
                         var pr = await _productService.GetProductById(product);
                         if (pr != null)
                         {
-                            if (pr.ProductCategories.Where(x => x.CategoryId == item).Count() > 0)
+                            if (pr.ProductCategories.Count(x => x.CategoryId == item) > 0)
                                 return true;
                         }
                     }
@@ -467,7 +467,7 @@ namespace Grand.Business.Marketing.Services.Customers
                         foreach (var item in condition.CustomCustomerAttributes)
                         {
                             var _fields = item.RegisterField.Split(':');
-                            if (_fields.Count() > 1)
+                            if (_fields.Length > 1)
                             {
                                 if (selectedValues.Where(x => x.CustomerAttributeId == _fields.FirstOrDefault() && x.Id == _fields.LastOrDefault()).Count() == 0)
                                     cond = false;
@@ -485,7 +485,7 @@ namespace Grand.Business.Marketing.Services.Customers
                         foreach (var item in condition.CustomCustomerAttributes)
                         {
                             var _fields = item.RegisterField.Split(':');
-                            if (_fields.Count() > 1)
+                            if (_fields.Length > 1)
                             {
                                 if (selectedValues.Where(x => x.CustomerAttributeId == _fields.FirstOrDefault() && x.Id == _fields.LastOrDefault()).Count() > 0)
                                     cond = true;

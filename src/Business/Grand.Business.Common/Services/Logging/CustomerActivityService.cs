@@ -158,12 +158,12 @@ namespace Grand.Business.Common.Services.Logging
             Customer customer, string ipAddress, string comment, params object[] commentParams)
         {
             if (customer == null)
-                return null;
+                return Task.Delay(0);
 
             var activityTypes = GetAllActivityTypesCachedSync();
             var activityType = activityTypes.FirstOrDefault(at => at.SystemKeyword == systemKeyword);
             if (activityType == null || !activityType.Enabled)
-                return null;
+                return Task.FromResult<object>(null);
 
             comment = CommonHelper.EnsureNotNull(comment);
             comment = string.Format(comment, commentParams);

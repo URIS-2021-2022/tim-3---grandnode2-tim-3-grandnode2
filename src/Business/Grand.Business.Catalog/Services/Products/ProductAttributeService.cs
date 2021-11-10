@@ -179,11 +179,16 @@ namespace Grand.Business.Catalog.Services.Products
         /// </summary>
         /// <param name="productAttributeMapping">The product attribute mapping</param>
         /// <param name="productId">Product ident</param>
-        public virtual async Task InsertProductAttributeMapping(ProductAttributeMapping productAttributeMapping, string productId)
+        public virtual Task InsertProductAttributeMapping(ProductAttributeMapping productAttributeMapping, string productId)
         {
             if (productAttributeMapping == null)
                 throw new ArgumentNullException(nameof(productAttributeMapping));
 
+            return InsertProductAttributeMappingAsync(productId, productAttributeMapping);
+        }
+
+        public virtual async Task InsertProductAttributeMappingAsync(string productId, ProductAttributeMapping productAttributeMapping)
+        {
             await _productRepository.AddToSet(productId, x => x.ProductAttributeMappings, productAttributeMapping);
 
             //cache
@@ -192,6 +197,7 @@ namespace Grand.Business.Catalog.Services.Products
             //event notification
             await _mediator.EntityInserted(productAttributeMapping);
         }
+        
 
         /// <summary>
         /// Updates the product attribute mapping
@@ -264,11 +270,11 @@ namespace Grand.Business.Catalog.Services.Products
 
             var p = await _productRepository.GetByIdAsync(productId);
             if (p == null)
-                throw new ArgumentNullException(nameof(p));
+                throw new ArgumentNullException(nameof(p), "p is null!");
 
             var pam = p.ProductAttributeMappings.FirstOrDefault(x => x.Id == productAttributeMappingId);
             if (pam == null)
-                throw new ArgumentNullException(nameof(pam));
+                throw new ArgumentNullException(nameof(pam), "pam is null!");
 
             pam.ProductAttributeValues.Add(productAttributeValue);
             await _productRepository.UpdateToSet(productId, x => x.ProductAttributeMappings, z => z.Id, productAttributeMappingId, pam);

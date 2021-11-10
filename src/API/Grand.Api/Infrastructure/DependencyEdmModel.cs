@@ -13,7 +13,7 @@ namespace Grand.Api.Infrastructure
 {
     public class DependencyEdmModel : IDependencyEdmModel
     {
-        protected void RegisterCommon(ODataConventionModelBuilder builder)
+        protected static void RegisterCommon(ODataConventionModelBuilder builder)
         {
             #region Language model
 
@@ -60,7 +60,7 @@ namespace Grand.Api.Infrastructure
 
             #endregion
         }
-        protected void RegisterProduct(ODataConventionModelBuilder builder)
+        protected static void RegisterProduct(ODataConventionModelBuilder builder)
         {
             builder.EntitySet<ProductDto>("Product");
             var product = builder.EntityType<ProductDto>();
@@ -223,7 +223,7 @@ namespace Grand.Api.Infrastructure
             #endregion
         }
 
-        protected void RegisterCatalog(ODataConventionModelBuilder builder)
+        protected static void RegisterCatalog(ODataConventionModelBuilder builder)
         {
             #region Category model
 
@@ -258,7 +258,7 @@ namespace Grand.Api.Infrastructure
 
         }
 
-        protected void RegisterCustomers(ODataConventionModelBuilder builder)
+        protected static void RegisterCustomers(ODataConventionModelBuilder builder)
         {
             #region Customer
 
@@ -327,7 +327,7 @@ namespace Grand.Api.Infrastructure
             #endregion
         }
 
-        protected void RegisterShipping(ODataConventionModelBuilder builder)
+        protected static void RegisterShipping(ODataConventionModelBuilder builder)
         {
             #region Warehouse model
 

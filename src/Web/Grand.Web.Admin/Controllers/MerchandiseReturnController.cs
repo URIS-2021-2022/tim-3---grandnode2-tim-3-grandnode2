@@ -90,7 +90,7 @@ namespace Grand.Web.Admin.Controllers
             if (model.GoDirectlyToId == null)
                 return RedirectToAction("List", "MerchandiseReturn");
 
-            int.TryParse(model.GoDirectlyToId, out var id);
+            int id = int.TryParse(model.GoDirectlyToId, out id) ? id : 0;
 
             //try to load a product entity
             var merchandiseReturn = await _merchandiseReturnService.GetMerchandiseReturnById(id);

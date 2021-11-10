@@ -57,7 +57,7 @@
         /// <summary>
         /// Widget
         /// </summary>
-        Widget = 120,
+        Widget = Document,
         /// <summary>
         /// Campaign
         /// </summary>

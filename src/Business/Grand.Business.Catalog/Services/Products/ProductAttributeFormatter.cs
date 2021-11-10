@@ -213,8 +213,7 @@ namespace Grand.Business.Catalog.Services.Products
                         else if (attribute.AttributeControlTypeId == AttributeControlType.FileUpload)
                         {
                             //file upload
-                            Guid downloadGuid;
-                            Guid.TryParse(valueStr, out downloadGuid);
+                            _ = Guid.TryParse(valueStr, out Guid downloadGuid);
                             var download = await _downloadService.GetDownloadByGuid(downloadGuid);
                             if (download != null)
                             {

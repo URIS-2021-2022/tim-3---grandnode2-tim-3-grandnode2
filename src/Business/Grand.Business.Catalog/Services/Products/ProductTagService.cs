@@ -50,10 +50,9 @@ namespace Grand.Business.Catalog.Services.Products
 
         #region Nested classes
 
-        private class ProductTagWithCount
+        private sealed class ProductTagWithCount
         {
-            public int ProductTagId { get; set; }
-            public int ProductCount { get; set; }
+           
         }
 
         #endregion

@@ -31,8 +31,9 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
         public async Task<bool> Handle(PartiallyPaidOfflineCommand command, CancellationToken cancellationToken)
         {
             var paymentTransaction = command.PaymentTransaction;
+            var nameOfTransaction = nameof(paymentTransaction);
             if (paymentTransaction == null)
-                throw new ArgumentNullException(nameof(command.PaymentTransaction));
+                throw new ArgumentNullException(nameOfTransaction, "Payment transaction is null.");
 
             var amountToPaid = command.AmountToPaid;
 
@@ -45,8 +46,9 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
             await _paymentTransactionService.UpdatePaymentTransaction(paymentTransaction);
 
             var order = await _orderService.GetOrderByGuid(paymentTransaction.OrderGuid);
+            var nameOfOrder = nameof(order);
             if (order == null)
-                throw new ArgumentNullException(nameof(order));
+                throw new ArgumentNullException(nameOfOrder, "Order is null.");
 
             //update order info
             order.PaidAmount += amountToPaid;

@@ -263,7 +263,7 @@ namespace Grand.Business.Marketing.Services.Campaigns
             return await Task.FromResult(model);
         }
 
-        private class CampaignCustomerHelp
+        private sealed class CampaignCustomerHelp
         {
             public CampaignCustomerHelp()
             {
@@ -276,7 +276,7 @@ namespace Grand.Business.Marketing.Services.Campaigns
             public DateTime LastActivityDateUtc { get; set; }
             public DateTime? LastPurchaseDateUtc { get; set; }
             public bool HasShoppingCartItems { get; set; }
-            public bool IsHasOrders { get; set; }
+            public bool IsHasOrders { get; set; } = false;
             public ICollection<string> CustomerTags { get; set; }
             public ICollection<string> NewsletterCategories { get; set; }
             public ICollection<string> CustomerGroups { get; set; }

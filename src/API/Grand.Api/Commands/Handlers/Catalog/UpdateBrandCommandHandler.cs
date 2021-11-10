@@ -24,7 +24,6 @@ namespace Grand.Api.Commands.Models.Catalog
         private readonly ITranslationService _translationService;
         private readonly IPictureService _pictureService;
         private readonly IWorkContext _workContext;
-
         private readonly SeoSettings _seoSettings;
 
         public UpdateBrandCommandHandler(

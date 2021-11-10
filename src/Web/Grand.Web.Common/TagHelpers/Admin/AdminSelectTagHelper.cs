@@ -13,12 +13,12 @@ namespace Grand.Web.Common.TagHelpers.Admin
         private const string ForAttributeName = "asp-for";
         private const string DisplayHintAttributeName = "asp-display-hint";
 
-        private readonly IWorkContext _workContext;
+        
         private readonly ITranslationService _translationService;
 
-        public AdminSelectTagHelper(IHtmlGenerator generator, IWorkContext workContext, ITranslationService translationService) : base(generator)
+        public AdminSelectTagHelper(IHtmlGenerator generator, ITranslationService translationService) : base(generator)
         {
-            _workContext = workContext;
+            //_workContext = workContext;
             _translationService = translationService;
         }
 

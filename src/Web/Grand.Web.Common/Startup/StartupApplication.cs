@@ -54,7 +54,7 @@ namespace Grand.Web.Common.Startup
 
         public void Configure(IApplicationBuilder application, IWebHostEnvironment webHostEnvironment)
         {
-
+            //method should have an implementation
         }
         public int Priority => 0;
         public bool BeforeConfigure => false;
