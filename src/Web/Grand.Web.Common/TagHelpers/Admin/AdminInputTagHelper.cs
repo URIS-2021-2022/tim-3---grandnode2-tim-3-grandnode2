@@ -104,17 +104,19 @@ namespace Grand.Web.Common.TagHelpers.Admin
             //clear the output
             output.SuppressOutput();
 
+            bool done;
+
             //disabled attribute
-            bool.TryParse(IsDisabled, out bool disabled);
-            if (disabled)
+            done = bool.TryParse(IsDisabled, out bool disabled);
+            if (done && disabled)
             {
                 var d = new TagHelperAttribute("disabled", "disabled");
                 output.Attributes.Add(d);
             }
 
             //required asterisk
-            bool.TryParse(IsRequired, out bool required);
-            if (required)
+            done = bool.TryParse(IsRequired, out bool required);
+            if (done && required)
             {
                 output.PreElement.SetHtmlContent("<div class='input-group input-group-required'>");
                 output.PostElement.SetHtmlContent("<div class=\"input-group-btn\"><span class=\"required\">*</span></div></div>");
@@ -125,9 +127,9 @@ namespace Grand.Web.Common.TagHelpers.Admin
             viewContextAware?.Contextualize(ViewContext);
 
             //add form-control class
-            bool.TryParse(RenderFormControlClass, out bool renderFormControlClass);
+            done = bool.TryParse(RenderFormControlClass, out bool renderFormControlClass);
             object htmlAttributes = null;
-            if (string.IsNullOrEmpty(RenderFormControlClass) && For.Metadata.ModelType.Name.Equals("String") || renderFormControlClass)
+            if (done && (string.IsNullOrEmpty(RenderFormControlClass) && For.Metadata.ModelType.Name.Equals("String") || renderFormControlClass))
                 htmlAttributes = new { @class = "form-control k-input" };
 
             var viewEngine = GetPrivateFieldValue(_htmlHelper, "_viewEngine") as IViewEngine;

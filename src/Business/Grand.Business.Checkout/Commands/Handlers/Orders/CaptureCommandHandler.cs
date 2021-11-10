@@ -73,10 +73,10 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                         order.PaymentStatusId = PaymentStatus.Paid;
                         order.PaidDateUtc = DateTime.UtcNow;
                         await _orderService.UpdateOrder(order);
-                        await _mediator.Send(new CheckOrderStatusCommand() { Order = order });
+                        await _mediator.Send(new CheckOrderStatusCommand() { Order = order }, cancellationToken);
                         if (order.PaymentStatusId == PaymentStatus.Paid)
                         {
-                            await _mediator.Send(new ProcessOrderPaidCommand() { Order = order });
+                            await _mediator.Send(new ProcessOrderPaidCommand() { Order = order }, cancellationToken);
                         }
                     }
                 }

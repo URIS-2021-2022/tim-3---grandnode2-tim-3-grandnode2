@@ -32,7 +32,7 @@ namespace Grand.Business.Checkout.Startup
         public bool BeforeConfigure => false;
 
 
-        private void RegisterOrdersService(IServiceCollection serviceCollection)
+        private static void RegisterOrdersService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<ILoyaltyPointsService, LoyaltyPointsService>();
             serviceCollection.AddScoped<IGiftVoucherService, GiftVoucherService>();
@@ -49,12 +49,12 @@ namespace Grand.Business.Checkout.Startup
             serviceCollection.AddScoped<IOrderTagService, OrderTagService>();
 
         }
-        private void RegisterPaymentsService(IServiceCollection serviceCollection)
+        private static void RegisterPaymentsService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IPaymentService, PaymentService>();
             serviceCollection.AddScoped<IPaymentTransactionService, PaymentTransactionService>();
         }
-        private void RegisterShippingService(IServiceCollection serviceCollection)
+        private static void RegisterShippingService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IShipmentService, ShipmentService>();
             serviceCollection.AddScoped<IShippingService, ShippingService>();

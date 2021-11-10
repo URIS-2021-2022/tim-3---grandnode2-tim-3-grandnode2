@@ -50,7 +50,7 @@ namespace Grand.Web.Admin.Controllers
         public virtual async Task<IActionResult> AsyncUpload(Reference reference = Reference.None, string objectId = "")
         {
             var form = await HttpContext.Request.ReadFormAsync();
-            var httpPostedFile = form.Files.FirstOrDefault();
+            var httpPostedFile = form.Files[0];
             if (httpPostedFile == null)
             {
                 return Json(new
@@ -115,7 +115,7 @@ namespace Grand.Web.Admin.Controllers
                 return Content("Access denied");
 
             var form = await HttpContext.Request.ReadFormAsync();
-            var httpPostedFile = form.Files.FirstOrDefault();
+            var httpPostedFile = form.Files[0];
             if (httpPostedFile == null)
             {
                 return Json(new
