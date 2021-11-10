@@ -874,7 +874,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
         else if (c != maybeelse) break;
       }
       while ((lexical.type == "stat" || lexical.type == "form") &&
-             (firstChar == "}" || ((top = state.cc[state.cc.length - 1]) &&
+             ( ((top = state.cc[state.cc.length - 1]) &&
                                    (top == maybeoperatorComma || top == maybeoperatorNoComma) &&
                                    !/^[,\.=+\-*:?[\(]/.test(textAfter))))
         lexical = lexical.prev;
