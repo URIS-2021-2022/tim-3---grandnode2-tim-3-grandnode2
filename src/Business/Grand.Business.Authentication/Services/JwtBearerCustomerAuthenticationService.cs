@@ -35,14 +35,14 @@ namespace Grand.Business.Authentication.Services
 
         public async Task<bool> Valid(TokenValidatedContext context)
         {
-            var email = context.Principal.Claims.ToList().FirstOrDefault(x => x.Type == "Email")?.Value;
-            var passwordToken = context.Principal.Claims.ToList().FirstOrDefault(x => x.Type == "Token")?.Value;
-            var refreshId = context.Principal.Claims.ToList().FirstOrDefault(x => x.Type == "RefreshId")?.Value;
+            var email = context.Principal.Claims.FirstOrDefault(x => x.Type == "Email")?.Value;
+            var passwordToken = context.Principal.Claims.FirstOrDefault(x => x.Type == "Token")?.Value;
+            var refreshId = context.Principal.Claims.FirstOrDefault(x => x.Type == "RefreshId")?.Value;
             Customer customer = null;
             if(email is null)
             {
                 //guest
-                var id= context.Principal.Claims.ToList().FirstOrDefault(x => x.Type == "Guid")?.Value;
+                var id= context.Principal.Claims.FirstOrDefault(x => x.Type == "Guid")?.Value;
                 customer = await _customerService.GetCustomerByGuid(Guid.Parse(id));
             }
             else

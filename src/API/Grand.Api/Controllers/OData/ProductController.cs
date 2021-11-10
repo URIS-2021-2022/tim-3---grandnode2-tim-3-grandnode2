@@ -167,7 +167,7 @@ namespace Grand.Api.Controllers.OData
             if (!product.Any())
                 return NotFound();
 
-            var pc = product.FirstOrDefault().ProductCategories.Where(x => x.CategoryId == productCategory.CategoryId).FirstOrDefault();
+            var pc = product.FirstOrDefault().ProductCategories.FirstOrDefault(x => x.CategoryId == productCategory.CategoryId);
             if (pc != null)
                 ModelState.AddModelError("", "Product category mapping found with the specified categoryid");
 
@@ -195,7 +195,7 @@ namespace Grand.Api.Controllers.OData
                 return NotFound();
 
 
-            var pc = product.FirstOrDefault().ProductCategories.Where(x => x.CategoryId == productCategory.CategoryId).FirstOrDefault();
+            var pc = product.FirstOrDefault().ProductCategories.FirstOrDefault(x => x.CategoryId == productCategory.CategoryId);
             if (pc == null)
                 ModelState.AddModelError("", "No product category mapping found with the specified id");
 
@@ -226,7 +226,7 @@ namespace Grand.Api.Controllers.OData
             var categoryId = parameters.FirstOrDefault(x => x.Key == "CategoryId").Value;
             if (categoryId != null)
             {
-                var pc = product.FirstOrDefault().ProductCategories.Where(x => x.CategoryId == categoryId.ToString()).FirstOrDefault();
+                var pc = product.FirstOrDefault().ProductCategories.FirstOrDefault(x => x.CategoryId == categoryId.ToString());
                 if (pc == null)
                     ModelState.AddModelError("", "No product category mapping found with the specified id");
 

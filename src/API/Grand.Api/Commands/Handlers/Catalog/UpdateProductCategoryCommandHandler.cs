@@ -24,7 +24,7 @@ namespace Grand.Api.Commands.Models.Catalog
         public async Task<bool> Handle(UpdateProductCategoryCommand request, CancellationToken cancellationToken)
         {
             var product = await _productService.GetProductById(request.Product.Id, true);
-            var productCategory = product.ProductCategories.Where(x => x.CategoryId == request.Model.CategoryId).FirstOrDefault();
+            var productCategory = product.ProductCategories.FirstOrDefault(x => x.CategoryId == request.Model.CategoryId);
             if (productCategory == null)
                 throw new ArgumentException("No product category mapping found with the specified id");
 

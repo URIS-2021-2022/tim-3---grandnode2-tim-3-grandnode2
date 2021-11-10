@@ -22,7 +22,7 @@ namespace Grand.Api.Commands.Models.Catalog
         public async Task<bool> Handle(UpdateProductCollectionCommand request, CancellationToken cancellationToken)
         {
             var product = await _productService.GetProductById(request.Product.Id, true);
-            var productCollection = product.ProductCollections.Where(x => x.CollectionId == request.Model.CollectionId).FirstOrDefault();
+            var productCollection = product.ProductCollections.FirstOrDefault(x => x.CollectionId == request.Model.CollectionId);
             if (productCollection == null)
                 throw new ArgumentException("No product collection mapping found with the specified id");
 

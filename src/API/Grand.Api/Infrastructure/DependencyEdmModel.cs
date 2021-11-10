@@ -136,7 +136,6 @@ namespace Grand.Api.Infrastructure
             createSpecification.Parameter<string>(nameof(ProductSpecificationAttributeDto.Id));
             createSpecification.Parameter<int>(nameof(ProductSpecificationAttributeDto.DisplayOrder));
             createSpecification.Parameter<string>(nameof(ProductSpecificationAttributeDto.CustomValue));
-            //createSpecification.Parameter<SpecificationAttributeType>(nameof(ProductSpecificationAttributeDto.AttributeType)).Required();
             createSpecification.Parameter<bool>(nameof(ProductSpecificationAttributeDto.AllowFiltering));
             createSpecification.Parameter<string>(nameof(ProductSpecificationAttributeDto.SpecificationAttributeId));
             createSpecification.Parameter<bool>(nameof(ProductSpecificationAttributeDto.ShowOnProductPage));
@@ -148,7 +147,6 @@ namespace Grand.Api.Infrastructure
             updateSpecification.Parameter<string>(nameof(ProductSpecificationAttributeDto.Id)).Required();
             updateSpecification.Parameter<int>(nameof(ProductSpecificationAttributeDto.DisplayOrder));
             updateSpecification.Parameter<string>(nameof(ProductSpecificationAttributeDto.CustomValue));
-            //updateSpecification.Parameter<SpecificationAttributeType>(nameof(ProductSpecificationAttributeDto.AttributeType)).Required();
             updateSpecification.Parameter<bool>(nameof(ProductSpecificationAttributeDto.AllowFiltering));
             updateSpecification.Parameter<string>(nameof(ProductSpecificationAttributeDto.SpecificationAttributeId)).Required();
             updateSpecification.Parameter<bool>(nameof(ProductSpecificationAttributeDto.ShowOnProductPage));

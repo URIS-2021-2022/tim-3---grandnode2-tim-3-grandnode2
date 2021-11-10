@@ -210,16 +210,13 @@ namespace Grand.Business.Catalog.Extensions
             {
 
                 var comb = productAttributeParser.FindProductAttributeCombination(product, attributes);
-                if (comb != null)
+                if (comb != null && !string.IsNullOrEmpty(comb.PictureId))
                 {
-                    if (!string.IsNullOrEmpty(comb.PictureId))
-                    {
                         var combPicture = await pictureService.GetPictureById(comb.PictureId);
                         if (combPicture != null)
                         {
                             picture = combPicture;
-                        }
-                    }
+                        }               
                 }
                 if (picture == null)
                 {
@@ -245,12 +242,11 @@ namespace Grand.Business.Catalog.Extensions
             if (picture == null && !product.VisibleIndividually && !string.IsNullOrEmpty(product.ParentGroupedProductId))
             {
                 var parentProduct = await productService.GetProductById(product.ParentGroupedProductId);
-                if (parentProduct != null)
-                    if (parentProduct.ProductPictures.Any())
-                    {
+                if (parentProduct != null && parentProduct.ProductPictures.Any())
+                {
                         picture = await pictureService.GetPictureById(parentProduct.ProductPictures.FirstOrDefault().PictureId);
 
-                    }
+                }
             }
 
             return picture;
