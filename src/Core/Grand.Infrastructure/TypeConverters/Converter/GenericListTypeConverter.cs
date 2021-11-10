@@ -34,7 +34,7 @@ namespace Grand.Infrastructure.TypeConverters.Converter
         /// <returns>Array</returns>
         protected virtual string[] GetStringArray(string input)
         {
-            return string.IsNullOrEmpty(input) ? new string[0] : input.Split(',').Select(x => x.Trim()).ToArray();
+            return string.IsNullOrEmpty(input) ? Array.Empty<string>() : input.Split(',').Select(x => x.Trim()).ToArray();
         }
 
         /// <summary>

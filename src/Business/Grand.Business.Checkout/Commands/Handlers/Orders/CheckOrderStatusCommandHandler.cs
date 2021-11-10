@@ -51,7 +51,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                         Os = OrderStatusSystem.Processing,
                         NotifyCustomer = false,
                         NotifyStoreOwner = false
-                    });
+                    }, cancellationToken);
                 }
 
                 if (request.Order.ShippingStatusId == ShippingStatus.PartiallyShipped ||
@@ -64,7 +64,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                         Os = OrderStatusSystem.Processing,
                         NotifyCustomer = false,
                         NotifyStoreOwner = false
-                    });
+                    }, cancellationToken);
                 }
             }
 
@@ -98,7 +98,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                             Os = OrderStatusSystem.Complete,
                             NotifyCustomer = true,
                             NotifyStoreOwner = false
-                        });
+                        }, cancellationToken);
                     }
                 }
             }

@@ -183,7 +183,7 @@ namespace Grand.Web.Common.TagHelpers.Admin
         {
             if (target == null)
             {
-                throw new ArgumentNullException("target", "The assignment target cannot be null.");
+                throw new ArgumentNullException(nameof(target), "The assignment target cannot be null.");
             }
 
             if (string.IsNullOrEmpty(fieldName))

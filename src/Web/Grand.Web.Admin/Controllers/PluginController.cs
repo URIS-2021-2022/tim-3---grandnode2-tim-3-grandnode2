@@ -110,7 +110,7 @@ namespace Grand.Web.Admin.Controllers
             }
         }
 
-        protected byte[] ToByteArray(Stream stream)
+        protected static byte[] ToByteArray(Stream stream)
         {
             using (stream)
             {
