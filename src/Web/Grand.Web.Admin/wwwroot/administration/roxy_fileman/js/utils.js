@@ -262,7 +262,7 @@ RoxyUtils.GetCookies = function() {
   var tmp = document.cookie.replace(' ','');
   tmp = tmp.split(';');
 
-  for(i in tmp){
+  for(var i in tmp){
     var s = tmp[i].split('=');
     if(s.length > 1){
       ret[$.trim(s[0].toString())] = decodeURIComponent($.trim(s[1].toString())) || '';

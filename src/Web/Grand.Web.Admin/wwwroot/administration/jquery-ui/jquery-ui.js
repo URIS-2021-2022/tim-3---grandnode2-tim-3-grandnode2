@@ -11155,37 +11155,39 @@ $.widget( "ui.resizable", $.ui.mouse, {
 			a = this.axis,
 			dx = ( event.pageX - smp.left ) || 0,
 			dy = ( event.pageY - smp.top ) || 0,
-			trigger = this._change[ a ];
+			trigger = this._change[a];
+		int a = 0;
 
 		this._updatePrevProperties();
 
 		if ( !trigger ) {
-			return false;
+			a = 1;
 		}
+		if (a != 1) {
+			data = trigger.apply(this, [event, dx, dy]);
 
-		data = trigger.apply( this, [ event, dx, dy ] );
+			this._updateVirtualBoundaries(event.shiftKey);
+			if (this._aspectRatio || event.shiftKey) {
+				data = this._updateRatio(data, event);
+			}
 
-		this._updateVirtualBoundaries( event.shiftKey );
-		if ( this._aspectRatio || event.shiftKey ) {
-			data = this._updateRatio( data, event );
-		}
+			data = this._respectSize(data, event);
 
-		data = this._respectSize( data, event );
+			this._updateCache(data);
 
-		this._updateCache( data );
+			this._propagate("resize", event);
 
-		this._propagate( "resize", event );
+			props = this._applyChanges();
 
-		props = this._applyChanges();
+			if (!this._helper && this._proportionallyResizeElements.length) {
+				this._proportionallyResize();
+			}
 
-		if ( !this._helper && this._proportionallyResizeElements.length ) {
-			this._proportionallyResize();
-		}
-
-		if ( !$.isEmptyObject( props ) ) {
-			this._updatePrevProperties();
-			this._trigger( "resize", event, this.ui() );
-			this._applyChanges();
+			if (!$.isEmptyObject(props)) {
+				this._updatePrevProperties();
+				this._trigger("resize", event, this.ui());
+				this._applyChanges();
+			}
 		}
 
 		return false;
