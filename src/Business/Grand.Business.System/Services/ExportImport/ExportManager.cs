@@ -694,7 +694,7 @@ namespace Grand.Business.System.Services.ExportImport
                         if (i != categoryNames.Count - 1)
                         {
                             sb.Append(separator);
-                            sb.Append(" ");
+                            sb.Append(' ');
                         }
                     }
                 }

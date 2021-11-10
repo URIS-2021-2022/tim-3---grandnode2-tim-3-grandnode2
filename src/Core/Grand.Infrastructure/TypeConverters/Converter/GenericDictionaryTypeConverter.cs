@@ -56,12 +56,12 @@ namespace Grand.Infrastructure.TypeConverters.Converter
         {
             if (value is string input)
             {
-                string[] items = string.IsNullOrEmpty(input) ? new string[0] : input.Split(';').Select(x => x.Trim()).ToArray();
+                string[] items = string.IsNullOrEmpty(input) ? Array.Empty<string>() : input.Split(';').Select(x => x.Trim()).ToArray();
 
                 var result = new Dictionary<K, V>();
                 foreach (var s in items)
                 {
-                    string[] keyValueStr = string.IsNullOrEmpty(s) ? new string[0] : s.Split(',').Select(x => x.Trim()).ToArray();
+                    string[] keyValueStr = string.IsNullOrEmpty(s) ? Array.Empty<string>() : s.Split(',').Select(x => x.Trim()).ToArray();
                     if (keyValueStr.Length == 2)
                     {
                         object dictionaryKey = typeConverterKey.ConvertFromInvariantString(keyValueStr[0]);
