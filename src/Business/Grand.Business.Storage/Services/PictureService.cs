@@ -426,7 +426,9 @@ namespace Grand.Business.Storage.Services
                             using var image = SKBitmap.Decode(pictureBinary);
                             pictureBinary = ApplyResize(image, EncodedImageFormat(picture.MimeType), targetSize);
                         }
-                        catch { }
+                        catch { 
+                            //Exception is not used
+                        }
                     }
                     await SaveThumb(thumbFileName, pictureBinary);
 

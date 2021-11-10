@@ -364,7 +364,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
             {
                 foreach (var spec in productspecificationattribute)
                 {
-                    if (condition.ProductSpecifications.Where(x => x.ProductSpecyficationId == spec.SpecificationAttributeId && x.ProductSpecyficationValueId == spec.SpecificationAttributeOptionId).Count() > 0)
+                    if (condition.ProductSpecifications.Where(x => x.ProductSpecyficationId == spec.SpecificationAttributeId && x.ProductSpecyficationValueId == spec.SpecificationAttributeOptionId).Any())
                         cond = true;
                 }
             }
