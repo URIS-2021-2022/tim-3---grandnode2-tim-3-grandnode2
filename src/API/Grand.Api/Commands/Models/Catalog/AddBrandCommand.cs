@@ -5,6 +5,7 @@ namespace Grand.Api.Commands.Models.Catalog
 {
     public class AddBrandCommand : IRequest<BrandDto>
     {
+
         public BrandDto Model { get; set; }
     }
 }
