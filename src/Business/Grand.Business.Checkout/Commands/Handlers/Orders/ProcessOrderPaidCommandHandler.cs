@@ -84,7 +84,7 @@ namespace Grand.Business.Checkout.Commands.Handlers.Orders
                         await _messageProviderService.SendOrderPaidVendorMessage(order, vendor, _languageSettings.DefaultAdminLanguageId);
                     }
                 }
-                //TODO add "order paid email sent" order note
+                
             }
         }
     }

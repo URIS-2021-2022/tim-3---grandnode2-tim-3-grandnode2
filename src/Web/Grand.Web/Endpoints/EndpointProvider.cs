@@ -740,7 +740,7 @@ namespace Grand.Web.Endpoints
                             new { controller = "Page", action = "Authenticate" });
         }
 
-        private void RegisterInstallRoute(IEndpointRouteBuilder endpointRouteBuilder, string pattern)
+        private static void RegisterInstallRoute(IEndpointRouteBuilder endpointRouteBuilder, string pattern)
         {
             //install
             endpointRouteBuilder.MapControllerRoute("Installation", "install",

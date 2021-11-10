@@ -57,7 +57,7 @@ namespace Grand.Web.Common
 
                     var allStores = _storeService.GetAll();
                     var stores = allStores.Where(s => s.ContainsHostValue(host));
-                    if (stores.Count() == 0)
+                    if (stores.Any())
                     {
                         _cachedStore = allStores.FirstOrDefault();
                     }
