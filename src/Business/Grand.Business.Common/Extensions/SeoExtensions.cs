@@ -75,6 +75,33 @@ namespace Grand.Business.Common.Extensions
         }
 
         /// <summary>
+        /// Get SE name
+        /// </summary>
+        /// <param name="name">Name</param>
+        /// <returns>Result</returns>
+        public static string GetSeName(string name, SeoSettings seoSettings)
+        {
+            return GenerateSlug(name, seoSettings.ConvertNonWesternChars, seoSettings.AllowUnicodeCharsInUrls, seoSettings.AllowSlashChar, seoSettings.SeoCharConversion);
+        }
+
+        /// <summary>
+        /// Get SE name
+        /// </summary>
+        /// <param name="name">Name</param>
+        /// <returns>Result</returns>
+        public static string GetSeName(string name, bool convertNonWesternChars, bool allowUnicodeCharsInUrls, string charConversions = null)
+        {
+            return GenerateSlug(name, convertNonWesternChars, allowUnicodeCharsInUrls, false, charConversions);
+        }
+        /// <summary>
+        /// Get SE name
+        /// </summary>
+        /// <param name="name">Name</param>
+        /// <param name="convertNonWesternChars">A value indicating whether non western chars should be converted</param>
+        /// <param name="allowUnicodeCharsInUrls">A value indicating whether Unicode chars are allowed</param>
+        /// <returns>Result</returns>
+
+        /// <summary>
         /// Validate search engine name
         /// </summary>
         /// <param name="entity">Entity</param>
@@ -139,33 +166,6 @@ namespace Grand.Business.Common.Extensions
             return seName;
         }
 
-
-        /// <summary>
-        /// Get SE name
-        /// </summary>
-        /// <param name="name">Name</param>
-        /// <returns>Result</returns>
-        public static string GetSeName(string name, SeoSettings seoSettings)
-        {
-            return GenerateSlug(name, seoSettings.ConvertNonWesternChars, seoSettings.AllowUnicodeCharsInUrls, seoSettings.AllowSlashChar, seoSettings.SeoCharConversion);
-        }
-
-        /// <summary>
-        /// Get SE name
-        /// </summary>
-        /// <param name="name">Name</param>
-        /// <returns>Result</returns>
-        public static string GetSeName(string name, bool convertNonWesternChars, bool allowUnicodeCharsInUrls, string charConversions = null)
-        {
-            return GenerateSlug(name, convertNonWesternChars, allowUnicodeCharsInUrls, false, charConversions);
-        }
-        /// <summary>
-        /// Get SE name
-        /// </summary>
-        /// <param name="name">Name</param>
-        /// <param name="convertNonWesternChars">A value indicating whether non western chars should be converted</param>
-        /// <param name="allowUnicodeCharsInUrls">A value indicating whether Unicode chars are allowed</param>
-        /// <returns>Result</returns>
         public static string GenerateSlug(string name, bool convertNonWesternChars, bool allowUnicodeCharsInUrls, bool allowslashChar, string charConversions = null)
         {
             if (string.IsNullOrEmpty(name))

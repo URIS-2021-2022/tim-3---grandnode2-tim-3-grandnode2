@@ -39,7 +39,7 @@ namespace Grand.Business.Marketing.Services.Courses
                                where a.CustomerId == customerId && a.LessonId == lessonId
                                select a).FirstOrDefault());
 
-            return query != null ? query.Finished : false;
+            return query != null && query.Finished;
         }
 
         public virtual async Task<CourseAction> InsertAsync(CourseAction courseAction)
