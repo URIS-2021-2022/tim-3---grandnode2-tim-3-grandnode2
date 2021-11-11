@@ -126,7 +126,7 @@ namespace Grand.Business.Common.Services.Pdf
                 await _downloadRepository.InsertAsync(download);
 
                 //TODO
-                //await _mediator.EntityInserted(download);
+                
                 downloadId = download.Id;
             }
             return downloadId;

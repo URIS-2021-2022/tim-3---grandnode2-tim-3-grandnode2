@@ -103,7 +103,7 @@ namespace Grand.Business.Common.Services.Security
 
         #region Utilities
 
-        private byte[] EncryptTextToMemory(string data, byte[] key, byte[] iv)
+        private static byte[] EncryptTextToMemory(string data, byte[] key, byte[] iv)
         {
             using (var ms = new MemoryStream())
             {
