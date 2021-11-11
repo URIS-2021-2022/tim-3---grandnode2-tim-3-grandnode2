@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using System;
 
 namespace Grand.Business.Marketing.Events
 {
-    public sealed class EmailUnsubscribedEvent : INotification
+    public sealed class EmailUnsubscribedEvent : INotification, IEquatable<EmailUnsubscribedEvent>
     {
         private readonly string _email;
 

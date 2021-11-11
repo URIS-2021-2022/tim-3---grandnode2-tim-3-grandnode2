@@ -131,11 +131,14 @@ namespace Widgets.Slider.Services
         /// Delete slide
         /// </summary>
         /// <param name="slide">Picture Slider</param>
-        public virtual async Task DeletePictureSlider(PictureSlider slide)
-        {
+        /// 
+        public virtual Task DeletePictureSlider(PictureSlider slide) {
             if (slide == null)
                 throw new ArgumentNullException(nameof(slide));
-
+            return DeletePictureSliderAsync(slide);
+        }
+        public virtual async Task DeletePictureSliderAsync(PictureSlider slide)
+        {
             //clear cache
             await _cacheBase.RemoveByPrefix(SLIDERS_PATTERN_KEY);
 

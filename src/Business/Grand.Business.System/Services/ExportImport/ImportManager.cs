@@ -1030,7 +1030,9 @@ namespace Grand.Business.System.Services.ExportImport
                             }
                             iscategories = true;
                         }
-                        catch { };
+                        catch { 
+                            //Exception is not used
+                        };
                     }
                     else
                         throw new GrandException("Wrong file format");

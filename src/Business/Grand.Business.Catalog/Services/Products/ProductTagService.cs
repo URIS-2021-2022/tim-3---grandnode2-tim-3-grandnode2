@@ -50,11 +50,6 @@ namespace Grand.Business.Catalog.Services.Products
 
         #region Nested classes
 
-        private sealed class ProductTagWithCount
-        {
-           
-        }
-
         #endregion
 
         #region Utilities

@@ -54,7 +54,7 @@ namespace Grand.Infrastructure.Caching.RabbitMq
         /// <param name="publisher">publisher</param>
         public override async Task Clear(bool publisher = true)
         {
-            await base.Clear();
+            await base.Clear(publisher);
             if (publisher)
                 await _bus.Publish(new CacheMessageEvent() { ClientId = ClientId, Key = "", MessageType = (int)MessageEventType.ClearCache });
         }

@@ -28,9 +28,10 @@ namespace Grand.Api.Validators.Catalog
             }).WithMessage(translationService.GetResource("Api.Catalog.SpecificationAttribute.Fields.Id.NotExists"));
             RuleFor(x => x).Must((x, context) =>
             {
-                foreach (var item in x.SpecificationAttributeOptions.Where(item => string.IsNullOrEmpty(item.Name)))
+                var item = x.SpecificationAttributeOptions.FirstOrDefault();
+                if (string.IsNullOrEmpty(item.Name))
                 {
-                        return false;
+                    return false;
                 }
                 return true;
             }).WithMessage(translationService.GetResource("Api.Catalog.SpecificationAttributeOptions.Fields.Name.Required"));

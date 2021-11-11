@@ -2667,7 +2667,7 @@ namespace Grand.Web.Admin.Controllers
             if (reservations.Any())
             {
                 if (((product.IntervalUnitId == IntervalUnit.Minute || product.IntervalUnitId == IntervalUnit.Hour) && (IntervalUnit)model.Interval == IntervalUnit.Day) ||
-                    (product.IntervalUnitId == IntervalUnit.Day) && (((IntervalUnit)model.IntervalUnit == IntervalUnit.Minute || (IntervalUnit)model.IntervalUnit == IntervalUnit.Hour)))
+                    (product.IntervalUnitId == IntervalUnit.Day) && (IntervalUnit)model.IntervalUnit == IntervalUnit.Minute || (IntervalUnit)model.IntervalUnit == IntervalUnit.Hour)
                 {
                     return Json(new { errors = _translationService.GetResource("Admin.Catalog.Products.Calendar.CannotChangeInterval") });
                 }
