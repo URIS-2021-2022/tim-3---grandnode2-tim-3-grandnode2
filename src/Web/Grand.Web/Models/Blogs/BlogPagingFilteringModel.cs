@@ -15,7 +15,8 @@ namespace Grand.Web.Models.Blogs
                 string[] tempDate = Month.Split(new [] { '-' });
                 if (tempDate.Length == 2)
                 {
-                    int.TryParse(tempDate[0], out var year);
+                    int year;
+                    year=int.TryParse(tempDate[0], out year) ? year : 0;
                     int.TryParse(tempDate[1], out var month);
                     try
                     {

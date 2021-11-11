@@ -216,7 +216,7 @@ namespace Grand.Web.Admin.Services
                 if (i != customerGroups.Count - 1)
                 {
                     sb.Append(separator);
-                    sb.Append(" ");
+                    sb.Append(' ');
                 }
             }
             return sb.ToString();

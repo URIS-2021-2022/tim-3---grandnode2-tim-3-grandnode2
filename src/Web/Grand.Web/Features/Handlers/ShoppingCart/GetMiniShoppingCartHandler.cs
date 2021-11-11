@@ -133,7 +133,7 @@ namespace Grand.Web.Features.Handlers.ShoppingCart
                         Customer = request.Customer,
                         Cart = cart.Where
                         (x => x.ShoppingCartTypeId == ShoppingCartType.ShoppingCart || x.ShoppingCartTypeId == ShoppingCartType.Auctions).ToList()
-                    });
+                    },cancellationToken);
 
                     model.DisplayCheckoutButton = !_orderSettings.TermsOfServiceOnShoppingCartPage &&
                         minOrderSubtotalAmountOk &&

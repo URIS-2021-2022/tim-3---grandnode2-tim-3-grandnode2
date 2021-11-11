@@ -27,7 +27,7 @@ namespace Grand.Web.Features.Handlers.Products
         public async Task<IList<ProductSpecificationModel>> Handle(GetProductSpecification request, CancellationToken cancellationToken)
         {
             if (request.Product == null)
-                throw new ArgumentNullException(nameof(request.Product));
+                throw new ArgumentNullException(nameof(request.Product),"Product is null");
 
             var spa = new List<ProductSpecificationModel>();
             foreach (var item in request.Product.ProductSpecificationAttributes.Where(x => x.ShowOnProductPage).OrderBy(x => x.DisplayOrder))

@@ -86,7 +86,7 @@ namespace Grand.Web.Admin.Services
         }
         public virtual async Task<CustomerReminder> UpdateCustomerReminderModel(CustomerReminder customerReminder, CustomerReminderModel model)
         {
-            if (customerReminder.Conditions.Count() > 0)
+            if (customerReminder.Conditions.Count > 0)
                 model.ReminderRuleId = customerReminder.ReminderRuleId;
             if (model.ReminderRuleId == 0)
                 model.ReminderRuleId = customerReminder.ReminderRuleId;

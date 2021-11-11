@@ -165,7 +165,7 @@ namespace Grand.Web.Controllers
             }
 
             var form = await HttpContext.Request.ReadFormAsync();
-            var httpPostedFile = form.Files.FirstOrDefault();
+            var httpPostedFile = form.Files[0];
             if (httpPostedFile == null)
             {
                 return Json(new

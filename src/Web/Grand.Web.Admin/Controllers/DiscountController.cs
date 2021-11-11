@@ -291,7 +291,7 @@ namespace Grand.Web.Admin.Controllers
         public async Task<IActionResult> GetDiscountRequirementConfigurationUrl(string systemName, string discountId, string discountRequirementId)
         {
             if (String.IsNullOrEmpty(systemName))
-                throw new ArgumentNullException("systemName");
+                throw new ArgumentNullException(nameof(systemName),"System name");
 
             var discountPlugin = _discountService.LoadDiscountProviderBySystemName(systemName);
 
