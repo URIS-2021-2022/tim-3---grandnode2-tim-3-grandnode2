@@ -61,15 +61,15 @@ namespace Grand.Api.Filters
             /// <summary>
             /// Called early in the filter pipeline to confirm request is authorized
             /// </summary>
-            /// <param name="filterContext">Authorization filter context</param>
-            public async Task OnAuthorizationAsync(AuthorizationFilterContext filterContext)
+            /// <param name="context">Authorization filter context</param>
+            public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
             {
 
-                if (filterContext == null)
-                    throw new ArgumentNullException(nameof(filterContext));
+                if (context == null)
+                    throw new ArgumentNullException(nameof(context));
 
                 //check whether this filter has been overridden for the action
-                var actionFilter = filterContext.ActionDescriptor.FilterDescriptors
+                var actionFilter = context.ActionDescriptor.FilterDescriptors
                     .Where(f => f.Scope == FilterScope.Action)
                     .Select(f => f.Filter).OfType<AuthorizeApiAdminAttribute>().FirstOrDefault();
 
@@ -81,11 +81,11 @@ namespace Grand.Api.Filters
                     return;
 
                 //there is AdminAuthorizeFilter, so check access
-                if (filterContext.Filters.Any(filter => filter is AuthorizeApiAdminFilter))
+                if (context.Filters.Any(filter => filter is AuthorizeApiAdminFilter))
                 {
                     //authorize permission of access to the admin area
                     if (!await _permissionService.Authorize(StandardPermission.AccessAdminPanel))
-                        filterContext.Result = new ForbidResult(JwtBearerDefaults.AuthenticationScheme);
+                        context.Result = new ForbidResult(JwtBearerDefaults.AuthenticationScheme);
 
                     //get allowed IP addresses
                     var ipAddresses = _securitySettings.AdminAreaAllowedIpAddresses;
@@ -95,9 +95,9 @@ namespace Grand.Api.Filters
                         return;
 
                     //whether current IP is allowed
-                    var currentIp = filterContext.HttpContext?.Connection?.RemoteIpAddress?.ToString();
+                    var currentIp = context.HttpContext?.Connection?.RemoteIpAddress?.ToString();
                     if (!ipAddresses.Any(ip => ip.Equals(currentIp, StringComparison.OrdinalIgnoreCase)))
-                        filterContext.Result = new ForbidResult(JwtBearerDefaults.AuthenticationScheme);
+                        context.Result = new ForbidResult(JwtBearerDefaults.AuthenticationScheme);
 
                 }
             }

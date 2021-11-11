@@ -23,7 +23,6 @@ namespace Grand.Business.Common.Services.Directory
         #region Fields
 
         private readonly IRepository<Country> _countryRepository;
-        private readonly CatalogSettings _catalogSettings;
         private readonly IMediator _mediator;
         private readonly ICacheBase _cacheBase;
 
@@ -45,7 +44,6 @@ namespace Grand.Business.Common.Services.Directory
         {
             _cacheBase = cacheBase;
             _countryRepository = countryRepository;
-            _catalogSettings = catalogSettings;
             _mediator = mediator;
         }
 

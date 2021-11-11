@@ -103,13 +103,13 @@ namespace Grand.Business.Common.Services.Seo
         /// <summary>
         /// Deletes an URL Entity
         /// </summary>
-        /// <param name="urlEntity">URL Entity</param>
-        public virtual async Task DeleteEntityUrl(EntityUrl urlEntity)
+        /// <param name="entityUrl">URL Entity</param>
+        public virtual async Task DeleteEntityUrl(EntityUrl entityUrl)
         {
-            if (urlEntity == null)
-                throw new ArgumentNullException(nameof(urlEntity));
+            if (entityUrl == null)
+                throw new ArgumentNullException(nameof(entityUrl));
 
-            await _urlEntityRepository.DeleteAsync(urlEntity);
+            await _urlEntityRepository.DeleteAsync(entityUrl);
 
             //cache
             await _cacheBase.RemoveByPrefix(CacheKey.URLEntity_PATTERN_KEY);

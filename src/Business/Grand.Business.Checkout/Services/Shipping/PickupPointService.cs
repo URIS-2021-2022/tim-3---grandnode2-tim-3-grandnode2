@@ -81,54 +81,54 @@ namespace Grand.Business.Checkout.Services.Shipping
         /// Inserts a warehouse
         /// </summary>
         /// <param name="warehouse">Warehouse</param>
-        public virtual async Task InsertPickupPoint(PickupPoint pickupPoint)
+        public virtual async Task InsertPickupPoint(PickupPoint pickuppoint)
         {
-            if (pickupPoint == null)
-                throw new ArgumentNullException(nameof(pickupPoint));
+            if (pickuppoint == null)
+                throw new ArgumentNullException(nameof(pickuppoint));
 
-            await _pickupPointsRepository.InsertAsync(pickupPoint);
+            await _pickupPointsRepository.InsertAsync(pickuppoint);
 
             //clear cache
             await _cacheBase.RemoveByPrefix(CacheKey.PICKUPPOINTS_PATTERN_KEY);
 
             //event notification
-            await _mediator.EntityInserted(pickupPoint);
+            await _mediator.EntityInserted(pickuppoint);
         }
 
         /// <summary>
         /// Updates the warehouse
         /// </summary>
         /// <param name="warehouse">Warehouse</param>
-        public virtual async Task UpdatePickupPoint(PickupPoint pickupPoint)
+        public virtual async Task UpdatePickupPoint(PickupPoint pickuppoint)
         {
-            if (pickupPoint == null)
-                throw new ArgumentNullException(nameof(pickupPoint));
+            if (pickuppoint == null)
+                throw new ArgumentNullException(nameof(pickuppoint));
 
-            await _pickupPointsRepository.UpdateAsync(pickupPoint);
+            await _pickupPointsRepository.UpdateAsync(pickuppoint);
 
             //clear cache
             await _cacheBase.RemoveByPrefix(CacheKey.PICKUPPOINTS_PATTERN_KEY);
 
             //event notification
-            await _mediator.EntityUpdated(pickupPoint);
+            await _mediator.EntityUpdated(pickuppoint);
         }
 
         /// <summary>
         /// Deletes a delivery date
         /// </summary>
         /// <param name="deliveryDate">The delivery date</param>
-        public virtual async Task DeletePickupPoint(PickupPoint pickupPoint)
+        public virtual async Task DeletePickupPoint(PickupPoint pickuppoint)
         {
-            if (pickupPoint == null)
-                throw new ArgumentNullException(nameof(pickupPoint));
+            if (pickuppoint == null)
+                throw new ArgumentNullException(nameof(pickuppoint));
 
-            await _pickupPointsRepository.DeleteAsync(pickupPoint);
+            await _pickupPointsRepository.DeleteAsync(pickuppoint);
 
             //clear cache
             await _cacheBase.RemoveByPrefix(CacheKey.PICKUPPOINTS_PATTERN_KEY);
 
             //event notification
-            await _mediator.EntityDeleted(pickupPoint);
+            await _mediator.EntityDeleted(pickuppoint);
         }
 
 
