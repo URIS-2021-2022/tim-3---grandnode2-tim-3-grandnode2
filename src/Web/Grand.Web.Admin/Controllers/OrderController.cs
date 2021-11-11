@@ -1208,7 +1208,6 @@ namespace Grand.Web.Admin.Controllers
 
             //If we got this far, something failed, redisplay form
             model = await _orderViewModelService.PrepareOrderAddressModel(order, address);
-            model.BillingAddress = model.BillingAddress;
             return View(model);
         }
 

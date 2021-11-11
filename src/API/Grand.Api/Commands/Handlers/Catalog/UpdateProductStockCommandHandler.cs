@@ -109,10 +109,9 @@ namespace Grand.Api.Commands.Models.Catalog
             if (prevstock.StockQuantity - prevstock.ReservedQuantity <= 0)
             {
                 var actualStock = product.ProductWarehouseInventory.FirstOrDefault(x => x.WarehouseId == prevstock.WarehouseId);
-                if (actualStock != null)
+                if (actualStock != null && actualStock.StockQuantity - actualStock.ReservedQuantity > 0)
                 {
-                    if (actualStock.StockQuantity - actualStock.ReservedQuantity > 0)
-                        await _outOfStockSubscriptionService.SendNotificationsToSubscribers(product, prevstock.WarehouseId);
+                    await _outOfStockSubscriptionService.SendNotificationsToSubscribers(product, prevstock.WarehouseId);
                 }
             }
         }

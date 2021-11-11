@@ -299,11 +299,10 @@ namespace Grand.Business.Marketing.Commands.Handlers
                     foreach (var attrV in attributeValuesStr)
                     {
                         var attrsv = attr.ProductAttributeValues.Where(x => x.Id == attrV).FirstOrDefault();
-                        if (attrsv != null)
-                            if (condition.ProductAttribute.Where(x => x.ProductAttributeId == attr.ProductAttributeId && x.Name == attrsv.Name).Any())
-                            {
-                                cond = true;
-                            }
+                        if (attrsv != null && condition.ProductAttribute.Any(x => x.ProductAttributeId == attr.ProductAttributeId && x.Name == attrsv.Name))
+                        {
+                            cond = true;
+                        }
                     }
                 }
             }

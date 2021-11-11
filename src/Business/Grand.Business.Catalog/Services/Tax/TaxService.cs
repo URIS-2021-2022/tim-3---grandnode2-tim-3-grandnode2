@@ -419,10 +419,6 @@ namespace Grand.Business.Catalog.Services.Tax
                 taxrates.taxRate = 0;
             }
 
-            //allowed to support negative price adjustments
-            //if (price < 0)
-            //    price = 0;
-
             return (price, taxrates.taxRate);
         }
 

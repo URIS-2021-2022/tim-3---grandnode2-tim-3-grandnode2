@@ -3,7 +3,7 @@ using System;
 
 namespace Grand.Business.Marketing.Events
 {
-    public class EmailSubscribedEvent : INotification, IEquatable<EmailSubscribedEvent>
+    public sealed class EmailSubscribedEvent : INotification, IEquatable<EmailSubscribedEvent>
     {
         private readonly string _email;
 

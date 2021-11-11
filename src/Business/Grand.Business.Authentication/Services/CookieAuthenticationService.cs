@@ -76,11 +76,14 @@ namespace Grand.Business.Authentication.Services
         /// </summary>
         /// <param name="customer">Customer</param>
         /// <param name="isPersistent">Whether the authentication session is persisted across multiple requests</param>
-        public virtual async Task SignIn(Customer customer, bool isPersistent)
-        {
+        /// 
+        public virtual Task SignIn(Customer customer, bool createPersistentCookie) {
             if (customer == null)
                 throw new ArgumentNullException(nameof(customer));
-
+            return SignInAsync(customer, createPersistentCookie);
+        }
+        public virtual async Task SignInAsync(Customer customer, bool isPersistent)
+        {
             //create claims for customer's username and email
             var claims = new List<Claim>();
 

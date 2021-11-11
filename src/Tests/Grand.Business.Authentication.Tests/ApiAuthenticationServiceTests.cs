@@ -49,7 +49,7 @@ namespace Grand.Business.Authentication.Tests
             context.Principal = new ClaimsPrincipal(new ClaimsIdentity(claims, ""));
             var result = await _jwtBearerAuthenticationService.Valid(context);
             Assert.IsFalse(result);
-            Assert.AreEqual(await _jwtBearerAuthenticationService.ErrorMessage(), "Email not exists in the context");
+            Assert.AreEqual("Email not exists in the context", await _jwtBearerAuthenticationService.ErrorMessage());
         }
 
         [TestMethod()]
