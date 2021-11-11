@@ -38,8 +38,8 @@ namespace Grand.Web.Admin.Models.Customers
 
         [GrandResourceDisplayName("Admin.Customers.CustomerAction.Fields.ReactionType")]
         public int ReactionTypeId { get; set; }
-        public CustomerReactionTypeEnum ReactionType {
-            get { return (CustomerReactionTypeEnum)ReactionTypeId; }
+        public CustomerReactionTypeE ReactionType {
+            get { return (CustomerReactionTypeE)ReactionTypeId; }
             set { this.ReactionTypeId = (int)value; }
         }
 

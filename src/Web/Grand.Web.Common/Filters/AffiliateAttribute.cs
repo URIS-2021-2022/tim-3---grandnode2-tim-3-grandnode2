@@ -26,7 +26,7 @@ namespace Grand.Web.Common.Filters
         /// <summary>
         /// Represents a filter that checks and updates affiliate of customer
         /// </summary>
-        private class AffiliateFilter : IAsyncActionFilter
+        private sealed class AffiliateFilter : IAsyncActionFilter
         {
             #region Constants
 

@@ -131,9 +131,9 @@
     if (!classTest(cls).test(current)) { node.className += (current ? " " : "") + cls; }
   }
   function joinClasses(a, b) {
-    var as = a.split(" ");
-    for (var i = 0; i < as.length; i++)
-      { if (as[i] && !classTest(as[i]).test(b)) { b += " " + as[i]; } }
+      var as = a.split(" ");
+      for (let value of as)
+      { if (value && !classTest(value).test(b)) { b += " " + value; } }
     return b
   }
 
@@ -1969,9 +1969,9 @@
       var start = builder.pos, end = start + text.length;
       for (;;) {
         // Find the part that overlaps with the start of this text
-        var part = (void 0);
-        for (var i = 0; i < order.length; i++) {
-          part = order[i];
+          var part = (void 0);
+          for (let value of order) {
+          part = value;
           if (part.to > start && part.from <= start) { break }
         }
         if (part.to >= end) { return inner(builder, text, style, startStyle, endStyle, css, attributes) }
@@ -2656,12 +2656,12 @@
     // Work around https://bugs.chromium.org/p/chromium/issues/detail?id=489206
     // which causes page_Offset and bounding client rects to use
     // different reference viewports and invalidate our calculations.
-    if (chrome && android) { return -(document.body.getBoundingClientRect().left - parseInt(getComputedStyle(document.body).marginLeft)) }
-    return window.pageXOffset || (document.documentElement || document.body).scrollLeft
+      if (chrome && android) { return -(document.body.getBoundingClientRect().left - parseInt(getComputedStyle(document.body).marginLeft)) }
+      return window.scrollX || (document.documentElement || document.body).scrollLeft
   }
   function pageScrollY() {
-    if (chrome && android) { return -(document.body.getBoundingClientRect().top - parseInt(getComputedStyle(document.body).marginTop)) }
-    return window.pageYOffset || (document.documentElement || document.body).scrollTop
+      if (chrome && android) { return -(document.body.getBoundingClientRect().top - parseInt(getComputedStyle(document.body).marginTop)) }
+      return window.scrollY || (document.documentElement || document.body).scrollTop
   }
 
   function widgetTopHeight(lineObj) {

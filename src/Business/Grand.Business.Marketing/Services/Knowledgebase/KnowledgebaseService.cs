@@ -176,8 +176,6 @@ namespace Grand.Business.Marketing.Services.Knowledgebase
             var query = from p in _knowledgebaseArticleRepository.Table
                         select p;
 
-            var customer = _workContext.CurrentCustomer;
-
             if (!CommonHelper.IgnoreAcl)
             {
                 var allowedCustomerGroupsIds = _workContext.CurrentCustomer.GetCustomerGroupIds();
@@ -383,7 +381,6 @@ namespace Grand.Business.Marketing.Services.Knowledgebase
                 if (!CommonHelper.IgnoreStoreLimitations)
                 {
                     //Store acl
-                    var currentStoreId = new List<string> { _workContext.CurrentStore.Id };
                     query = from p in query
                             where !p.LimitedToStores || p.Stores.Contains(_workContext.CurrentStore.Id)
                             select p;
@@ -423,7 +420,6 @@ namespace Grand.Business.Marketing.Services.Knowledgebase
                 if (!CommonHelper.IgnoreStoreLimitations)
                 {
                     //Store acl
-                    var currentStoreId = new List<string> { _workContext.CurrentStore.Id };
                     query = from p in query
                             where !p.LimitedToStores || p.Stores.Contains(_workContext.CurrentStore.Id)
                             select p;
@@ -464,7 +460,7 @@ namespace Grand.Business.Marketing.Services.Knowledgebase
                     //Store acl
                     query = from p in query
                             where !p.LimitedToStores || p.Stores.Contains(_workContext.CurrentStore.Id)
-                            select p; ;
+                            select p;
                 }
                 query = query.OrderBy(x => x.DisplayOrder);
                 return await Task.FromResult(query.ToList());

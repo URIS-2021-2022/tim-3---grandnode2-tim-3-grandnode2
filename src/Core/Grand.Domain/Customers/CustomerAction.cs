@@ -28,12 +28,12 @@ namespace Grand.Domain.Customers
         /// <summary>
         /// Gets or sets the action conditions
         /// </summary>
-        public CustomerActionConditionEnum ConditionId { get; set; }
+        public CustomerActionConditionE ConditionId { get; set; }
 
         /// <summary>
         /// Gets or sets the action conditions
         /// </summary>
-        public CustomerReactionTypeEnum ReactionTypeId { get; set; }
+        public CustomerReactionTypeE ReactionTypeId { get; set; }
 
         public string BannerId { get; set; }
         public string InteractiveFormId { get; set; }
@@ -80,9 +80,9 @@ namespace Grand.Domain.Customers
 
             public string Name { get; set; }
 
-            public CustomerActionConditionTypeEnum CustomerActionConditionTypeId { get; set; }
+            public CustomerActionConditionTypeE CustomerActionConditionTypeId { get; set; }
 
-            public CustomerActionConditionEnum ConditionId { get; set; }
+            public CustomerActionConditionE ConditionId { get; set; }
 
             public virtual ICollection<string> Products
             {

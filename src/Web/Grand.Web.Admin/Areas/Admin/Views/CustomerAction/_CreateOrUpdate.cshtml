@@ -15,7 +15,7 @@
 
         function toggleReaction() {
             var selectedReactionTypeId = $("#@Html.IdFor(model => model.ReactionTypeId)").val();
-            if (selectedReactionTypeId == @(((int)Grand.Domain.Customers.CustomerReactionTypeEnum.Banner).ToString()))
+            if (selectedReactionTypeId == @(((int)Grand.Domain.Customers.CustomerReactionTypeE.Banner).ToString()))
             {
                 $('#plnBanner').show();
                 $('#plnInteractiveForm').hide();
@@ -23,7 +23,7 @@
                 $('#plnRole').hide();
                 $('#plnTag').hide();
             }
-            if (selectedReactionTypeId == @(((int)Grand.Domain.Customers.CustomerReactionTypeEnum.InteractiveForm).ToString()))
+            if (selectedReactionTypeId == @(((int)Grand.Domain.Customers.CustomerReactionTypeE.InteractiveForm).ToString()))
             {
                 $('#plnBanner').hide();
                 $('#plnInteractiveForm').show();
@@ -31,7 +31,7 @@
                 $('#plnRole').hide();
                 $('#plnTag').hide();
             }
-            else if (selectedReactionTypeId == @(((int)Grand.Domain.Customers.CustomerReactionTypeEnum.Email).ToString()))
+            else if (selectedReactionTypeId == @(((int)Grand.Domain.Customers.CustomerReactionTypeE.Email).ToString()))
             {
                 $('#plnBanner').hide();
                 $('#plnInteractiveForm').hide();
@@ -39,7 +39,7 @@
                 $('#plnRole').hide();
                 $('#plnTag').hide();
 
-            } else if (selectedReactionTypeId == @(((int)Grand.Domain.Customers.CustomerReactionTypeEnum.AssignToCustomerGroup).ToString()))
+            } else if (selectedReactionTypeId == @(((int)Grand.Domain.Customers.CustomerReactionTypeE.AssignToCustomerGroup).ToString()))
             {
                 $('#plnBanner').hide();
                 $('#plnInteractiveForm').hide();
@@ -47,7 +47,7 @@
                 $('#plnRole').show();
                 $('#plnTag').hide();
 
-            } else if (selectedReactionTypeId == @(((int)Grand.Domain.Customers.CustomerReactionTypeEnum.AssignToCustomerTag).ToString()))
+            } else if (selectedReactionTypeId == @(((int)Grand.Domain.Customers.CustomerReactionTypeE.AssignToCustomerTag).ToString()))
             {
                 $('#plnBanner').hide();
                 $('#plnInteractiveForm').hide();
