@@ -55,13 +55,13 @@ namespace Grand.Business.Marketing.Commands.Handlers
         }
         public async Task Reaction(IList<CustomerActionType> customerActionTypes, CustomerAction action, string customerId, ShoppingCartItem cartItem, Order order)
         {
-            if (action.ReactionTypeId == CustomerReactionTypeEnum.Banner)
+            if (action.ReactionTypeId == CustomerReactionTypeE.Banner)
             {
                 var banner = await _bannerRepository.GetByIdAsync(action.BannerId);
                 if (banner != null)
                     await PrepareBanner(action, banner, customerId);
             }
-            if (action.ReactionTypeId == CustomerReactionTypeEnum.InteractiveForm)
+            if (action.ReactionTypeId == CustomerReactionTypeE.InteractiveForm)
             {
                 var interactiveform = await _interactiveFormRepository.GetByIdAsync(action.InteractiveFormId);
                 if (interactiveform != null)
@@ -70,7 +70,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
 
             var customer = await _customerService.GetCustomerById(customerId);
 
-            if (action.ReactionTypeId == CustomerReactionTypeEnum.Email)
+            if (action.ReactionTypeId == CustomerReactionTypeE.Email)
             {
                 var messageProviderService = _serviceProvider.GetRequiredService<IMessageProviderService>();
                 if (action.ActionTypeId == customerActionTypes.FirstOrDefault(x => x.SystemKeyword == "AddToCart").Id)
@@ -95,12 +95,12 @@ namespace Grand.Business.Marketing.Commands.Handlers
                 }
             }
 
-            if (action.ReactionTypeId == CustomerReactionTypeEnum.AssignToCustomerGroup)
+            if (action.ReactionTypeId == CustomerReactionTypeE.AssignToCustomerGroup)
             {
                 await AssignToCustomerGroup(action, customer);
             }
 
-            if (action.ReactionTypeId == CustomerReactionTypeEnum.AssignToCustomerTag)
+            if (action.ReactionTypeId == CustomerReactionTypeE.AssignToCustomerTag)
             {
                 await AssignToCustomerTag(action, customer);
             }

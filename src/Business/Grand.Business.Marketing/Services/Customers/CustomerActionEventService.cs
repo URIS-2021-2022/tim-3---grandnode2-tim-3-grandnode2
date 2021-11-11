@@ -72,12 +72,12 @@ namespace Grand.Business.Marketing.Services.Customers
         public virtual async Task AddToCart(ShoppingCartItem cart, Product product, Customer customer)
         {
             var actiontypes = await GetAllCustomerActionType();
-            var actionType = actiontypes.Where(x => x.SystemKeyword == CustomerActionTypeEnum.AddToCart.ToString()).FirstOrDefault();
+            var actionType = actiontypes.Where(x => x.SystemKeyword == CustomerActionTypeE.AddToCart.ToString()).FirstOrDefault();
             if (actionType?.Enabled == true)
             {
                 var datetimeUtcNow = DateTime.UtcNow;
                 var query = from a in _customerActionRepository.Table
-                            where a.Active == true && a.ActionTypeId == actionType.Id
+                            where a.Active && a.ActionTypeId == actionType.Id
                                     && datetimeUtcNow >= a.StartDateTimeUtc && datetimeUtcNow <= a.EndDateTimeUtc
                             select a;
 
@@ -107,7 +107,7 @@ namespace Grand.Business.Marketing.Services.Customers
             }
         }
 
-        public virtual async Task AddOrder(Order order, CustomerActionTypeEnum customerActionType)
+        public virtual async Task AddOrder(Order order, CustomerActionTypeE customerActionType)
         {
             var actiontypes = await GetAllCustomerActionType();
             var actionType = actiontypes.Where(x => x.SystemKeyword == customerActionType.ToString()).FirstOrDefault();
@@ -115,7 +115,7 @@ namespace Grand.Business.Marketing.Services.Customers
             {
                 var datetimeUtcNow = DateTime.UtcNow;
                 var query = from a in _customerActionRepository.Table
-                            where a.Active == true && a.ActionTypeId == actionType.Id
+                            where a.Active && a.ActionTypeId == actionType.Id
                                     && datetimeUtcNow >= a.StartDateTimeUtc && datetimeUtcNow <= a.EndDateTimeUtc
                             select a;
 
@@ -154,12 +154,12 @@ namespace Grand.Business.Marketing.Services.Customers
             if (!customer.IsSystemAccount)
             {
                 var actiontypes = await GetAllCustomerActionType();
-                var actionType = actiontypes.FirstOrDefault(x => x.SystemKeyword == CustomerActionTypeEnum.Url.ToString());
+                var actionType = actiontypes.FirstOrDefault(x => x.SystemKeyword == CustomerActionTypeE.Url.ToString());
                 if (actionType?.Enabled == true)
                 {
                     var datetimeUtcNow = DateTime.UtcNow;
                     var query = from a in _customerActionRepository.Table
-                                where a.Active == true && a.ActionTypeId == actionType.Id
+                                where a.Active && a.ActionTypeId == actionType.Id
                                         && datetimeUtcNow >= a.StartDateTimeUtc && datetimeUtcNow <= a.EndDateTimeUtc
                                 select a;
 
@@ -194,12 +194,12 @@ namespace Grand.Business.Marketing.Services.Customers
             if (!customer.IsSystemAccount)
             {
                 var actiontypes = await GetAllCustomerActionType();
-                var actionType = actiontypes.Where(x => x.SystemKeyword == CustomerActionTypeEnum.Viewed.ToString()).FirstOrDefault();
+                var actionType = actiontypes.Where(x => x.SystemKeyword == CustomerActionTypeE.Viewed.ToString()).FirstOrDefault();
                 if (actionType?.Enabled == true)
                 {
                     var datetimeUtcNow = DateTime.UtcNow;
                     var query = from a in _customerActionRepository.Table
-                                where a.Active == true && a.ActionTypeId == actionType.Id
+                                where a.Active && a.ActionTypeId == actionType.Id
                                         && datetimeUtcNow >= a.StartDateTimeUtc && datetimeUtcNow <= a.EndDateTimeUtc
                                 select a;
 
@@ -234,12 +234,12 @@ namespace Grand.Business.Marketing.Services.Customers
         public virtual async Task Registration(Customer customer)
         {
             var actiontypes = await GetAllCustomerActionType();
-            var actionType = actiontypes.Where(x => x.SystemKeyword == CustomerActionTypeEnum.Registration.ToString()).FirstOrDefault();
+            var actionType = actiontypes.Where(x => x.SystemKeyword == CustomerActionTypeE.Registration.ToString()).FirstOrDefault();
             if (actionType?.Enabled == true)
             {
                 var datetimeUtcNow = DateTime.UtcNow;
                 var query = from a in _customerActionRepository.Table
-                            where a.Active == true && a.ActionTypeId == actionType.Id
+                            where a.Active && a.ActionTypeId == actionType.Id
                                     && datetimeUtcNow >= a.StartDateTimeUtc && datetimeUtcNow <= a.EndDateTimeUtc
                             select a;
 

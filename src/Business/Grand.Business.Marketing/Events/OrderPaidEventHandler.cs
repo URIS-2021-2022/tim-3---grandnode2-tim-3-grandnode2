@@ -19,7 +19,7 @@ namespace Grand.Business.Marketing.Events
         public async Task Handle(OrderPaidEvent notification, CancellationToken cancellationToken)
         {
             //customer action event service - paid order
-            await _customerActionEventService.AddOrder(notification.Order, CustomerActionTypeEnum.PaidOrder);
+            await _customerActionEventService.AddOrder(notification.Order, CustomerActionTypeE.PaidOrder);
         }
     }
 }

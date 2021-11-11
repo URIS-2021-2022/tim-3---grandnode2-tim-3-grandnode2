@@ -8,40 +8,6 @@ import 'pikaday/css/pikaday.css'
 
 import { LinkPlugin } from 'bootstrap-vue'
 Vue.use(LinkPlugin)
-import { CardPlugin } from 'bootstrap-vue'
-Vue.use(CardPlugin)
-import { ButtonPlugin } from 'bootstrap-vue'
-Vue.use(ButtonPlugin)
-import { ButtonGroupPlugin } from 'bootstrap-vue'
-Vue.use(ButtonGroupPlugin)
-import { LayoutPlugin } from 'bootstrap-vue'
-Vue.use(LayoutPlugin)
-import { ModalPlugin } from 'bootstrap-vue'
-Vue.use(ModalPlugin)
-import { SidebarPlugin } from 'bootstrap-vue'
-Vue.use(SidebarPlugin)
-import { CarouselPlugin } from 'bootstrap-vue'
-Vue.use(CarouselPlugin)
-import { DropdownPlugin } from 'bootstrap-vue'
-Vue.use(DropdownPlugin)
-import { FormCheckboxPlugin } from 'bootstrap-vue'
-Vue.use(FormCheckboxPlugin)
-import { FormRatingPlugin } from 'bootstrap-vue'
-Vue.use(FormRatingPlugin)
-import { FormFilePlugin } from 'bootstrap-vue'
-Vue.use(FormFilePlugin)
-import { ImagePlugin } from 'bootstrap-vue'
-Vue.use(ImagePlugin)
-import { ToastPlugin } from 'bootstrap-vue'
-Vue.use(ToastPlugin)
-import { AlertPlugin } from 'bootstrap-vue'
-Vue.use(AlertPlugin)
-import { TabsPlugin } from 'bootstrap-vue'
-Vue.use(TabsPlugin)
-import { CollapsePlugin } from 'bootstrap-vue'
-Vue.use(CollapsePlugin)
-import { TooltipPlugin } from 'bootstrap-vue'
-Vue.use(TooltipPlugin)
 
 import {
     BIcon,

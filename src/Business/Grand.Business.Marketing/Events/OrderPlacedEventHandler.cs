@@ -22,7 +22,7 @@ namespace Grand.Business.Marketing.Events
         public async Task Handle(OrderPlacedEvent notification, CancellationToken cancellationToken)
         {
             //cutomer action - add order
-            await _customerActionEventService.AddOrder(notification.Order, CustomerActionTypeEnum.AddOrder);
+            await _customerActionEventService.AddOrder(notification.Order, CustomerActionTypeE.AddOrder);
 
             //customer reminder
             await _mediator.Send(new UpdateCustomerReminderHistoryCommand() { CustomerId = notification.Order.CustomerId, OrderId = notification.Order.Id });

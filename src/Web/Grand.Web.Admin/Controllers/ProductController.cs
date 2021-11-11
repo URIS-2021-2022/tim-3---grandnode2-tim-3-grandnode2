@@ -32,6 +32,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Grand.Web.Admin.Controllers
@@ -365,7 +366,7 @@ namespace Grand.Web.Admin.Controllers
 
         public async Task<IActionResult> LoadProductFriendlyNames(string productIds)
         {
-            var result = "";
+            StringBuilder result = new StringBuilder();
 
             if (!String.IsNullOrWhiteSpace(productIds))
             {
@@ -383,9 +384,9 @@ namespace Grand.Web.Admin.Controllers
                 var products = await _productService.GetProductsByIds(ids.ToArray(), true);
                 for (int i = 0; i <= products.Count - 1; i++)
                 {
-                    result += products[i].Name;
+                    result.Append(products[i].Name);
                     if (i != products.Count - 1)
-                        result += ", ";
+                        result.Append( ", ");
                 }
             }
 
@@ -1228,7 +1229,7 @@ namespace Grand.Web.Admin.Controllers
                     });
 
             var values = new List<(string pictureUrl, string pictureId)>();
-            var message = string.Empty;
+            StringBuilder message = new StringBuilder();
             foreach (var file in httpPostedFiles)
             {
                 var qqFileNameParameter = "qqfilename";
@@ -1261,7 +1262,7 @@ namespace Grand.Web.Admin.Controllers
 
                 }
                 else
-                    message += $"Not allowed file types to import {fileName}";
+                    message.Append($"Not allowed file types to import {fileName}");
             }
 
             return Json(new { success = values.Any(), data = values });

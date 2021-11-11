@@ -329,7 +329,7 @@ namespace Grand.Business.Marketing.Services.Customers
                         var pr = await _productService.GetProductById(product);
                         if (pr != null)
                         {
-                            if (pr.ProductCategories.Count(x => x.CategoryId == item) > 0)
+                            if (pr.ProductCategories.Where(x => x.CategoryId == item).Any())
                                 return true;
                         }
                     }
@@ -371,7 +371,7 @@ namespace Grand.Business.Marketing.Services.Customers
                         var pr = await _productService.GetProductById(product);
                         if (pr != null)
                         {
-                            if (pr.ProductCollections.Where(x => x.CollectionId == item).Count() > 0)
+                            if (pr.ProductCollections.Where(x => x.CollectionId == item).Any())
                                 return true;
                         }
                     }
@@ -446,7 +446,7 @@ namespace Grand.Business.Marketing.Services.Customers
                 {
                     foreach (var item in condition.CustomerRegistration)
                     {
-                        if (customer.UserFields.Where(x => x.Key == item.RegisterField && x.Value == item.RegisterValue).Count() > 0)
+                        if (customer.UserFields.Where(x => x.Key == item.RegisterField && x.Value == item.RegisterValue).Any())
                             cond = true;
                     }
                 }
@@ -487,7 +487,7 @@ namespace Grand.Business.Marketing.Services.Customers
                             var _fields = item.RegisterField.Split(':');
                             if (_fields.Length > 1)
                             {
-                                if (selectedValues.Where(x => x.CustomerAttributeId == _fields.FirstOrDefault() && x.Id == _fields.LastOrDefault()).Count() > 0)
+                                if (selectedValues.Where(x => x.CustomerAttributeId == _fields.FirstOrDefault() && x.Id == _fields.LastOrDefault()).Any())
                                     cond = true;
                             }
                         }

@@ -52,16 +52,16 @@ namespace Grand.Domain.Data
         T Insert(T entity);
 
         /// <summary>
-        /// Async Insert entity
-        /// </summary>
-        /// <param name="entity">Entity</param>
-        Task<T> InsertAsync(T entity);
-
-        /// <summary>
         /// Insert entities
         /// </summary>
         /// <param name="entities">Entities</param>
         void Insert(IEnumerable<T> entities);
+
+        /// <summary>
+        /// Async Insert entity
+        /// </summary>
+        /// <param name="entity">Entity</param>
+        Task<T> InsertAsync(T entity);
 
         /// <summary>
         /// Async Insert entities
@@ -80,12 +80,6 @@ namespace Grand.Domain.Data
         /// </summary>
         /// <param name="entity">Entity</param>
         T Update(T entity);
-
-        /// <summary>
-        /// Async Update entity
-        /// </summary>
-        /// <param name="entity">Entity</param>
-        Task<T> UpdateAsync(T entity);
 
         /// <summary>
         /// Update entities
@@ -201,6 +195,12 @@ namespace Grand.Domain.Data
         Task Pull(string id, Expression<Func<T, IEnumerable<string>>> field, string element, bool updateMany = false);
 
         /// <summary>
+        /// Async Update entity
+        /// </summary>
+        /// <param name="entity">Entity</param>
+        Task<T> UpdateAsync(T entity);
+
+        /// <summary>
         /// Async Update entities
         /// </summary>
         /// <param name="entities">Entities</param>
@@ -212,16 +212,16 @@ namespace Grand.Domain.Data
         /// <param name="entity">Entity</param>
         void Delete(T entity);
 
-        /// Async Delete entity
-        /// </summary>
-        /// <param name="entity">Entity</param>
-        Task<T> DeleteAsync(T entity);
-
         /// <summary>
         /// Delete entities
         /// </summary>
         /// <param name="entities">Entities</param>
         void Delete(IEnumerable<T> entities);
+
+        /// Async Delete entity
+        /// </summary>
+        /// <param name="entity">Entity</param>
+        Task<T> DeleteAsync(T entity);
 
         /// <summary>
         /// Async Delete entities

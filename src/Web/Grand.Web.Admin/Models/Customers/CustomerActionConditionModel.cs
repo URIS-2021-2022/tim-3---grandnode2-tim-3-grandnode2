@@ -18,11 +18,11 @@ namespace Grand.Web.Admin.Models.Customers
         public string Name { get; set; }
 
         [GrandResourceDisplayName("Admin.Customers.CustomerActionCondition.Fields.CustomerConditionTypeId")]
-        public CustomerActionConditionTypeEnum CustomerActionConditionTypeId { get; set; }
+        public CustomerActionConditionTypeE CustomerActionConditionTypeId { get; set; }
         public IList<SelectListItem> CustomerActionConditionType { get; set; }
 
         [GrandResourceDisplayName("Admin.Customers.CustomerActionCondition.Fields.ConditionId")]
-        public CustomerActionConditionEnum ConditionId { get; set; }
+        public CustomerActionConditionE ConditionId { get; set; }
 
         public string CustomerActionId { get; set; }
 
