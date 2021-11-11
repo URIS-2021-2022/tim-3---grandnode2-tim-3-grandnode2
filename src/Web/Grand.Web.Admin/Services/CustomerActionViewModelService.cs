@@ -407,7 +407,7 @@ namespace Grand.Web.Admin.Services
                 var condition = customerAction.Conditions.FirstOrDefault(x => x.Id == model.ConditionId);
                 if (condition != null)
                 {
-                    if (condition.CustomerGroups.Where(x => x == model.CustomerGroupId).Count() == 0)
+                    if (!condition.CustomerGroups.Where(x => x == model.CustomerGroupId).Any())
                     {
                         condition.CustomerGroups.Add(model.CustomerGroupId);
                         await _customerActionService.UpdateCustomerAction(customerAction);

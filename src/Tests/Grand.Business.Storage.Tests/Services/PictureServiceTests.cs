@@ -73,7 +73,7 @@ namespace Grand.Business.Storage.Tests.Services
         public async Task InsertPicture_InvokeExpectedMethods()
         {
             _settings.StoreInDb = true;
-            await _service.InsertPicture(new byte[] { }, "image/jpeg", "image", validateBinary: false);
+            await _service.InsertPicture(Array.Empty<byte>(), "image/jpeg", "image", validateBinary: false);
             _repoMock.Verify(c => c.InsertAsync(It.IsAny<Picture>()), Times.Once);
             _mediatorMock.Verify(c => c.Publish(It.IsAny<EntityInserted<Picture>>(), default), Times.Once);
         }

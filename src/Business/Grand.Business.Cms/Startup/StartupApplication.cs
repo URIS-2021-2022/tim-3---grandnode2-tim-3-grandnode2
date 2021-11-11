@@ -24,7 +24,7 @@ namespace Grand.Business.Cms.Startup
         public int Priority => 100;
         public bool BeforeConfigure => false;
 
-        private void RegisterBlogService(IServiceCollection serviceCollection)
+        private static void RegisterBlogService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IBlogService, BlogService>();
         }
