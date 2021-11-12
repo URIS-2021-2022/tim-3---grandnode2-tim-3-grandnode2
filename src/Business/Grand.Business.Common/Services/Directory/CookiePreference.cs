@@ -29,8 +29,8 @@ namespace Grand.Business.Common.Services.Directory
         {
             bool? result = default(bool?);
             var savedCookiesConsent = await _userFieldService.GetFieldsForEntity<Dictionary<string, bool>>(customer, SystemCustomerFieldNames.ConsentCookies, store.Id);
-            if (savedCookiesConsent != null)
-                if (savedCookiesConsent.ContainsKey(cookieSystemName))
+            if (savedCookiesConsent != null && savedCookiesConsent.ContainsKey(cookieSystemName))
+              
                     result = savedCookiesConsent[cookieSystemName];
 
             return result;
