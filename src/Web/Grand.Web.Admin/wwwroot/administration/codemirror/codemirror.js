@@ -1665,7 +1665,7 @@
           while ((stream.pos < pos.ch) && !stream.eol()) {
               stream.start = stream.pos;
               style = readToken(mode, stream, context.state);
-              if (asArray) { tokens.push(new Token(stream, style, copyState(doc.mode, context.state))); }
+              tokens.push(new Token(stream, style, copyState(doc.mode, context.state)));
           }
       }
     

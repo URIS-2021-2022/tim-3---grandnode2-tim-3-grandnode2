@@ -313,7 +313,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
                 foreach (var itemPA in condition.ProductAttribute)
                 {
                     var attributes = productAttributeParser.ParseProductAttributeMappings(product, customAttributes);
-                    if (attributes.Where(x => x.ProductAttributeId == itemPA.ProductAttributeId).Any())
+                    if (attributes.Any(x => x.ProductAttributeId == itemPA.ProductAttributeId))
                     {
                         cond = false;
                         foreach (var attr in attributes.Where(x => x.ProductAttributeId == itemPA.ProductAttributeId))
@@ -364,7 +364,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
             {
                 foreach (var spec in productspecificationattribute)
                 {
-                    if (condition.ProductSpecifications.Where(x => x.ProductSpecyficationId == spec.SpecificationAttributeId && x.ProductSpecyficationValueId == spec.SpecificationAttributeOptionId).Any())
+                    if (condition.ProductSpecifications.Any(x => x.ProductSpecyficationId == spec.SpecificationAttributeId && x.ProductSpecyficationValueId == spec.SpecificationAttributeOptionId))
                         cond = true;
                 }
             }
@@ -428,7 +428,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
                 {
                     foreach (var item in condition.CustomerRegistration)
                     {
-                        if (_userFields.Where(x => x.Key == item.RegisterField && x.Value.ToLower() == item.RegisterValue.ToLower()).Any())
+                        if (_userFields.Any(x => x.Key == item.RegisterField && x.Value.ToLower() == item.RegisterValue.ToLower()))
                             cond = true;
                     }
                 }
@@ -471,7 +471,7 @@ namespace Grand.Business.Marketing.Commands.Handlers
                             var _fields = item.RegisterField.Split(':');
                             if (_fields.Count() > 1)
                             {
-                                if (selectedValues.Where(x => x.CustomerAttributeId == _fields.FirstOrDefault() && x.Id == _fields.LastOrDefault()).Any())
+                                if (selectedValues.Any(x => x.CustomerAttributeId == _fields.FirstOrDefault() && x.Id == _fields.LastOrDefault()))
                                     cond = true;
                             }
                         }
